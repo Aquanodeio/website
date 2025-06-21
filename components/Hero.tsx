@@ -49,7 +49,7 @@ export const Hero = () => {
                 backgroundClip: "text",
               }}
             >
-              The World's Largest
+              The World&apos;s Largest
               <br />
               Compute Ecosystem
             </h1>

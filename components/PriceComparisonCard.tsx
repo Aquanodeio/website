@@ -1,7 +1,6 @@
 import Image from "next/image";
 import AwsIcon from "@/assets/aws.png";
 import DatabaseIcon from "@/assets/database-icon.svg";
-import { GradientText } from "./GradientText";
 import AquaNodeLogo from "@/assets/aquanode-logo.png";
 interface CardData {
   gpuType: string;

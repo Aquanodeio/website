@@ -19,20 +19,20 @@ export default function PriceComparisonCard({
   cards,
 }: PriceComparisonCardProps) {
   return (
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 px-4 sm:px-0">
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
       {cards.map((card, index) => (
         <div
           key={index}
-          className="w-full sm:w-[228px] h-[88px] rounded-[16px] border border-[#2C2539] backdrop-blur-[30.62px] px-4 sm:px-6 py-3 relative"
+          className="w-full sm:w-[240px] h-[100px] rounded-[16px] border border-[#2C2539] backdrop-blur-[30.62px] p-4 sm:p-5 relative"
           style={{
             background: `radial-gradient(circle at 50% 0%, rgba(133, 102, 255, 0.04) 0%, rgba(133, 102, 255, 0) 100%)`,
           }}
         >
-          <div className="flex items-center gap-2">
-            <Image src={DatabaseIcon} alt="Database" width={18} height={18} />
+          <div className="flex items-center gap-3">
+            <Image src={DatabaseIcon} alt="Database" width={22} height={22} />
 
             <span
-              className="text-[12px] font-medium leading-[14.52px] text-center"
+              className="text-[16px] font-medium leading-[18px] text-center"
               style={{
                 background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
                 WebkitBackgroundClip: "text",
@@ -44,27 +44,34 @@ export default function PriceComparisonCard({
             </span>
           </div>
 
+          {/* Popular label for A100 */}
+          {card.gpuType === "A100" && (
+            <div className="absolute top-3 right-4 sm:right-5 px-2.5 py-1 rounded-full bg-[#B0F5C7] text-[#2A8348] text-[11px] font-medium" >
+              Popular
+            </div>
+          )}
+
           {/* Logo and price */}
-          <div className="absolute left-4 sm:left-[26.19px] bottom-[18.24px] flex items-center gap-[8px]">
+          <div className="absolute left-4 sm:left-[20px] bottom-[16px] flex items-center gap-[10px]">
             <Image
-              width={20}
-              height={20}
+              width={24}
+              height={24}
               src={AquaNodeLogo}
               alt="AquaNode Logo"
               className="object-fill"
             />
-            <span className="text-[#41B66B] text-[10px] font-medium leading-[12.1px]">
+            <span className="text-[#41B66B] text-[12px] font-medium leading-[14px]">
               {card.aquanodePrice}
             </span>
           </div>
 
           {/* GPU icon and comparison price */}
-          <div className="absolute right-4 sm:right-[26.19px] bottom-[18px] flex items-center gap-[8px]">
-            <div className="w-[24.36px] h-[14.52px] relative">
+          <div className="absolute right-4 sm:right-[20px] bottom-[16px] flex items-center gap-[10px]">
+            <div className="w-[28px] h-[17px] relative">
               <Image src={AwsIcon} alt="AWS" fill className="object-fill" />
             </div>
             <span
-              className="text-[10px] font-normal leading-[12.1px]"
+              className="text-[12px] font-normal leading-[14px]"
               style={{
                 background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
                 WebkitBackgroundClip: "text",

@@ -1,56 +1,64 @@
 import React from "react";
 import Image from "next/image";
-import HorizontalDivider from "./HorizontalDivider";
-// import AquanodeText from "@/assets/aquanode-text-footer.png";
-
-// className="w-full px-4 sm:px-20 lg:px-40 py-6 sm:py-10 relative"
+import AquaNodeLogo from "@/assets/aquanode-logo.png";
 
 const Footer = () => {
   return (
     <div className="w-full">
-      {/* <HorizontalDivider /> */}
+      <div className="px-4 sm:px-6 lg:px-20 py-12 sm:py-16">
+        <div
+          className="h-px w-full mb-8 sm:mb-12"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 100%, rgba(169, 163, 194, 0.24) 0%, rgba(169, 163, 194, 0) 100%)",
+          }}
+        />
 
-      {/* <div className="flex items-center justify-center px-20 overflow-visible relative py-5">
-        <Image src={AquanodeText} alt="Aquanode" className=" w-full h-full" />
-      </div> */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0 mb-8 sm:mb-12">
+          <div className="flex items-center gap-3">
+            <Image
+              src={AquaNodeLogo}
+              alt="Aquanode Logo"
+              width={32}
+              height={32}
+            />
+            <span className="text-white text-xl font-semibold">Aquanode</span>
+          </div>
 
-      <div className="px-4 sm:px-20 lg:px-40 py-6 sm:py-10">
-        <HorizontalDivider />
+          <div className="flex gap-8">
+            <a
+              href="/pricing"
+              className="text-[#9B96B0] hover:text-white transition-colors text-sm font-medium"
+            >
+              Pricing
+            </a>
+            <a
+              href="https://calendly.com/anshss/call"
+              className="text-[#9B96B0] hover:text-white transition-colors text-sm font-medium"
+            >
+              Contact Sales
+            </a>
+          </div>
+        </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-6 sm:gap-0 mt-6 sm:mt-10">
+        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-6 sm:gap-0">
           <div className="text-[#9B96B0] text-sm font-normal leading-[24px] tracking-[-0.01em] text-center sm:text-left">
             ©2025 Aquanode. All rights reserved.
           </div>
 
-          <div className="flex gap-6 sm:gap-10">
-            {/* <a href="#" className="w-6 h-6 flex items-center justify-center">
-              <Image
-                src="/icons/instagram.svg"
-                alt="Instagram"
-                width={16}
-                height={16}
-              />
-            </a>
-            <a href="#" className="w-6 h-6 flex items-center justify-center">
-              <Image
-                src="/icons/youtube.svg"
-                alt="YouTube"
-                width={18}
-                height={12}
-              />
-            </a>
-            <a href="#" className="w-6 h-6 flex items-center justify-center">
-              <Image
-                src="/icons/linkedin.svg"
-                alt="LinkedIn"
-                width={14}
-                height={14}
-              />
-            </a> */}
-            <a href="#" className="w-6 h-6 flex items-center justify-center">
+          <div className="flex gap-6 sm:gap-8">
+            <a
+              href="https://x.com/aquanodeio"
+              target="_blank"
+              className="w-6 h-6 flex items-center justify-center"
+            >
               <Image src="/icons/x.svg" alt="X" width={20} height={20} />
             </a>
-            <a href="#" className="w-6 h-6 flex items-center justify-center">
+            <a
+              href="https://github.com/Aquanodeio"
+              target="_blank"
+              className="w-6 h-6 flex items-center justify-center"
+            >
               <Image
                 src="/icons/github.svg"
                 alt="Github"

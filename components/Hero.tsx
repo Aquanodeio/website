@@ -1,10 +1,10 @@
 import Image from "next/image";
 import PriceComparisonCard from "./PriceComparisonCard";
-import { GradientText } from "./GradientText";
 import Spline from "@splinetool/react-spline/next";
 import HeroBg from "@/assets/hero-bg-texture.png";
 import Link from "next/link";
-import Header from "./Header";
+import OverlayNavbar from "./OverlayNavbar";
+import { ArrowRight } from "lucide-react";
 
 const cardData = [
   {
@@ -29,73 +29,79 @@ const cardData = [
 
 export const Hero = () => {
   return (
-    <section className="relative w-full overflow-hidden px-4 sm:px-20">
+    <section id="Home" className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-20" style={{ fontFamily: "var(--font-)" }}>
       <div>
         <div className="absolute -left-[50px] -top-[20px] w-[300px] h-[200px] sm:-left-[211px] sm:-top-[81px] sm:w-[1062px] sm:h-[501px]">
           <Image src={HeroBg} alt="" fill className="object-stretch" />
         </div>
 
-        <div className="inset-0 w-full h-auto sm:h-[591px] relative z-10">
-          <Header />
+        <div className="inset-0 w-full h-auto relative z-10 pt-20 sm:pt-24">
+          <OverlayNavbar />
 
-          <div className="mt-10 sm:mt-40">
-            <h1
-              className="text-[32px] sm:text-[64px] font-bold leading-[36px] sm:leading-[68px] tracking-[-0.8px] sm:tracking-[-1.44px] text-left"
-              style={{
-                fontFamily: "ES Rebond Grotesque, sans-serif",
-                background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              The World&apos;s Largest
-              <br />
-              Compute Ecosystem
-            </h1>
-
-            <p
-              className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-normal leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left mt-4 sm:mt-6"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
-              Affordable, decentralized compute infrastructure for developers
-              and <br className="hidden sm:block" />
-              businesses. Deploy customizable Aqua services through our unified
-              layer.
-            </p>
-          </div>
-
-          <div className="flex flex-row gap-6 sm:gap-10 mt-8 sm:mt-10 items-center">
-            <Link href="/app">
-              <button
-                className="flex items-center justify-center px-6 py-2 rounded-full border border-white/10 w-full sm:w-auto"
+          <div className="mt-34 sm:mt-34 lg:mt-36">
+            <div className="space-y-1 sm:space-y-8">
+              <h1
+                className="text-[32px] sm:text-[48px] font-medium leading-[40px] sm:leading-[64px] tracking-[-0.8px] sm:tracking-[-1.44px] text-left"
                 style={{
-                  background: `radial-gradient(circle at 50% 215%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%)`,
+                  background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
               >
-                <GradientText className="text-sm font-medium">
-                Launch App
-                </GradientText>
-              </button>
-            </Link>
+                GPU Compute that&apos;s
+                <br />
+                Effortless & Affordable
+              </h1>
 
-            {/* <Link href="/app">
-              <GradientText className="text-sm font-medium">
-                Launch App
-              </GradientText>
-            </Link> */}
+              <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
+                Spin up scalable AI workloads at a fraction of the cloud cost
+                <br className="hidden sm:block" />
+                without the hassle of managing infrastructure.
+              </p>
+            </div>
+
+            <div className="flex flex-row gap-4 sm:gap-6 items-center mt-8 sm:mt-10">
+              <Link href="/app">
+                <button
+                  className="flex items-center justify-center w-[136px] h-[40px] rounded-full border-[0.5px]"
+                  style={{
+                    background: `linear-gradient(135deg, #6C50BE 0%, #322558 100%)`,
+                    borderColor: "#C6ACEC",
+                  }}
+                >
+                  <span className="text-white text-sm font-medium">
+                    Deploy Now
+                  </span>
+                </button>
+              </Link>
+
+              <Link href="https://calendly.com/anshss/call" target="_blank">
+                <button
+                  className="flex items-center justify-center gap-2 w-[136px] h-[40px] rounded-full border-[0.5px] border-[#C6ACEC]"
+                  style={{
+                    background: `rgba(0, 0, 0, 0.8)`,
+                    borderColor: "#C6ACEC",
+                  }}
+                >
+                  <span className="text-white text-sm font-medium">
+                    Book Demo
+                  </span>
+                  <ArrowRight className="text-white w-4 h-4" />
+                </button>
+              </Link>
+            </div>
+
+            <div className="mt-12 sm:mt-16">
+              <PriceComparisonCard cards={cardData} />
+            </div>
           </div>
 
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
               <Spline scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
-              {/* <Spline scene="https://prod.spline.design/15txp4eWHSnORrNb/scene.splinecode" /> */}
             </div>
           </div>
-        </div>
-
-        <div className="mt-8 sm:mt-0">
-          <PriceComparisonCard cards={cardData} />
         </div>
       </div>
     </section>

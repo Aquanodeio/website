@@ -14,7 +14,6 @@ export const GradientText = ({
         className
       )}
       style={{
-        fontFamily: "var(--font-roboto)",
         background: `linear-gradient(180deg, rgba(255, 255, 255, 0.3) 8.85%, rgba(255, 255, 255, 1) 100%)`,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",

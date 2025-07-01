@@ -1,11 +1,11 @@
 import Image from "next/image";
 import BackgroundImage from "@/assets/star-background.png";
-import { GradientText } from "./GradientText";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function PricingCalloutSection() {
   return (
-    <section className="relative w-full flex flex-col items-center px-4 sm:px-20 lg:px-40 py-10 sm:py-20">
+    <section className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="relative w-full h-[400px] sm:h-[591px]">
         <div className="absolute inset-0">
           <Image
@@ -17,27 +17,52 @@ export default function PricingCalloutSection() {
           />
         </div>
 
-        <div className="relative z-1 w-full h-full flex flex-col items-center justify-center gap-3 sm:gap-5 px-4 sm:px-0">
-          <h2 className="font-esrebond font-bold text-[28px] sm:text-[54px] leading-[34px] sm:leading-[64px] text-center bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
-            Ready to Scale Your Compute?
+        <div className="relative z-1 w-full h-full flex flex-col items-center justify-center space-y-6 sm:space-y-8">
+          <h2
+            className="text-[28px] sm:text-[54px] font-medium leading-[34px] sm:leading-[64px] text-center"
+            style={{
+              fontFamily: "var(--font-)",
+              background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            Unlock Inference That Works for You
           </h2>
 
-          <p className="text-[#9B96B0] font-inter text-[16px] sm:text-[20px] leading-[24px] sm:leading-[28px] text-center -tracking-[0.01em] max-w-[400px] sm:max-w-[600px]">
-            Choose the perfect plan for your needs. From startup to enterprise,
-            we have compute solutions that scale with your growth.
+          <p className="text-[#9B96B0] text-[16px] sm:text-[20px] leading-[24px] sm:leading-[28px] text-center -tracking-[0.01em] max-w-[400px] sm:max-w-[600px]">
+            Start building on secure, scalable, and orchestrated infrastructure
+            powered by decentralized networks. The future of cloud starts here.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-[24px] w-full max-w-[400px] sm:max-w-none sm:w-auto mt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full max-w-[400px] sm:max-w-none sm:w-auto">
             <Link href="/app">
               <button
-                className="flex items-center justify-center px-6 py-2 rounded-full border border-white/10 w-full sm:w-auto"
+                className="flex items-center justify-center w-[136px] h-[40px] rounded-full border-[0.5px]"
                 style={{
-                  background: `radial-gradient(circle at 50% 215%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%)`,
+                  background: `linear-gradient(135deg, #6C50BE 0%, #322558 100%)`,
+                  borderColor: "#C6ACEC",
                 }}
               >
-                <GradientText className="text-sm font-medium">
-                  View Pricing Plans
-                </GradientText>
+                <span className="text-white text-sm font-medium">
+                  Get Started
+                </span>
+              </button>
+            </Link>
+
+            <Link href="https://calendly.com/anshss/call" target="_blank">
+              <button
+                className="flex items-center justify-center gap-2 w-[136px] h-[40px] rounded-full border-[0.5px] border-[#C6ACEC]"
+                style={{
+                  background: `rgba(0, 0, 0, 0.8)`,
+                  borderColor: "#C6ACEC",
+                }}
+              >
+                <span className="text-white text-sm font-medium">
+                  Book Demo
+                </span>
+                <ArrowRight className="text-white w-4 h-4" />
               </button>
             </Link>
           </div>

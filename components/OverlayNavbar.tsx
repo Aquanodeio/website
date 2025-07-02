@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AquaNodeLogo from "@/assets/aquanode-logo.png";
 import Link from "next/link";
+import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 
 export default function OverlayNavbar() {
   return (
@@ -8,10 +9,7 @@ export default function OverlayNavbar() {
       <div className="bg-[#09001E] backdrop-blur-xl rounded-2xl border border-[#2F2F2F]/64 px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2"
-          >
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src={AquaNodeLogo}
               alt="AquaNode Logo"
@@ -43,7 +41,7 @@ export default function OverlayNavbar() {
               Pricing
             </Link>
             <Link
-              href="https://calendly.com/anshss/call"
+              href={CONTACT_SALES_LINK}
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"
               target="_blank"
             >
@@ -53,7 +51,7 @@ export default function OverlayNavbar() {
 
           {/* Get Started Button - Hidden on mobile */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/app">
+            <Link href={CONSOLE_LINK}>
               <button
                 className="flex items-center justify-center w-[136px] h-[36px] rounded-full border-[0.5px]"
                 style={{

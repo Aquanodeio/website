@@ -2,6 +2,7 @@ import Image from "next/image";
 import BackgroundImage from "@/assets/star-background.png";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 
 export default function PricingCalloutSection() {
   return (
@@ -37,7 +38,7 @@ export default function PricingCalloutSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full max-w-[400px] sm:max-w-none sm:w-auto">
-            <Link href="/app">
+            <Link href={CONSOLE_LINK}>
               <button
                 className="flex items-center justify-center w-[136px] h-[40px] rounded-full border-[0.5px]"
                 style={{
@@ -51,7 +52,7 @@ export default function PricingCalloutSection() {
               </button>
             </Link>
 
-            <Link href="https://calendly.com/anshss/call" target="_blank">
+            <Link href={CONTACT_SALES_LINK} target="_blank">
               <button
                 className="flex items-center justify-center gap-2 w-[136px] h-[40px] rounded-full border-[0.5px] border-[#C6ACEC]"
                 style={{

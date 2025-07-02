@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import AquaNodeLogo from "@/assets/aquanode-logo.png";
+import { CONTACT_SALES_LINK } from "@/config/links";
 
 const Footer = () => {
   return (
@@ -33,7 +34,7 @@ const Footer = () => {
               Pricing
             </a>
             <a
-              href="https://calendly.com/anshss/call"
+              href={CONTACT_SALES_LINK}
               className="text-[#9B96B0] hover:text-white transition-colors text-sm font-medium"
             >
               Contact Sales

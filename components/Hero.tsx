@@ -5,6 +5,7 @@ import HeroBg from "@/assets/hero-bg-texture.png";
 import Link from "next/link";
 import OverlayNavbar from "./OverlayNavbar";
 import { ArrowRight } from "lucide-react";
+import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 
 const cardData = [
   {
@@ -29,7 +30,11 @@ const cardData = [
 
 export const Hero = () => {
   return (
-    <section id="Home" className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-20" style={{ fontFamily: "var(--font-)" }}>
+    <section
+      id="Home"
+      className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-20"
+      style={{ fontFamily: "var(--font-)" }}
+    >
       <div>
         <div className="absolute -left-[50px] -top-[20px] w-[300px] h-[200px] sm:-left-[211px] sm:-top-[81px] sm:w-[1062px] sm:h-[501px]">
           <Image src={HeroBg} alt="" fill className="object-stretch" />
@@ -62,7 +67,7 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-row gap-4 sm:gap-6 items-center mt-8 sm:mt-10">
-              <Link href="/app">
+              <Link href={CONSOLE_LINK}>
                 <button
                   className="flex items-center justify-center w-[136px] h-[40px] rounded-full border-[0.5px]"
                   style={{
@@ -76,7 +81,7 @@ export const Hero = () => {
                 </button>
               </Link>
 
-              <Link href="https://calendly.com/anshss/call" target="_blank">
+              <Link href={CONTACT_SALES_LINK} target="_blank">
                 <button
                   className="flex items-center justify-center gap-2 w-[136px] h-[40px] rounded-full border-[0.5px] border-[#C6ACEC]"
                   style={{

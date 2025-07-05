@@ -4,7 +4,7 @@
     "variant": "80GB",
     "cores": "24",
     "ram": "276 GB",
-    "price": "$2.10/hr",
+    "price": "$2.52/hr",
     "available": true
   },
   {
@@ -12,7 +12,7 @@
     "variant": "80GB",
     "cores": "20",
     "ram": "125 GB",
-    "price": "$1.11/hr",
+    "price": "$1.33/hr",
     "available": true
   },
   {
@@ -20,7 +20,7 @@
     "variant": "80GB",
     "cores": "16",
     "ram": "125 GB",
-    "price": "$0.75/hr",
+    "price": "$0.90/hr",
     "available": true
   },
   {
@@ -28,7 +28,7 @@
     "variant": "24GB",
     "cores": "15",
     "ram": "190 GB",
-    "price": "$0.30/hr",
+    "price": "$0.36/hr",
     "available": true
   },
   {
@@ -36,7 +36,7 @@
     "variant": "24GB",
     "cores": "08",
     "ram": "41 GB",
-    "price": "$0.21/hr",
+    "price": "$0.25/hr",
     "available": true
   },
   {
@@ -44,7 +44,7 @@
     "variant": "16GB",
     "cores": "--",
     "ram": "--",
-    "price": "$0.10/hr",
+    "price": "$0.12/hr",
     "available": true
   },
   {
@@ -52,7 +52,7 @@
     "variant": "48GB",
     "cores": "09",
     "ram": "50",
-    "price": "$0.18/hr",
+    "price": "$0.22/hr",
     "available": true
   },
   {
@@ -60,7 +60,7 @@
     "variant": "16GB",
     "cores": "--",
     "ram": "--",
-    "price": "$0.07/hr",
+    "price": "$0.08/hr",
     "available": true
   },
   {
@@ -68,7 +68,7 @@
     "variant": "24GB",
     "cores": "06",
     "ram": "112",
-    "price": "$0.18/hr",
+    "price": "$0.22/hr",
     "available": true
   },
   {
@@ -76,7 +76,7 @@
     "variant": "48GB",
     "cores": "08",
     "ram": "64 GB",
-    "price": "$0.16/hr",
+    "price": "$0.19/hr",
     "available": true
   },
   {

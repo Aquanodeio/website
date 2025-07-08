@@ -56,14 +56,6 @@
     "available": true
   },
   {
-    "model": "P100",
-    "form_factor": "PCIe",
-    "vram": "16",
-    "region": "Global",
-    "price": "$0.09/hr",
-    "available": false
-  },
-  {
     "model": "P40",
     "form_factor": "PCIe",
     "vram": "24",
@@ -78,14 +70,6 @@
     "region": "Global",
     "price": "$0.13/hr",
     "available": true
-  },
-  {
-    "model": "V100",
-    "form_factor": "PCIe",
-    "vram": "16",
-    "region": "Global",
-    "price": "Unavailable",
-    "available": false
   },
   {
     "model": "GTX 1080 Ti",

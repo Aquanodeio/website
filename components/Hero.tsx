@@ -21,9 +21,9 @@ const cardData = [
     position: { left: "335px" },
   },
   {
-    gpuType: "RTX 4090",
-    aquanodePrice: "$0.20/hr",
-    competitorPrice: "$7.97/hr",
+    gpuType: "B200",
+    aquanodePrice: "$4.08/hr",
+    competitorPrice: "$113.93/hr",
     position: { left: "583px" },
   },
 ];

@@ -1,90 +1,114 @@
 [
   {
-    "model": "H100",
-    "variant": "80GB",
-    "cores": "24",
-    "ram": "276 GB",
-    "price": "$2.52/hr",
+    "model": "H200",
+    "form_factor": "SXM",
+    "vram": "141GB",
+    "region": "Global",
+    "price": "$3.81/hr",
     "available": true
   },
   {
     "model": "H100",
-    "variant": "80GB",
-    "cores": "20",
-    "ram": "125 GB",
-    "price": "$1.33/hr",
+    "form_factor": "SXM",
+    "vram": "80GB",
+    "region": "Global",
+    "price": "$1.28/hr",
     "available": true
   },
   {
     "model": "A100",
-    "variant": "80GB",
-    "cores": "16",
-    "ram": "125 GB",
-    "price": "$0.90/hr",
+    "form_factor": "SXM",
+    "vram": "80GB",
+    "region": "Global",
+    "price": "$0.85/hr",
     "available": true
   },
   {
     "model": "RTX 4090",
-    "variant": "24GB",
-    "cores": "15",
-    "ram": "190 GB",
-    "price": "$0.36/hr",
+    "form_factor": "PCIe",
+    "vram": "24GB",
+    "region": "Global",
+    "price": "$0.64/hr",
     "available": true
   },
   {
     "model": "RTX 3090",
-    "variant": "24GB",
-    "cores": "08",
-    "ram": "41 GB",
-    "price": "$0.25/hr",
+    "form_factor": "PCIe",
+    "vram": "24GB",
+    "region": "Global",
+    "price": "$0.29/hr",
     "available": true
   },
   {
     "model": "T4",
-    "variant": "16GB",
-    "cores": "--",
-    "ram": "--",
-    "price": "$0.12/hr",
+    "form_factor": "PCIe",
+    "vram": "16GB",
+    "region": "Global",
+    "price": "$0.13/hr",
     "available": true
   },
   {
     "model": "A6000",
-    "variant": "48GB",
-    "cores": "09",
-    "ram": "50",
-    "price": "$0.22/hr",
+    "form_factor": "PCIe",
+    "vram": "48GB",
+    "region": "Global",
+    "price": "$0.79/hr",
     "available": true
   },
   {
     "model": "P100",
-    "variant": "16GB",
-    "cores": "--",
-    "ram": "--",
-    "price": "$0.08/hr",
-    "available": true
+    "form_factor": "PCIe",
+    "vram": "16GB",
+    "region": "Global",
+    "price": "$0.09/hr",
+    "available": false
   },
   {
     "model": "P40",
-    "variant": "24GB",
-    "cores": "06",
-    "ram": "112",
-    "price": "$0.22/hr",
+    "form_factor": "PCIe",
+    "vram": "24GB",
+    "region": "Global",
+    "price": "$0.16/hr",
     "available": true
   },
   {
-    "model": "RTX 6000",
-    "variant": "48GB",
-    "cores": "08",
-    "ram": "64 GB",
-    "price": "$0.19/hr",
+    "model": "RTX 8000",
+    "form_factor": "PCIe",
+    "vram": "48GB",
+    "region": "Global",
+    "price": "$0.13/hr",
     "available": true
   },
   {
     "model": "V100",
-    "variant": "16GB",
-    "cores": "08",
-    "ram": "45 GB",
-    "price": "----",
+    "form_factor": "PCIe",
+    "vram": "16GB",
+    "region": "Global",
+    "price": "Unavailable",
     "available": false
+  },
+  {
+    "model": "GTX 1080 Ti",
+    "form_factor": "PCIe",
+    "vram": "11GB",
+    "region": "Global",
+    "price": "$0.12/hr",
+    "available": true
+  },
+  {
+    "model": "RTX 2000e Ada",
+    "form_factor": "PCIe",
+    "vram": "16GB",
+    "region": "Global",
+    "price": "$0.08/hr",
+    "available": true
+  },
+  {
+    "model": "RTX 4060 Ti",
+    "form_factor": "PCIe",
+    "vram": "16GB",
+    "region": "Global",
+    "price": "$0.03/hr",
+    "available": true
   }
 ]

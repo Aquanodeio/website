@@ -10,18 +10,18 @@ import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 const cardData = [
   {
     gpuType: "H100",
-    aquanodePrice: "$1.13/hr",
+    aquanodePrice: "$1.28/hr",
     competitorPrice: "$14.29/hr",
     position: { left: "87px" },
   },
   {
     gpuType: "A100",
-    aquanodePrice: "$0.76/hr",
+    aquanodePrice: "$0.85/hr",
     competitorPrice: "$8.10/hr",
     position: { left: "335px" },
   },
   {
-    gpuType: "V100",
+    gpuType: "RTX 4090",
     aquanodePrice: "$0.20/hr",
     competitorPrice: "$7.97/hr",
     position: { left: "583px" },

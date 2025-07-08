@@ -2,7 +2,7 @@
   {
     "model": "H200",
     "form_factor": "SXM",
-    "vram": "141GB",
+    "vram": "141",
     "region": "Global",
     "price": "$3.81/hr",
     "available": true
@@ -10,7 +10,7 @@
   {
     "model": "H100",
     "form_factor": "SXM",
-    "vram": "80GB",
+    "vram": "80",
     "region": "Global",
     "price": "$1.28/hr",
     "available": true
@@ -18,7 +18,7 @@
   {
     "model": "A100",
     "form_factor": "SXM",
-    "vram": "80GB",
+    "vram": "80",
     "region": "Global",
     "price": "$0.85/hr",
     "available": true
@@ -26,7 +26,7 @@
   {
     "model": "RTX 4090",
     "form_factor": "PCIe",
-    "vram": "24GB",
+    "vram": "24",
     "region": "Global",
     "price": "$0.64/hr",
     "available": true
@@ -34,7 +34,7 @@
   {
     "model": "RTX 3090",
     "form_factor": "PCIe",
-    "vram": "24GB",
+    "vram": "24",
     "region": "Global",
     "price": "$0.29/hr",
     "available": true
@@ -42,7 +42,7 @@
   {
     "model": "T4",
     "form_factor": "PCIe",
-    "vram": "16GB",
+    "vram": "16",
     "region": "Global",
     "price": "$0.13/hr",
     "available": true
@@ -50,7 +50,7 @@
   {
     "model": "A6000",
     "form_factor": "PCIe",
-    "vram": "48GB",
+    "vram": "48",
     "region": "Global",
     "price": "$0.79/hr",
     "available": true
@@ -58,7 +58,7 @@
   {
     "model": "P100",
     "form_factor": "PCIe",
-    "vram": "16GB",
+    "vram": "16",
     "region": "Global",
     "price": "$0.09/hr",
     "available": false
@@ -66,7 +66,7 @@
   {
     "model": "P40",
     "form_factor": "PCIe",
-    "vram": "24GB",
+    "vram": "24",
     "region": "Global",
     "price": "$0.16/hr",
     "available": true
@@ -74,7 +74,7 @@
   {
     "model": "RTX 8000",
     "form_factor": "PCIe",
-    "vram": "48GB",
+    "vram": "48",
     "region": "Global",
     "price": "$0.13/hr",
     "available": true
@@ -82,7 +82,7 @@
   {
     "model": "V100",
     "form_factor": "PCIe",
-    "vram": "16GB",
+    "vram": "16",
     "region": "Global",
     "price": "Unavailable",
     "available": false
@@ -90,7 +90,7 @@
   {
     "model": "GTX 1080 Ti",
     "form_factor": "PCIe",
-    "vram": "11GB",
+    "vram": "11",
     "region": "Global",
     "price": "$0.12/hr",
     "available": true
@@ -98,7 +98,7 @@
   {
     "model": "RTX 2000e Ada",
     "form_factor": "PCIe",
-    "vram": "16GB",
+    "vram": "16",
     "region": "Global",
     "price": "$0.08/hr",
     "available": true
@@ -106,7 +106,7 @@
   {
     "model": "RTX 4060 Ti",
     "form_factor": "PCIe",
-    "vram": "16GB",
+    "vram": "16",
     "region": "Global",
     "price": "$0.03/hr",
     "available": true

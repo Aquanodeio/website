@@ -192,10 +192,13 @@ export default function Pricing() {
               </div>
               <div className="flex items-center justify-center">
                 {item.available === true ? (
-                  <button className="bg-white hover:bg-gray-200 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                  <a
+                    href={process.env.NEXT_PUBLIC_CONSOLE_URL + "/deployments"}
+                    className="bg-white hover:bg-gray-200 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                  >
                     Rent Now
                     <ArrowRight className="text-black w-4 h-4" />
-                  </button>
+                  </a>
                 ) : (
                   <button className="bg-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed opacity-50 flex items-center gap-2">
                     Rent Now

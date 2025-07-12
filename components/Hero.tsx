@@ -32,7 +32,7 @@ export const Hero = () => {
   return (
     <section
       id="Home"
-      className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-20"
+      className="relative w-full overflow-hidden px-4 sm:px-6 lg:px-20 h-screen"
       style={{ fontFamily: "var(--font-)" }}
     >
       <div>

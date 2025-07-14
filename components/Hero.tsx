@@ -54,7 +54,7 @@ export const Hero = () => {
                   backgroundClip: "text",
                 }}
               >
-                GPU Compute that&apos;s
+                AI Cloud that&apos;s
                 <br />
                 Effortless & Affordable
               </h1>

@@ -1,18 +1,18 @@
 [
   {
-    "model": "H200",
-    "form_factor": "SXM5",
-    "vram": "141",
-    "region": "Global",
-    "price": "$2.60/hr",
-    "available": true
-  },
-  {
     "model": "H100",
     "form_factor": "SXM5",
     "vram": "80",
     "region": "Global",
     "price": "$1.33/hr",
+    "available": true
+  },
+  {
+    "model": "H200",
+    "form_factor": "SXM5",
+    "vram": "141",
+    "region": "Global",
+    "price": "$2.60/hr",
     "available": true
   },
   {

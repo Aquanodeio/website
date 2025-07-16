@@ -32,19 +32,19 @@
     "available": true
   },
   {
-    "model": "RTX 3090",
-    "form_factor": "PCIe",
-    "vram": "24",
-    "region": "Global",
-    "price": "$0.30/hr",
-    "available": true
-  },
-  {
     "model": "RTX 5090",
     "form_factor": "PCIe",
     "vram": "32",
     "region": "Global",
     "price": "$0.61/hr",
+    "available": true
+  },
+  {
+    "model": "RTX 3090",
+    "form_factor": "PCIe",
+    "vram": "24",
+    "region": "Global",
+    "price": "$0.30/hr",
     "available": true
   },
   {

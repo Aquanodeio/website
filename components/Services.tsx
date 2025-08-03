@@ -22,34 +22,34 @@ const unifiedCards = [
     icon: AggregationImage,
   },
   {
-    title: "Deployments",
-    description:
-      "Deploy and auto-scale your models with built-in monitoring tools",
-    icon: OrchestrationImage,
-  },
-  {
-    title: "Container VMs",
+    title: "Pre-Configured VMs",
     description:
       "Spin up GPU-powered containers in seconds, ready for inference",
     icon: PaymentsImage,
   },
   {
-    title: "Model Gallery",
+    title: "Model Pipeline",
     description:
-      "Explore, test, and deploy from a growing list of public models",
-    icon: FlexibilityImage,
+      "Deploy and auto-scale your models with built-in monitoring tools",
+    icon: OrchestrationImage,
   },
   {
-    title: "One-Click Apps",
-    description: "Launch ready-made AI apps instantly—no setup needed",
-    icon: FlexibilityImage,
-  },
-  {
-    title: "Pre-Built Templates",
+    title: "App Deployment",
     description:
-      "Start with curated templates for inference, training, or fine-tuning",
+      "Deploy AI apps from GitHub in one click.",
     icon: FlexibilityImage,
   },
+  // {
+  //   title: "One-Click Apps",
+  //   description: "Launch ready-made AI apps instantly—no setup needed",
+  //   icon: FlexibilityImage,
+  // },
+  // {
+  //   title: "Pre-Built Templates",
+  //   description:
+  //     "Start with curated templates for inference, training, or fine-tuning",
+  //   icon: FlexibilityImage,
+  // },
 ];
 
 export default function Services() {

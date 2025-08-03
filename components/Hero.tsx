@@ -60,9 +60,9 @@ export const Hero = () => {
               </h1>
 
               <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
-              Deploy models faster, choose your GPU, scale effortlessly, and 
+              One platform for cloud features on any GPU. 
               <br className="hidden sm:block" />
-              save costs without infrastructure headaches.
+              Pick, deploy, and save upto 80% costs.
               </p>
             </div>
 

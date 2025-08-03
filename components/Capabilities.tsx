@@ -10,27 +10,27 @@ import ServiceWebHostingBg from "@/assets/capabilities/service-web-hosting-bg.pn
 
 const services = [
   {
-    title: "On-Demand Autoscale",
+    title: "Multi-Provider Abstraction",
     description:
-      "Automatically scale compute up or down based on real-time usage—only pay for what you use.",
-    image: BG3,
+      "GPU supply from global Providers and data-centers under a single, unified experience.",
+    image: BG2,
   },
   {
-    title: "Container State Snapshots",
+    title: "Cloud-Native Features on Any GPU",
     description:
-      "Persistent data storage from data ingestion to deployment without egress fees.",
+      "Snapshots, logs, scheduling, and backups—cloud features that “just work” across any connected GPU.",
     image: BG5,
   },
   {
-    title: "Health Management",
+    title: "One-Click Deployments (Apps & Models)",
     description:
-      "Integrated suite of services for cluster health management and performance monitoring",
-    image: BG4,
+      "Launch AI models or full-stack apps from GitHub or prebuilt containers in seconds",
+    image: BG3,
   },
   {
-    title: "Multi-Network Abstraction",
+    title: "Multi-Provider Abstraction",
     description:
-      "Aggregate GPU supply from global DePIN networks under a single, unified experience.",
+      "GPU supply from global Providers and data-centers under a single, unified experience.",
     image: BG2,
   },
   {

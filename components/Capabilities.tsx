@@ -81,7 +81,7 @@ export function Capabilities() {
               backgroundClip: "text",
             }}
           >
-            Affordable GPU & Model-Ready 
+            Affordable GPU & Automated
             <br />
             Infrastructure in One Click
           </h2>

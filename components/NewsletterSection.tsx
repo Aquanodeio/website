@@ -29,12 +29,11 @@ export default function PricingCalloutSection() {
               backgroundClip: "text",
             }}
           >
-            Unlock Inference That Works for You
+            We make any GPU work for you
           </h2>
 
           <p className="text-[#9B96B0] text-[16px] sm:text-[20px] leading-[24px] sm:leading-[28px] text-center -tracking-[0.01em] max-w-[400px] sm:max-w-[600px]">
-            Start building on secure, scalable, and orchestrated infrastructure
-            powered by decentralized networks. The future of cloud starts here.
+          Deploy models faster, choose your GPU, scale effortlessly, and save costs without infrastructure headaches.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full max-w-[400px] sm:max-w-none sm:w-auto">

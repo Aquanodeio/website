@@ -18,7 +18,7 @@ const unifiedCards = [
   {
     title: "Inference API",
     description:
-      "Query models via one API—abstracted from provider-specific quirks",
+      "Query models via one API-abstracted from provider-specific quirks",
     icon: AggregationImage,
   },
   {

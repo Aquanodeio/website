@@ -5,45 +5,44 @@ import BG3 from "@/assets/capabilities/bg-3.png";
 import BG4 from "@/assets/capabilities/bg-4.png";
 import BG5 from "@/assets/capabilities/bg-5.png";
 import BG6 from "@/assets/capabilities/bg-6.png";
-import CapabilitiesBg from "@/assets/capabilities/capabilities-bg.png";
 import ServiceWebHostingBg from "@/assets/capabilities/service-web-hosting-bg.png";
 
 const services = [
   {
     title: "Multi-Provider Abstraction",
     description:
-      "GPU supply from global Providers and data-centers under a single, unified experience.",
+      "Choose any GPU from global Providers and data-centers under a single, unified experience.",
     image: BG2,
   },
   {
     title: "Cloud-Native Features on Any GPU",
     description:
-      "Snapshots, logs, scheduling, and backups—cloud features that “just work” across any connected GPU.",
+      "Snapshots, logs, scheduling, and backups-cloud like features across any connected GPU.",
     image: BG5,
   },
   {
     title: "One-Click Deployments (Apps & Models)",
     description:
       "Launch AI models or full-stack apps from GitHub or prebuilt containers in seconds",
-    image: BG3,
+    image: BG6,
   },
   {
-    title: "Multi-Provider Abstraction",
+    title: "Health Management",
     description:
-      "GPU supply from global Providers and data-centers under a single, unified experience.",
-    image: BG2,
+      "Integrated suite of services for cluster health management and performance monitoring",
+    image: BG4,
   },
   {
     title: "Flexible Virtual Machines",
     description:
-      "Rent customizable GPU VMs for AI, fine-tuning, or data workloads  with support for scaling, snapshots, and preinstalled tools.",
+      "Rent customizable GPU VMs for AI, fine-tuning, or data workloads and preinstalled tools.",
     image: BG1,
   },
   {
     title: "Reserved Clusters",
     description:
       "Run LLMs, VLMs, or diffusion models on single-tenant GPUs. Full control, hourly pricing. Ideal for 24/7 inference or 100K+ tokens/min workloads.",
-    image: BG6,
+    image: BG3,
   },
 ];
 
@@ -51,14 +50,7 @@ export function Capabilities() {
   return (
     <section className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="space-y-8 sm:space-y-12">
-        <Image
-          src={CapabilitiesBg}
-          alt=""
-          width={1440}
-          height={800}
-          sizes="100vw"
-          className="w-full h-auto"
-        />
+
 
         <div
           className="flex items-center justify-center px-4 py-2 rounded-full border border-white/4 w-fit mx-auto"

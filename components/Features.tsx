@@ -16,7 +16,7 @@ export function Features() {
           }}
         >
           <span className="text-white text-[12px] sm:text-[14px] font-medium uppercase tracking-wider">
-            RUNTIME
+            FEATURES
           </span>
         </div>
 

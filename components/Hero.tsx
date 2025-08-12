@@ -1,11 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import PriceComparisonCard from "./PriceComparisonCard";
-import Spline from "@splinetool/react-spline/next";
+// import dynamic from "next/dynamic"; // Removed to fix unused variable
 import HeroBg from "@/assets/hero-bg-texture.png";
 import Link from "next/link";
 import OverlayNavbar from "./OverlayNavbar";
 import { ArrowRight } from "lucide-react";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
+import { useState, useEffect } from "react";
+
+// Import Spline normally for now to avoid build issues
+import Spline from '@splinetool/react-spline';
 
 const cardData = [
   {
@@ -29,6 +35,17 @@ const cardData = [
 ];
 
 export const Hero = () => {
+  const [showSpline, setShowSpline] = useState(false);
+
+  useEffect(() => {
+    // Delay Spline loading to improve initial page load
+    const timer = setTimeout(() => {
+      setShowSpline(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="Home"
@@ -37,7 +54,15 @@ export const Hero = () => {
     >
       <div>
         <div className="absolute -left-[50px] -top-[20px] w-[300px] h-[200px] sm:-left-[211px] sm:-top-[81px] sm:w-[1062px] sm:h-[501px]">
-          <Image src={HeroBg} alt="" fill className="object-stretch" />
+          <Image 
+            src={HeroBg} 
+            alt="Hero background texture with gradient overlay" 
+            fill 
+            priority={true}
+            quality={75}
+            className="object-stretch" 
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+          />
         </div>
 
         <div className="inset-0 w-full h-auto relative z-10 pt-20 sm:pt-24">
@@ -53,6 +78,7 @@ export const Hero = () => {
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}
+                itemProp="headline"
               >
                 AI Cloud that&apos;s
                 <br />
@@ -64,6 +90,11 @@ export const Hero = () => {
               <br className="hidden sm:block" />
               Pick, deploy, and save upto 80% costs.
               </p>
+              
+              {/* Hidden SEO keywords */}
+              <span className="sr-only">
+                H100 A100 B200 GPU hosting, AI model deployment, machine learning inference, cost-effective cloud computing
+              </span>
             </div>
 
             <div className="flex flex-row gap-4 sm:gap-6 items-center mt-8 sm:mt-10">
@@ -104,7 +135,12 @@ export const Hero = () => {
 
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
-              <Spline scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
+              {showSpline && (
+                <Spline 
+                  scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode"
+                  onLoad={() => console.log('Spline scene loaded')}
+                />
+              )}
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useMemo } from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import OverlayNavbar from "@/components/OverlayNavbar";
 import Footer from "@/components/Footer";
@@ -35,6 +36,29 @@ export default function Pricing() {
       className="min-h-screen w-full bg-[#0A0118] overflow-x-hidden overflow-y-auto flex flex-col items-center relative"
       style={{ fontFamily: "var(--font-)" }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://aquanode.io/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Pricing",
+                item: "https://aquanode.io/pricing",
+              },
+            ],
+          }),
+        }}
+      />
       <OverlayNavbar />
 
       <div className="absolute left-0 top-0 w-full h-[300px] sm:h-[500px]">

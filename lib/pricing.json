@@ -37,7 +37,7 @@
     "vram": "32",
     "region": "Global",
     "price": "$0.61/hr",
-    "available": true
+    "available": false
   },
   {
     "model": "RTX 3090",

@@ -11,7 +11,7 @@ import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 import { useState, useEffect } from "react";
 
 // Import Spline normally for now to avoid build issues
-import Spline from '@splinetool/react-spline';
+import Spline from "@splinetool/react-spline";
 
 const cardData = [
   {
@@ -41,7 +41,7 @@ export const Hero = () => {
     // Delay Spline loading to improve initial page load
     const timer = setTimeout(() => {
       setShowSpline(true);
-    }, 2000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -54,13 +54,13 @@ export const Hero = () => {
     >
       <div>
         <div className="absolute -left-[50px] -top-[20px] w-[300px] h-[200px] sm:-left-[211px] sm:-top-[81px] sm:w-[1062px] sm:h-[501px]">
-          <Image 
-            src={HeroBg} 
-            alt="Hero background texture with gradient overlay" 
-            fill 
+          <Image
+            src={HeroBg}
+            alt="Hero background texture with gradient overlay"
+            fill
             priority={true}
             quality={75}
-            className="object-stretch" 
+            className="object-stretch"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           />
         </div>
@@ -86,14 +86,15 @@ export const Hero = () => {
               </h1>
 
               <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
-              One platform for cloud features on every GPU. 
-              <br className="hidden sm:block" />
-              Pick, deploy, and save upto 80% costs.
+                One platform for cloud features on every GPU.
+                <br className="hidden sm:block" />
+                Pick, deploy, and save upto 80% costs.
               </p>
-              
+
               {/* Hidden SEO keywords */}
               <span className="sr-only">
-                H100 A100 B200 GPU hosting, AI model deployment, machine learning inference, cost-effective cloud computing
+                H100 A100 B200 GPU hosting, AI model deployment, machine
+                learning inference, cost-effective cloud computing
               </span>
             </div>
 
@@ -136,9 +137,9 @@ export const Hero = () => {
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
               {showSpline && (
-                <Spline 
+                <Spline
                   scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode"
-                  onLoad={() => console.log('Spline scene loaded')}
+                  onLoad={() => console.log("Spline scene loaded")}
                 />
               )}
             </div>

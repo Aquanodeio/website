@@ -125,6 +125,12 @@ export default function RootLayout({
             }),
           }}
         />
+      </head>
+      <body
+        className={`${inter.variable} ${figtree.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
+        style={{ fontFamily: "var(--font-figtree)" }}
+      >
+        <WebVitals />
 
         {/* Hidden SEO content for search engines */}
         <div className="sr-only" aria-hidden="true">
@@ -139,12 +145,7 @@ export default function RootLayout({
             Computing, H200 Deployment, Machine Learning Infrastructure
           </span>
         </div>
-      </head>
-      <body
-        className={`${inter.variable} ${figtree.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
-        style={{ fontFamily: "var(--font-figtree)" }}
-      >
-        <WebVitals />
+
         <div className="mx-auto">{children}</div>
       </body>
     </html>

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import PriceComparisonCard from "./PriceComparisonCard";
 // import dynamic from "next/dynamic"; // Removed to fix unused variable
@@ -8,10 +6,9 @@ import Link from "next/link";
 import OverlayNavbar from "./OverlayNavbar";
 import { ArrowRight } from "lucide-react";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
-import { useState, useEffect } from "react";
-
-// Import Spline normally for now to avoid build issues
-import Spline from "@splinetool/react-spline";
+// import { useState, useEffect } from "react";
+import React, { Suspense } from "react";
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 const cardData = [
   {
@@ -35,17 +32,6 @@ const cardData = [
 ];
 
 export const Hero = () => {
-  const [showSpline, setShowSpline] = useState(false);
-
-  useEffect(() => {
-    // Delay Spline loading to improve initial page load
-    const timer = setTimeout(() => {
-      setShowSpline(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section
       id="Home"
@@ -136,12 +122,9 @@ export const Hero = () => {
 
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
-              {showSpline && (
-                <Spline
-                  scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode"
-                  onLoad={() => console.log("Spline scene loaded")}
-                />
-              )}
+              <Suspense fallback={<div>Loading...</div>}>
+                <Spline scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
+              </Suspense>
             </div>
           </div>
         </div>

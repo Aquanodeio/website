@@ -1,11 +1,14 @@
 import Image from "next/image";
 import PriceComparisonCard from "./PriceComparisonCard";
-import Spline from "@splinetool/react-spline/next";
+// import dynamic from "next/dynamic"; // Removed to fix unused variable
 import HeroBg from "@/assets/hero-bg-texture.png";
 import Link from "next/link";
 import OverlayNavbar from "./OverlayNavbar";
 import { ArrowRight } from "lucide-react";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
+// import { useState, useEffect } from "react";
+import React, { Suspense } from "react";
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 const cardData = [
   {
@@ -37,7 +40,15 @@ export const Hero = () => {
     >
       <div>
         <div className="absolute -left-[50px] -top-[20px] w-[300px] h-[200px] sm:-left-[211px] sm:-top-[81px] sm:w-[1062px] sm:h-[501px]">
-          <Image src={HeroBg} alt="" fill className="object-stretch" />
+          <Image
+            src={HeroBg}
+            alt="Hero background texture with gradient overlay"
+            fill
+            priority={true}
+            quality={75}
+            className="object-stretch"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+          />
         </div>
 
         <div className="inset-0 w-full h-auto relative z-10 pt-20 sm:pt-24">
@@ -53,6 +64,7 @@ export const Hero = () => {
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}
+                itemProp="headline"
               >
                 AI Cloud that&apos;s
                 <br />
@@ -60,10 +72,16 @@ export const Hero = () => {
               </h1>
 
               <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
-              One platform for cloud features on every GPU. 
-              <br className="hidden sm:block" />
-              Pick, deploy, and save upto 80% costs.
+                One platform for cloud features on every GPU.
+                <br className="hidden sm:block" />
+                Pick, deploy, and save upto 80% costs.
               </p>
+
+              {/* Hidden SEO keywords */}
+              <span className="sr-only">
+                H100 A100 B200 GPU hosting, AI model deployment, machine
+                learning inference, cost-effective cloud computing
+              </span>
             </div>
 
             <div className="flex flex-row gap-4 sm:gap-6 items-center mt-8 sm:mt-10">
@@ -104,7 +122,9 @@ export const Hero = () => {
 
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
-              <Spline scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Spline scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
+              </Suspense>
             </div>
           </div>
         </div>

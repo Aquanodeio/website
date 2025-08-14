@@ -1,11 +1,12 @@
 import Image from "next/image";
+import React from "react";
 import One from "@/assets/features/1.png";
 import Two from "@/assets/features/2.png";
 import Three from "@/assets/features/3.png";
 import Four from "@/assets/features/4.png";
 import Five from "@/assets/features/5.png";
 
-export function Features() {
+export const Features = React.memo(() => {
   return (
     <section className="w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="flex flex-col items-center space-y-8 sm:space-y-12">
@@ -29,6 +30,7 @@ export function Features() {
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
+            id="features"
           >
             Magical features to help you <br className="hidden sm:block" />
             Inference faster
@@ -40,36 +42,51 @@ export function Features() {
             <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
               <Image
                 src={One}
-                alt="Cost Efficiency"
+                alt="Cost efficiency dashboard showing 80% savings on H100 GPU pricing compared to competitors"
                 className="object-cover w-full h-auto"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
 
               <Image
                 src={Two}
-                alt="Orchestration"
+                alt="AI model orchestration interface with automated deployment pipeline"
                 className="object-cover w-full h-auto"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
 
             <div className="order-first sm:order-none">
               <Image
                 src={Three}
-                alt="Lightening Fast"
+                alt="Lightning-fast AI model deployment interface with one-click deployment on GPU clusters"
                 className="object-cover w-full h-full"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
 
             <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
               <Image
                 src={Four}
-                alt="Global Infrastructure"
+                alt="Global GPU infrastructure network with worldwide data centers"
                 className="object-contain w-full h-full"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
 
               <Image
                 src={Five}
-                alt="Middle Card"
+                alt="Advanced AI model monitoring and analytics dashboard with real-time metrics"
                 className="object-cover w-full h-full"
+                loading="lazy"
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
           </div>
@@ -77,4 +94,6 @@ export function Features() {
       </div>
     </section>
   );
-}
+});
+
+Features.displayName = 'Features';

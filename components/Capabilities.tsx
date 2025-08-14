@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import React from "react";
 import BG1 from "@/assets/capabilities/bg-1.png";
 import BG2 from "@/assets/capabilities/bg-2.png";
 import BG3 from "@/assets/capabilities/bg-3.png";
@@ -46,7 +47,7 @@ const services = [
   },
 ];
 
-export function Capabilities() {
+export const Capabilities = React.memo(() => {
   return (
     <section className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="space-y-8 sm:space-y-12">
@@ -72,6 +73,7 @@ export function Capabilities() {
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
+            id="capabilities"
           >
             Affordable GPU & Automated
             <br />
@@ -94,9 +96,11 @@ export function Capabilities() {
       />
     </section>
   );
-}
+});
 
-function ServiceCard({
+Capabilities.displayName = 'Capabilities';
+
+const ServiceCard = React.memo(({
   title,
   description,
   image,
@@ -104,7 +108,7 @@ function ServiceCard({
   title: string;
   description: string;
   image: StaticImageData;
-}) {
+}) => {
   return (
     <div
       className="rounded-2xl p-px relative"
@@ -116,12 +120,21 @@ function ServiceCard({
         <div className="h-[150px] sm:h-[196px] relative">
           <Image
             src={ServiceWebHostingBg}
-            alt=""
+            alt="Service background pattern"
             fill
             className="object-stretch w-full h-full"
+            loading="lazy"
+            quality={75}
           />
 
-          <Image src={image} alt="" fill className="object-cover" />
+          <Image 
+            src={image} 
+            alt={`${title} capability illustration`}
+            fill 
+            className="object-cover" 
+            loading="lazy"
+            quality={85}
+          />
         </div>
 
         <div className="p-4 sm:p-6 space-y-2 sm:space-y-3">
@@ -144,4 +157,6 @@ function ServiceCard({
       </div>
     </div>
   );
-}
+});
+
+ServiceCard.displayName = 'ServiceCard';

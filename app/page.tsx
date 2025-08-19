@@ -17,11 +17,13 @@ export default function Home() {
       <Services />
       <Image
         src={CapabilitiesBg}
-        alt=""
+        alt="Decorative background pattern with gradient overlay for features section"
         width={1440}
         height={800}
         sizes="100vw"
         className="w-full h-auto"
+        loading="lazy"
+        quality={75}
       />
       <Features />
       <NewsletterSection />

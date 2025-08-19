@@ -11,21 +11,27 @@ interface StripItemProps {
   logo: string;
 }
 
-const StripItem = ({ logo }: StripItemProps) => {
+const StripItem = React.memo(({ logo }: StripItemProps) => {
+  const logoName = logo.toString().split('/').pop()?.replace('.svg', '') || 'AI Model';
+  
   return (
     <div className="w-fit h-20 md:h-[100px] flex items-center justify-center border border-[#35353566] md:p-5">
       <Image
         src={logo}
-        alt="Logo"
+        alt={`${logoName} AI model logo`}
         width={120}
         height={50}
         className="h-2/3 w-2/3 md:h-3/4 md:w-3/4 object-contain"
+        loading="lazy"
+        quality={85}
       />
     </div>
   );
-};
+});
 
-const Strip = () => {
+StripItem.displayName = 'StripItem';
+
+const Strip = React.memo(() => {
   const logos = [Llama, Deepseek, Gemma, Phi, Qwen];
 
   return (
@@ -39,18 +45,25 @@ const Strip = () => {
           </span>
         </div>
         <Marquee
-          speed={50}
+          speed={30}           // Reduced speed for better performance
           gradient={false}
-          autoFill
+          autoFill={false}     // Control number of items for performance
+          pauseOnHover={true}  // Better UX and performance
           className="overflow-hidden"
         >
           {logos.map((logo, index) => (
-            <StripItem key={index} logo={logo} />
+            <StripItem key={`logo-${index}`} logo={logo} />
+          ))}
+          {/* Duplicate items manually for autoFill effect with better control */}
+          {logos.map((logo, index) => (
+            <StripItem key={`logo-duplicate-${index}`} logo={logo} />
           ))}
         </Marquee>
       </div>
     </div>
   );
-};
+});
+
+Strip.displayName = 'Strip';
 
 export default Strip;

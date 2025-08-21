@@ -10,46 +10,46 @@ import ServiceWebHostingBg from "@/assets/capabilities/service-web-hosting-bg.pn
 
 const services = [
   {
-    title: "Multi-Provider Abstraction",
+    title: "Multi-Provider Marketplace",
     description:
-      "Choose any GPU from global Providers and data-centers under a single, unified experience.",
+      "No vendor lock-in, switch to the best provider anytime.",
     image: BG2,
   },
   {
-    title: "Cloud-Native Features on Any GPU",
+    title: "Cloud-Native Features",
     description:
-      "Snapshots, logs, scheduling, and backups-cloud like features across any connected GPU.",
+      "Snapshots, monitoring, autoscaling, logs - everything AWS has (Slowly adding)",
     image: BG5,
   },
   {
-    title: "One-Click Deployments (Apps & Models)",
+    title: "One-Click Deployments",
     description:
-      "Launch AI models or full-stack apps from GitHub or prebuilt containers in seconds",
+    "Deploy optimized OSS models (Llama, Gemini, DeepSeek) or any HuggingFace model via vLLM/ComfyUI in seconds.",
     image: BG6,
   },
   {
-    title: "Health Management",
+    title: "Pre-Configured VM Templates",
     description:
       "Integrated suite of services for cluster health management and performance monitoring",
     image: BG4,
   },
   {
-    title: "Flexible Virtual Machines",
+    title: "Full-Stack App Deployments",
     description:
-      "Rent customizable GPU VMs for AI, fine-tuning, or data workloads and preinstalled tools.",
+      "Deploy your backends, APIs, and complete applications from GitHub or containers. Scale alongside your AI models.",
     image: BG1,
   },
   {
-    title: "Reserved Clusters",
+    title: "Fine-Tuning & Training",
     description:
-      "Run LLMs, VLMs, or diffusion models on single-tenant GPUs. Full control, hourly pricing. Ideal for 24/7 inference or 100K+ tokens/min workloads.",
+      "Fine-tune Llama, DeepSeek, or custom models on your datasets. Run training workloads with automatic resource scaling and checkpointing. (Coming soon)",
     image: BG3,
   },
 ];
 
 export const Capabilities = React.memo(() => {
   return (
-    <section className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
+    <section id="Features"  className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="space-y-8 sm:space-y-12">
 
 
@@ -75,9 +75,11 @@ export const Capabilities = React.memo(() => {
             }}
             id="capabilities"
           >
-            Affordable GPU & Automated
+            The cloud features you need,
+            {/* Affordable GPU & Automated */}
             <br />
-            Infrastructure in One Click
+            {/* Infrastructure in One Click */}
+            on every GPU you want
           </h2>
         </div>
 

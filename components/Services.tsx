@@ -54,7 +54,7 @@ const unifiedCards = [
 
 export default function Services() {
   return (
-    <section id="Services" className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
+    <section id="Services" className="relative w-full px-4 sm:px-6 lg:px-20 py-8 sm:py-12 lg:py-16">
       <div className="relative">
         <div className="flex flex-col items-center space-y-8 sm:space-y-12">
           <div className="flex flex-col items-center space-y-6 sm:space-y-8 max-w-[800px]">
@@ -78,7 +78,7 @@ export default function Services() {
           </div>
 
           <div
-            className="w-full overflow-x-auto"
+            className="w-full overflow-x-auto mb-8 sm:mb-12 lg:mb-16"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex flex-row gap-4 sm:gap-6 min-w-max px-4 sm:px-0">

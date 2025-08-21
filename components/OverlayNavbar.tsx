@@ -29,10 +29,10 @@ export default function OverlayNavbar() {
               Home
             </Link>
             <Link
-              href="/#Services"
+              href="/#Features"
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"
             >
-              Services
+              Features
             </Link>
             <Link
               href="/pricing"

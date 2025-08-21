@@ -49,7 +49,7 @@ const services = [
 
 export const Capabilities = React.memo(() => {
   return (
-    <section className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
+    <section id="Features"  className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="space-y-8 sm:space-y-12">
 
 

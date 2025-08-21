@@ -1,12 +1,12 @@
 import { Hero } from "@/components/Hero";
-import { Features } from "@/components/Features";
 import { Capabilities } from "@/components/Capabilities";
 import NewsletterSection from "@/components/NewsletterSection";
-import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 import Strip from "@/components/Strip";
-import CapabilitiesBg from "@/assets/capabilities/capabilities-bg.png";
-import Image from "next/image";
+// import { Features } from "@/components/Features";
+// import Services from "@/components/Services";
+// import CapabilitiesBg from "@/assets/capabilities/capabilities-bg.png";
+// import Image from "next/image";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <Strip />
       <Capabilities />
-      <Services />
+      {/* <Services />
       <Image
         src={CapabilitiesBg}
         alt="Decorative background pattern with gradient overlay for features section"
@@ -25,7 +25,7 @@ export default function Home() {
         loading="lazy"
         quality={75}
       />
-      <Features />
+      <Features /> */}
       <NewsletterSection />
       <Footer />
     </main>

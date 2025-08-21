@@ -29,11 +29,15 @@ export default function PricingCalloutSection() {
               backgroundClip: "text",
             }}
           >
-            We make any GPU work for you
+            {/* We make any GPU work for you */}
+            What should we add to Aquanode next?
           </h2>
 
           <p className="text-[#9B96B0] text-[16px] sm:text-[20px] leading-[24px] sm:leading-[28px] text-center -tracking-[0.01em] max-w-[400px] sm:max-w-[600px]">
-          Deploy models faster, choose your GPU, scale effortlessly, and save costs without infrastructure headaches.
+          {/* Deploy models faster, choose your GPU, scale effortlessly, and save costs without infrastructure headaches. */}
+          Missing a provider you love?
+          Need a specific cloud feature?
+          Want support for a particular model?
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full max-w-[400px] sm:max-w-none sm:w-auto">
@@ -60,7 +64,7 @@ export default function PricingCalloutSection() {
                 }}
               >
                 <span className="text-white text-sm font-medium">
-                  Book Demo
+                  Let us know
                 </span>
                 <ArrowRight className="text-white w-4 h-4" />
               </button>

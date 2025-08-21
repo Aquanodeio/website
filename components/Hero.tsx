@@ -57,7 +57,7 @@ export const Hero = () => {
           <div className="mt-34 sm:mt-34 lg:mt-36">
             <div className="space-y-1 sm:space-y-8">
               <h1
-                className="text-[32px] sm:text-[48px] font-medium leading-[40px] sm:leading-[64px] tracking-[-0.8px] sm:tracking-[-1.44px] text-left"
+                className="text-[32px] sm:text-[42px] font-medium leading-[40px] sm:leading-[64px] tracking-[-0.8px] sm:tracking-[-1.44px] text-left"
                 style={{
                   background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
                   WebkitBackgroundClip: "text",
@@ -66,13 +66,15 @@ export const Hero = () => {
                 }}
                 itemProp="headline"
               >
-                AI Cloud that&apos;s
+                Skip the GPU setup
+                {/* AI Cloud that&apos;s */}
                 <br />
-                Effortless & Affordable
+                Deploy AI workloads instantly
+                {/* Effortless & Affordable */}
               </h1>
 
               <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
-                One platform for cloud features on every GPU.
+                Multi-provider marketplace for cloud features on every GPU.
                 <br className="hidden sm:block" />
                 Pick, deploy, and save upto 80% costs.
               </p>
@@ -108,7 +110,7 @@ export const Hero = () => {
                   }}
                 >
                   <span className="text-white text-sm font-medium">
-                    Book Demo
+                    Talk to CEO
                   </span>
                   <ArrowRight className="text-white w-4 h-4" />
                 </button>

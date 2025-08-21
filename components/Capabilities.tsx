@@ -60,7 +60,7 @@ export const Capabilities = React.memo(() => {
           }}
         >
           <span className="text-white text-[12px] sm:text-[14px] font-medium uppercase tracking-wider">
-            INFRASTRUCTURE
+            FEATURES
           </span>
         </div>
 

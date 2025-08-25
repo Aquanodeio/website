@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 
-export default function PricingCalloutSection() {
+export default function FeatureRequest() {
   return (
     <section className="relative w-full px-4 sm:px-6 lg:px-20 py-16 sm:py-20 lg:py-24">
       <div className="relative w-full h-[400px] sm:h-[591px]">

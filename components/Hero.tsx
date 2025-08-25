@@ -57,7 +57,7 @@ export const Hero = () => {
           <div className="mt-34 sm:mt-34 lg:mt-36">
             <div className="space-y-1 sm:space-y-8">
               <h1
-                className="text-[32px] sm:text-[42px] font-medium leading-[40px] sm:leading-[64px] tracking-[-0.8px] sm:tracking-[-1.44px] text-left"
+                className="text-[32px] sm:text-[56px] font-medium leading-[40px] sm:leading-[64px] tracking-[-0.8px] sm:tracking-[-1.44px] text-left"
                 style={{
                   background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 22.5%, rgba(255, 255, 255, 0.7) 100%)`,
                   WebkitBackgroundClip: "text",
@@ -66,17 +66,17 @@ export const Hero = () => {
                 }}
                 itemProp="headline"
               >
-                Skip the GPU setup
+                Run AI workloads
                 {/* AI Cloud that&apos;s */}
                 <br />
-                Deploy AI workloads instantly
+                easily & affordably
                 {/* Effortless & Affordable */}
               </h1>
 
               <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
-                Multi-provider marketplace for cloud features on every GPU.
+                We enable cloud features on every GPU instance from your favorite provider.
                 <br className="hidden sm:block" />
-                Pick, deploy, and save upto 80% costs.
+                Compare, deploy, and save upto 80% costs.
               </p>
 
               {/* Hidden SEO keywords */}

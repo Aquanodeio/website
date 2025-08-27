@@ -45,7 +45,7 @@ export interface MarketplaceCardProps
 export const MarketplaceCard = React.forwardRef<
   HTMLDivElement,
   MarketplaceCardProps
->(({ provider, showPricing = true }) => {
+>(({ provider, showPricing = true, ...props }, ref) => {
   return (
     <div className="space-y-4 flex flex-col shadow-md backdrop-blur-md shadow-[#311579] rounded-md overflow-clip w-full border border-[#311579]">
       <div className="flex flex-col items-center justify-between w-full px-4 pt-4">

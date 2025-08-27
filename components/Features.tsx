@@ -16,16 +16,22 @@ const services = [
     image: BG2,
   },
   {
+    title: "Fine-Tuning & Training",
+    description:
+      "Fine-tune Llama, DeepSeek, or custom models on your datasets. Run training workloads with automatic resource scaling and checkpointing. (Coming soon)",
+    image: BG3,
+  },
+  {
+    title: "High Reliability",
+    description:
+    "High reliability and availability with multiple providers and regions.",
+    image: BG6,
+  },
+  {
     title: "Cloud-Native Features",
     description:
       "Snapshots, monitoring, autoscaling, logs - everything AWS has (Slowly adding)",
     image: BG5,
-  },
-  {
-    title: "One-Click Deployments",
-    description:
-    "Deploy optimized OSS models (Llama, Gemini, DeepSeek) or any HuggingFace model via vLLM/ComfyUI in seconds.",
-    image: BG6,
   },
   {
     title: "Pre-Configured VM Templates",
@@ -34,16 +40,10 @@ const services = [
     image: BG4,
   },
   {
-    title: "Full-Stack App Deployments",
+    title: "Ready to use",
     description:
-      "Deploy your backends, APIs, and complete applications from GitHub or containers. Scale alongside your AI models.",
+      "Ready to use vLLM/ComfyUI workflows and OSS models.",
     image: BG1,
-  },
-  {
-    title: "Fine-Tuning & Training",
-    description:
-      "Fine-tune Llama, DeepSeek, or custom models on your datasets. Run training workloads with automatic resource scaling and checkpointing. (Coming soon)",
-    image: BG3,
   },
 ];
 

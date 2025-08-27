@@ -41,6 +41,12 @@ export default function OverlayNavbar() {
               Pricing
             </Link>
             <Link
+              href="/marketplace"
+              className="text-white hover:text-white/80 transition-colors text-sm font-medium"
+            >
+              Marketplace
+            </Link>
+            <Link
               href={CONTACT_SALES_LINK}
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"
               target="_blank"

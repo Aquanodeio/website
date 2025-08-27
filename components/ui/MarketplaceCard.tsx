@@ -103,10 +103,6 @@ export const MarketplaceCard = React.forwardRef<
                 {provider.availableStorage.unit}
               </p>
             </div>
-            <div className="flex justify-between">
-              <p>Provider</p>
-              <p>{toTitleCase(provider.provider)}</p>
-            </div>
           </div>
 
           {showPricing && (

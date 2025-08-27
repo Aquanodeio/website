@@ -1,0 +1,106 @@
+[
+  {
+    "model": "H100",
+    "form_factor": "SXM5",
+    "vram": "80",
+    "region": "Global",
+    "price": "$1.29/hr",
+    "available": true
+  },
+  {
+    "model": "H200",
+    "form_factor": "SXM5",
+    "vram": "141",
+    "region": "Global",
+    "price": "$2.60/hr",
+    "available": true
+  },
+  {
+    "model": "A100",
+    "form_factor": "SXM4",
+    "vram": "80",
+    "region": "Global",
+    "price": "$0.90/hr",
+    "available": true
+  },
+  {
+    "model": "RTX 4090",
+    "form_factor": "PCIe",
+    "vram": "24",
+    "region": "Global",
+    "price": "$0.38/hr",
+    "available": true
+  },
+  {
+    "model": "RTX 5090",
+    "form_factor": "PCIe",
+    "vram": "32",
+    "region": "Global",
+    "price": "$0.61/hr",
+    "available": false
+  },
+  {
+    "model": "RTX 3090",
+    "form_factor": "PCIe",
+    "vram": "24",
+    "region": "Global",
+    "price": "$0.30/hr",
+    "available": true
+  },
+  {
+    "model": "T4",
+    "form_factor": "PCIe",
+    "vram": "16",
+    "region": "Global",
+    "price": "$0.13/hr",
+    "available": true
+  },
+  {
+    "model": "A6000",
+    "form_factor": "PCIe",
+    "vram": "48",
+    "region": "Global",
+    "price": "$0.79/hr",
+    "available": true
+  },
+  {
+    "model": "rtx6000-ada",
+    "form_factor": "PCIe",
+    "vram": "48",
+    "region": "Global",
+    "price": "$1.03/hr",
+    "available": true
+  },
+  {
+    "model": "P40",
+    "form_factor": "PCIe",
+    "vram": "24",
+    "region": "Global",
+    "price": "$0.12/hr",
+    "available": false
+  },
+  {
+    "model": "RTX 8000",
+    "form_factor": "PCIe",
+    "vram": "48",
+    "region": "Global",
+    "price": "$0.13/hr",
+    "available": false
+  },
+  {
+    "model": "GTX 1080 Ti",
+    "form_factor": "PCIe",
+    "vram": "11",
+    "region": "Global",
+    "price": "$0.115/hr",
+    "available": false
+  },
+  {
+    "model": "RTX 4060 Ti",
+    "form_factor": "PCIe",
+    "vram": "16",
+    "region": "Global",
+    "price": "$0.04/hr",
+    "available": false
+  }
+]

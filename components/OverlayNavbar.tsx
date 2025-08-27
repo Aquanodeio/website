@@ -34,11 +34,17 @@ export default function OverlayNavbar() {
             >
               Features
             </Link>
-            <Link
+            {/* <Link
               href="/pricing"
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"
             >
               Pricing
+            </Link> */}
+            <Link
+              href="/marketplace"
+              className="text-white hover:text-white/80 transition-colors text-sm font-medium"
+            >
+              Marketplace
             </Link>
             <Link
               href={CONTACT_SALES_LINK}

@@ -5,7 +5,7 @@ import { Button } from "./button";
 
 export interface Provider {
   id: string;
-  provider: "spheron" | "akash" | "voltagepark";
+  provider: "spheron" | "akash" | "voltagepark" | "datacrunch";
   providerId: string;
   providerName: string;
   address: string;
@@ -68,10 +68,6 @@ export const MarketplaceCard = React.forwardRef<
         </div>
 
         <div className="text-xs text-muted-foreground gap-1 flex flex-col w-full">
-          {/* <div className="flex justify-between">
-              <Text variant="secondary">vRAM</Text>
-              <Text variant="secondary">{provider.gpuMemory}</Text>
-            </div> */}
           <div className="flex justify-between w-full text-xs text-muted-foreground">
             <p>vCPU</p>
             <p>{provider.availableCpu.toFixed(2)}</p>

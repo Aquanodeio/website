@@ -16,9 +16,11 @@ export const getMarketplace = async (
   const response = await api.get<ApiResponse<Provider[]>>(`/marketplace`);
   return {
     providers: response.data.data
+      .filter((p) => p.provider !== "datacrunch")
       .map((provider) => ({
         ...provider,
         id: provider.gpuShortName + provider.providerId, // Ensure unique ID for React keys
+        gpuMemory: provider.gpuMemory.replace("Gi", "gb"), // Normalize GPU memory format
       }))
       .sort((a, b) => {
         // Sort by GPU VRAM in descending order (highest VRAM first)

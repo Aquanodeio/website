@@ -29,10 +29,9 @@ const MarketplaceWithFilters: React.FC<MarketplaceWithFiltersProps> = ({
   onSelect,
   onRefresh,
   emptyStateMessage = "No GPU providers found matching your search criteria.",
-  emptyStateAction,
   className = "",
 }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery] = useState("");
 
   const { filteredProviders, filterTrigger } = useFilteredProviders({
     providers,
@@ -46,20 +45,13 @@ const MarketplaceWithFilters: React.FC<MarketplaceWithFiltersProps> = ({
   };
 
   // Handle clear search
-  const handleClearSearch = () => {
-    setSearchQuery("");
-  };
 
   return (
     <div className={`flex flex-col gap-8 ${className}`}>
       {/* Search and Filter Section */}
       <div className="flex gap-4 items-center">
-        {/* GPU Model Filter */}
-
-        {/* Filter Trigger */}
         {filterTrigger}
 
-        {/* Refresh Button */}
         {onRefresh && (
           <Button
             variant="outline"

@@ -10,6 +10,7 @@ import MarketplaceList from "@/components/MaketplaceList";
 import { Provider } from "@/components/ui/MarketplaceCard";
 import { useMarketplace } from "@/hooks/useMarketplace";
 import MarketplaceWithFilters from "@/components/MarketplaceWithFilters";
+import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersSuspense";
 
 export default function MarketplacePage() {
   const {
@@ -70,7 +71,7 @@ export default function MarketplacePage() {
         <div className="relative z-10 w-full max-w-6xl px-4 sm:px-6 lg:px-20 pt-32 pb-20">
           <div className="flex flex-wrap gap-4 mb-8 justify-start"></div>
 
-          <MarketplaceWithFilters
+          <MarketplaceWithFiltersSuspense
             isLoading={isLoading || isFetching}
             providers={marketplaceData?.providers || []}
             onSelect={function (provider: Provider): void {

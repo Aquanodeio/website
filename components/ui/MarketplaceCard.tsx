@@ -67,9 +67,6 @@ export const MarketplaceCard = React.forwardRef<
             <div className="text-sm rounded-sm bg-[#311579]/40 py-0.5 px-2">
               {toTitleCase(provider.provider)}
             </div>
-            <div className="text-sm rounded-sm bg-[#311579]/40 py-0.5 px-2">
-              {provider.interface}
-            </div>
           </div>
         </div>
 
@@ -91,6 +88,10 @@ export const MarketplaceCard = React.forwardRef<
               {provider.availableStorage.value.toFixed(2)}{" "}
               {provider.availableStorage.unit}
             </p>
+          </div>
+          <div className="flex justify-between">
+            <p>Interface</p>
+            <p>{provider.interface}</p>
           </div>
         </div>
 

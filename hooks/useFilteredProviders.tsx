@@ -320,6 +320,26 @@ export function useFilteredProviders({
 
   const filterTrigger = (
     <div className="flex gap-4 flex-wrap">
+      {/* Provider Filter */}
+      <Select
+        value={filters.provider}
+        onValueChange={(value: any) => updateFilter("provider", value)}
+      >
+        <SelectTrigger>
+          <div className="flex items-center gap-2">
+            <Building className="w-3 h-3" />
+            <SelectValue placeholder="All Providers" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Providers</SelectItem>
+          {filterOptions.providers.map((provider) => (
+            <SelectItem key={provider} value={provider}>
+              {provider.charAt(0).toUpperCase() + provider.slice(1)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
       <Select
         value={filters.gpuName}
         onValueChange={(value: any) => updateFilter("gpuName", value)}
@@ -397,27 +417,6 @@ export function useFilteredProviders({
           {STORAGE_OPTIONS.map((option) => (
             <SelectItem key={option.value} value={option.value.toString()}>
               {option.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      {/* Provider Filter */}
-      <Select
-        value={filters.provider}
-        onValueChange={(value: any) => updateFilter("provider", value)}
-      >
-        <SelectTrigger>
-          <div className="flex items-center gap-2">
-            <Building className="w-3 h-3" />
-            <SelectValue placeholder="All Providers" />
-          </div>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Providers</SelectItem>
-          {filterOptions.providers.map((provider) => (
-            <SelectItem key={provider} value={provider}>
-              {provider.charAt(0).toUpperCase() + provider.slice(1)}
             </SelectItem>
           ))}
         </SelectContent>

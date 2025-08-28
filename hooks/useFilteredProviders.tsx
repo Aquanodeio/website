@@ -13,6 +13,7 @@ import {
   ArrowUpDown,
   ArrowUp,
   ArrowDown,
+  DollarSign,
 } from "lucide-react";
 import {
   Select,
@@ -438,7 +439,7 @@ export function useFilteredProviders({
       >
         <SelectTrigger>
           <div className="flex items-center gap-2">
-            <ArrowUpDown className="w-3 h-3" />
+            <DollarSign className="w-3 h-3" />
             <SelectValue placeholder="Sort by Price" />
           </div>
         </SelectTrigger>

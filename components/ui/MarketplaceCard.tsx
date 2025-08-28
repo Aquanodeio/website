@@ -2,6 +2,7 @@ import { cn, toTitleCase } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import React from "react";
 import { Button } from "./button";
+import { useSearchParams } from "next/navigation";
 
 export interface Provider {
   id: string;
@@ -46,6 +47,11 @@ export const MarketplaceCard = React.forwardRef<
   HTMLDivElement,
   MarketplaceCardProps
 >(({ provider, showPricing = true, ...props }, ref) => {
+  const searchParams = useSearchParams();
+
+  // Convert params into string that can be used in url
+  const appliableFilters = new URLSearchParams(searchParams.toString());
+
   return (
     <div className="space-y-4 flex flex-col shadow-md backdrop-blur-md shadow-[#311579] rounded-md overflow-clip w-full border border-[#311579]">
       <div className="flex flex-col items-center justify-between w-full px-4 pt-4">
@@ -89,12 +95,24 @@ export const MarketplaceCard = React.forwardRef<
         </div>
 
         {showPricing && (
-          <Button
-            className="mt-4 w-full bg-[#5d45a4] text-white hover:bg-[#5d45a4]"
-            type="button"
+          <a
+            href={
+              "https://console.aquanode.io/marketplace" +
+              (appliableFilters.toString()
+                ? "?" + appliableFilters.toString()
+                : "")
+            }
+            target="_blank"
+            rel="noreferrer"
+            className="w-full"
           >
-            <p>${provider.price.toFixed(2)}/hr</p>
-          </Button>
+            <Button
+              className="mt-4 w-full bg-[#5d45a4] text-white cursor-pointer hover:bg-[#5d45a4]/80"
+              type="button"
+            >
+              <p>${provider.price.toFixed(2)}/hr</p>
+            </Button>
+          </a>
         )}
       </div>
 

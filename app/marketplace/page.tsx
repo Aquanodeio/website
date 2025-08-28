@@ -6,11 +6,10 @@ import OverlayNavbar from "@/components/OverlayNavbar";
 import Footer from "@/components/Footer";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
-import MarketplaceList from "@/components/MaketplaceList";
 import { Provider } from "@/components/ui/MarketplaceCard";
 import { useMarketplace } from "@/hooks/useMarketplace";
-import MarketplaceWithFilters from "@/components/MarketplaceWithFilters";
 import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersSuspense";
+import { CONTACT_SALES_LINK } from "@/config/links";
 
 export default function MarketplacePage() {
   const {
@@ -84,9 +83,11 @@ export default function MarketplacePage() {
             <p className="text-white text-xl sm:text-2xl font-semibold text-center sm:text-left">
               Need custom storage or commitment plans?
             </p>
-            <button className="bg-[#3F3D70] hover:bg-[#514EA3] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all">
-              Let&apos;s Chat
-            </button>
+            <a href={CONTACT_SALES_LINK}>
+              <button className="bg-[#3F3D70] cursor-pointer hover:bg-[#514EA3] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all">
+                Let&apos;s Chat
+              </button>
+            </a>
           </div>
         </div>
 

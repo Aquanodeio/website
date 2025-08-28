@@ -21,6 +21,10 @@ export const getMarketplace = async (
         ...provider,
         id: provider.gpuShortName + provider.providerId, // Ensure unique ID for React keys
         gpuMemory: provider.gpuMemory.replace("Gi", "gb"), // Normalize GPU memory format
+        provider:
+          provider.provider === "voltagepark"
+            ? ("Voltage Park" as Provider["provider"])
+            : provider.provider,
       }))
       .sort((a, b) => {
         // Sort by GPU VRAM in descending order (highest VRAM first)

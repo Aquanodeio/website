@@ -2,7 +2,18 @@
 
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { Filter, Cpu, MapPin, Zap, HardDrive, X } from "lucide-react";
+import {
+  Filter,
+  Cpu,
+  MapPin,
+  Zap,
+  HardDrive,
+  X,
+  Building,
+  ArrowUpDown,
+  ArrowUp,
+  ArrowDown,
+} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -19,6 +30,12 @@ interface FilterState {
   region: string;
   gpuName: string;
   storage: string;
+  provider: string;
+}
+
+interface SortState {
+  sortBy: "price" | "vram" | "none";
+  sortOrder: "asc" | "desc";
 }
 
 interface UseFilteredProvidersOptions {
@@ -32,6 +49,11 @@ interface UseFilteredProvidersReturn {
   clearAllFilters: () => void;
   activeFiltersCount: number;
   isLoading: boolean;
+  updateSorting: (
+    sortBy: "price" | "vram" | "none",
+    sortOrder?: "asc" | "desc"
+  ) => void;
+  sorting: SortState;
 }
 
 // Predefined storage cutoffs as minimum storage filters (in GB)
@@ -79,11 +101,18 @@ export function useFilteredProviders({
     region: searchParams.get("region") || "all",
     gpuName: searchParams.get("gpuName") || "all",
     storage: searchParams.get("storage") || "all",
+    provider: searchParams.get("provider") || "all",
+  });
+
+  // Initialize sorting from URL params
+  const [sorting, setSorting] = useState<SortState>({
+    sortBy: (searchParams.get("sortBy") as "price" | "vram") || "none",
+    sortOrder: (searchParams.get("sortOrder") as "asc" | "desc") || "asc",
   });
 
   // Update URL when filters change
   const updateURL = useCallback(
-    (newFilters: FilterState) => {
+    (newFilters: FilterState, newSorting?: SortState) => {
       const params = new URLSearchParams(searchParams.toString());
 
       // Set or remove each filter param
@@ -94,6 +123,17 @@ export function useFilteredProviders({
           params.set(key, value);
         }
       });
+
+      // Set or remove sorting params
+      if (newSorting) {
+        if (newSorting.sortBy === "none") {
+          params.delete("sortBy");
+          params.delete("sortOrder");
+        } else {
+          params.set("sortBy", newSorting.sortBy);
+          params.set("sortOrder", newSorting.sortOrder);
+        }
+      }
 
       // Update the URL without triggering a page reload
       const newURL = `${pathname}${
@@ -114,6 +154,16 @@ export function useFilteredProviders({
     [filters, updateURL]
   );
 
+  // Update sorting
+  const updateSorting = useCallback(
+    (sortBy: "price" | "vram" | "none", sortOrder: "asc" | "desc" = "asc") => {
+      const newSorting: SortState = { sortBy, sortOrder };
+      setSorting(newSorting);
+      updateURL(filters, newSorting);
+    },
+    [filters, updateURL]
+  );
+
   // Clear all filters
   const clearAllFilters = useCallback(() => {
     const clearedFilters: FilterState = {
@@ -122,9 +172,15 @@ export function useFilteredProviders({
       region: "all",
       gpuName: "all",
       storage: "all",
+      provider: "all",
+    };
+    const clearedSorting: SortState = {
+      sortBy: "none",
+      sortOrder: "asc",
     };
     setFilters(clearedFilters);
-    updateURL(clearedFilters);
+    setSorting(clearedSorting);
+    updateURL(clearedFilters, clearedSorting);
   }, [updateURL]);
 
   // Update state when URL changes (e.g., back/forward navigation)
@@ -135,28 +191,41 @@ export function useFilteredProviders({
       region: searchParams.get("region") || "all",
       gpuName: searchParams.get("gpuName") || "all",
       storage: searchParams.get("storage") || "all",
+      provider: searchParams.get("provider") || "all",
+    };
+    const newSorting: SortState = {
+      sortBy: (searchParams.get("sortBy") as "price" | "vram") || "none",
+      sortOrder: (searchParams.get("sortOrder") as "asc" | "desc") || "asc",
     };
     setFilters(newFilters);
+    setSorting(newSorting);
   }, [searchParams]);
 
   // Calculate unique filter options
   const filterOptions = useMemo(() => {
     if (!providers)
-      return { vendors: [], vRams: [], regions: [], gpuNames: [] };
+      return {
+        vendors: [],
+        vRams: [],
+        regions: [],
+        gpuNames: [],
+        providers: [],
+      };
 
     return {
       vendors: Array.from(new Set(providers.map((p) => p.gpuVendor))),
       vRams: Array.from(new Set(providers.map((p) => p.gpuMemory))),
       regions: Array.from(new Set(providers.map((p) => p.region))),
       gpuNames: Array.from(new Set(providers.map((p) => p.gpuShortName))),
+      providers: Array.from(new Set(providers.map((p) => p.provider))),
     };
   }, [providers]);
 
-  // Filter providers based on search and selected filters
+  // Filter and sort providers based on search and selected filters
   const filteredProviders = useMemo(() => {
     if (!providers) return [];
 
-    return providers.filter((provider) => {
+    let filtered = providers.filter((provider) => {
       // Search filter
       const matchesSearch = searchQuery
         ? provider.gpuShortName
@@ -185,6 +254,12 @@ export function useFilteredProviders({
           ? true
           : provider.gpuShortName === filters.gpuName;
 
+      // Provider filter
+      const matchesProvider =
+        filters.provider === "all"
+          ? true
+          : provider.provider === filters.provider;
+
       // Storage filter: check if provider storage meets minimum requirement
       const matchesStorage =
         filters.storage === "all"
@@ -204,10 +279,37 @@ export function useFilteredProviders({
         matchesVram &&
         matchesRegion &&
         matchesGpuName &&
+        matchesProvider &&
         matchesStorage
       );
     });
-  }, [providers, searchQuery, filters]);
+
+    // Apply sorting
+    if (sorting.sortBy !== "none") {
+      filtered.sort((a, b) => {
+        let aValue, bValue;
+
+        if (sorting.sortBy === "price") {
+          aValue = a.price;
+          bValue = b.price;
+        } else if (sorting.sortBy === "vram") {
+          // Extract numeric value from vRAM string (e.g., "24GB" -> 24)
+          aValue = parseInt(a.gpuMemory.replace(/[^\d]/g, ""));
+          bValue = parseInt(b.gpuMemory.replace(/[^\d]/g, ""));
+        } else {
+          return 0;
+        }
+
+        if (sorting.sortOrder === "asc") {
+          return aValue - bValue;
+        } else {
+          return bValue - aValue;
+        }
+      });
+    }
+
+    return filtered;
+  }, [providers, searchQuery, filters, sorting]);
 
   const activeFiltersCount = useMemo(() => {
     return Object.entries(filters).filter(
@@ -216,7 +318,7 @@ export function useFilteredProviders({
   }, [filters]);
 
   const filterTrigger = (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-wrap">
       <Select
         value={filters.gpuName}
         onValueChange={(value: any) => updateFilter("gpuName", value)}
@@ -298,6 +400,99 @@ export function useFilteredProviders({
           ))}
         </SelectContent>
       </Select>
+
+      {/* Provider Filter */}
+      <Select
+        value={filters.provider}
+        onValueChange={(value: any) => updateFilter("provider", value)}
+      >
+        <SelectTrigger>
+          <div className="flex items-center gap-2">
+            <Building className="w-3 h-3" />
+            <SelectValue placeholder="All Providers" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Providers</SelectItem>
+          {filterOptions.providers.map((provider) => (
+            <SelectItem key={provider} value={provider}>
+              {provider.charAt(0).toUpperCase() + provider.slice(1)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+
+      {/* Sort by Price */}
+      <Select
+        value={
+          sorting.sortBy === "price" ? `price-${sorting.sortOrder}` : "none"
+        }
+        onValueChange={(value: any) => {
+          if (value === "none") {
+            updateSorting("none");
+          } else {
+            const [sortBy, sortOrder] = value.split("-");
+            updateSorting(sortBy as "price", sortOrder as "asc" | "desc");
+          }
+        }}
+      >
+        <SelectTrigger>
+          <div className="flex items-center gap-2">
+            <ArrowUpDown className="w-3 h-3" />
+            <SelectValue placeholder="Sort by Price" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="none">No sorting</SelectItem>
+          <SelectItem value="price-asc">
+            <div className="flex items-center gap-2">
+              <ArrowUp className="w-3 h-3" />
+              Price: Low to High
+            </div>
+          </SelectItem>
+          <SelectItem value="price-desc">
+            <div className="flex items-center gap-2">
+              <ArrowDown className="w-3 h-3" />
+              Price: High to Low
+            </div>
+          </SelectItem>
+        </SelectContent>
+      </Select>
+
+      {/* Sort by vRAM */}
+      <Select
+        value={sorting.sortBy === "vram" ? `vram-${sorting.sortOrder}` : "none"}
+        onValueChange={(value: any) => {
+          if (value === "none") {
+            updateSorting("none");
+          } else {
+            const [sortBy, sortOrder] = value.split("-");
+            updateSorting(sortBy as "vram", sortOrder as "asc" | "desc");
+          }
+        }}
+      >
+        <SelectTrigger>
+          <div className="flex items-center gap-2">
+            <Cpu className="w-3 h-3" />
+            <SelectValue placeholder="Sort by vRAM" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="none">No sorting</SelectItem>
+          <SelectItem value="vram-asc">
+            <div className="flex items-center gap-2">
+              <ArrowUp className="w-3 h-3" />
+              vRAM: Low to High
+            </div>
+          </SelectItem>
+          <SelectItem value="vram-desc">
+            <div className="flex items-center gap-2">
+              <ArrowDown className="w-3 h-3" />
+              vRAM: High to Low
+            </div>
+          </SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   );
 
@@ -307,5 +502,7 @@ export function useFilteredProviders({
     clearAllFilters,
     activeFiltersCount,
     isLoading: !providers,
+    updateSorting,
+    sorting,
   };
 }

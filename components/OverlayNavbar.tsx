@@ -48,6 +48,13 @@ export default function OverlayNavbar() {
               Marketplace
             </Link>
             <Link
+              href={"https://docs.aquanode.io"}
+              className="text-white hover:text-white/80 transition-colors text-sm font-medium"
+              target="_blank"
+            >
+              Docs
+            </Link>
+            <Link
               href={CONTACT_SALES_LINK}
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"
               target="_blank"

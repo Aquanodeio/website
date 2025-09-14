@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import blogData from "@/lib/blog.json";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
-import BlogCardImage from "/images/blog-images.png";
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("");

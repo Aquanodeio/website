@@ -12,13 +12,7 @@ import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersS
 import { CONTACT_SALES_LINK } from "@/config/links";
 
 export default function MarketplacePage() {
-  const {
-    data: marketplaceData,
-    isLoading,
-    isFetching,
-    error,
-    refetch,
-  } = useMarketplace();
+  const { data: marketplaceData, isLoading, isFetching } = useMarketplace();
 
   return (
     <>

@@ -9,13 +9,14 @@ import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function BlogPost({ params }: BlogPostPageProps) {
-  const post = blogData.find((p) => p.id === params.slug);
+export default async function BlogPost({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const post = blogData.find((p) => p.id === slug);
 
   if (!post) {
     notFound();
@@ -81,7 +82,10 @@ export default function BlogPost({ params }: BlogPostPageProps) {
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-gradient-to-br from-[#3F3D70] to-[#514EA3] rounded-full flex items-center justify-center">
               <span className="text-white text-sm font-semibold">
-                {post.author.name.split(" ").map(n => n[0]).join("")}
+                {post.author.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
               </span>
             </div>
             <div>
@@ -91,9 +95,7 @@ export default function BlogPost({ params }: BlogPostPageProps) {
                   {post.author.handle}
                 </span>
               </p>
-              <p className="text-[#9CA3AF] text-sm">
-                {post.author.title}
-              </p>
+              <p className="text-[#9CA3AF] text-sm">{post.author.title}</p>
             </div>
           </div>
         </div>
@@ -101,22 +103,24 @@ export default function BlogPost({ params }: BlogPostPageProps) {
         {/* Post Content */}
         <article className="prose prose-invert prose-lg max-w-none">
           <div className="text-[#E5E7EB] leading-relaxed">
-            {post.content.split('\n\n').map((paragraph, index) => {
+            {post.content.split("\n\n").map((paragraph, index) => {
               // Handle bullet points
-              if (paragraph.startsWith('•')) {
-                const bulletPoints = paragraph.split('\n').filter(line => line.trim());
+              if (paragraph.startsWith("•")) {
+                const bulletPoints = paragraph
+                  .split("\n")
+                  .filter((line) => line.trim());
                 return (
                   <ul key={index} className="list-none space-y-2 my-6">
                     {bulletPoints.map((point, pointIndex) => (
                       <li key={pointIndex} className="flex items-start gap-3">
                         <span className="text-[#514EA3] mt-2">•</span>
-                        <span>{point.replace('•', '').trim()}</span>
+                        <span>{point.replace("•", "").trim()}</span>
                       </li>
                     ))}
                   </ul>
                 );
               }
-              
+
               // Handle regular paragraphs
               return (
                 <p key={index} className="mb-6">
@@ -149,7 +153,7 @@ export default function BlogPost({ params }: BlogPostPageProps) {
             Take the Leap to Smarter Compute
           </h2>
           <p className="text-[#9CA3AF] mb-8 max-w-2xl mx-auto">
-            Start building on Aquanode. Accelerate your AI applications with our 
+            Start building on Aquanode. Accelerate your AI applications with our
             high-performance compute infrastructure.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

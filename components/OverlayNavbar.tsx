@@ -29,17 +29,18 @@ export default function OverlayNavbar() {
               Home
             </Link>
             <Link
-              href="/#Features"
-              className="text-white hover:text-white/80 transition-colors text-sm font-medium"
-            >
-              Features
-            </Link>
-            {/* <Link
               href="/pricing"
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"
             >
               Pricing
-            </Link> */}
+            </Link>
+
+            <Link
+              href="/blog"
+              className="text-white hover:text-white/80 transition-colors text-sm font-medium"
+            >
+              Blogs
+            </Link>
             <Link
               href="/marketplace"
               className="text-white hover:text-white/80 transition-colors text-sm font-medium"

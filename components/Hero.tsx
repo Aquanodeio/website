@@ -7,8 +7,8 @@ import OverlayNavbar from "./OverlayNavbar";
 import { ArrowRight } from "lucide-react";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 // import { useState, useEffect } from "react";
-import React, { Suspense } from "react";
-const Spline = React.lazy(() => import("@splinetool/react-spline"));
+import React from "react";
+import SplineWrapper from "./SplineWrapper";
 
 const cardData = [
   {
@@ -74,7 +74,8 @@ export const Hero = () => {
               </h1>
 
               <p className="text-[#D2D0DD] text-[16px] sm:text-[20px] font-light leading-[24px] sm:leading-[28px] tracking-[-0.1px] sm:tracking-[-0.2px] text-left">
-                We enable cloud features on every GPU instance from your favorite provider.
+                We enable cloud features on every GPU instance from your
+                favorite provider.
                 <br className="hidden sm:block" />
                 Compare, deploy, and save upto 80% costs.
               </p>
@@ -124,9 +125,7 @@ export const Hero = () => {
 
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Spline scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
-              </Suspense>
+              <SplineWrapper scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
             </div>
           </div>
         </div>

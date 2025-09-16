@@ -91,6 +91,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
         <link rel="dns-prefetch" href="https://prod.spline.design" />
+        <link rel="dns-prefetch" href="https://www.gstatic.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"

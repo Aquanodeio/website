@@ -8,8 +8,8 @@ import { ArrowRight } from "lucide-react";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 // import { useState, useEffect } from "react";
 import React from "react";
-import SplineWrapper from "./SplineWrapper";
-
+// import SplineWrapper from "./SplineWrapper";
+import GpuImage from "@/assets/gpu.png";
 const cardData = [
   {
     gpuType: "H100",
@@ -125,7 +125,13 @@ export const Hero = () => {
 
           <div className="hidden lg:block absolute -right-[200px] top-10">
             <div className="w-[800px] h-[800px] scale-[0.60]">
-              <SplineWrapper scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" />
+              <Image
+                width={726}
+                height={926}
+                src={GpuImage}
+                alt="Spline Scene"
+              />
+              {/* <SplineWrapper scene="https://prod.spline.design/eYkZIzF7c86zjgUK/scene.splinecode" /> */}
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import OverlayNavbar from "@/components/OverlayNavbar";
 import Footer from "@/components/Footer";
-import blogData from "@/lib/blog.json";
+import blogData from "@/lib/blog";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
 

@@ -6,7 +6,6 @@ import OverlayNavbar from "@/components/OverlayNavbar";
 import Footer from "@/components/Footer";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
-import { Provider } from "@/components/ui/MarketplaceCard";
 import { useMarketplace } from "@/hooks/useMarketplace";
 import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersSuspense";
 import { CONTACT_SALES_LINK } from "@/config/links";
@@ -67,9 +66,7 @@ export default function MarketplacePage() {
           <MarketplaceWithFiltersSuspense
             isLoading={isLoading || isFetching}
             providers={marketplaceData?.providers || []}
-            onSelect={function (provider: Provider): void {
-              throw new Error("Function not implemented.");
-            }}
+            onSelect={() => {}}
           />
 
           {/* Custom Plans CTA */}

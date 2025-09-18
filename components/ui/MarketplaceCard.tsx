@@ -53,7 +53,11 @@ export const MarketplaceCard = React.forwardRef<
   const appliableFilters = new URLSearchParams(searchParams.toString());
 
   return (
-    <div className="space-y-4 flex flex-col shadow-md backdrop-blur-md shadow-[#311579] rounded-md overflow-clip w-full border border-[#311579]">
+    <div
+      ref={ref}
+      {...props}
+      className="space-y-4 flex flex-col shadow-md backdrop-blur-md shadow-[#311579] rounded-md overflow-clip w-full border border-[#311579]"
+    >
       <div className="flex flex-col items-center justify-between w-full px-4 pt-4">
         <div className="flex items-center justify-between w-full gap-4 pb-2">
           <div className="flex items-center gap-2">
@@ -66,9 +70,6 @@ export const MarketplaceCard = React.forwardRef<
           <div className="flex items-center gap-2">
             <div className="text-sm rounded-sm bg-[#311579]/40 py-0.5 px-2">
               {toTitleCase(provider.provider)}
-            </div>
-            <div className="text-sm rounded-sm bg-[#311579]/40 py-0.5 px-2">
-              {provider.interface}
             </div>
           </div>
         </div>
@@ -91,6 +92,10 @@ export const MarketplaceCard = React.forwardRef<
               {provider.availableStorage.value.toFixed(2)}{" "}
               {provider.availableStorage.unit}
             </p>
+          </div>
+          <div className="flex justify-between">
+            <p>Interface</p>
+            <p>{provider.interface}</p>
           </div>
         </div>
 

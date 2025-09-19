@@ -27,4 +27,3 @@ const legacyBlog: BlogPost[] = [
 const blog = legacyBlog;
 
 export default blog;
-export type { BlogPost };

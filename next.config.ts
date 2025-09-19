@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
+import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
+  // Configure the file extensions the app can handle
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Enable compression
   compress: true,
 
@@ -89,4 +92,15 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [
+      [require('remark-gfm'), { singleTilde: false }]
+    ],
+    rehypePlugins: [],
+  },
+});
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig);

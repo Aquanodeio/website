@@ -13,7 +13,9 @@ export interface ApiResponse<T> {
 export const getMarketplace = async (
   provider = "akash"
 ): Promise<{ providers: Provider[] }> => {
-  const response = await api.get<ApiResponse<Provider[]>>(`/marketplace`);
+  const response = await api.get<ApiResponse<Provider[]>>(
+    `/marketplace/cached`
+  );
   return {
     providers: response.data.data
       .map((provider) => ({

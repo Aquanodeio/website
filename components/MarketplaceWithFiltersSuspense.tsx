@@ -32,7 +32,7 @@ const MarketplaceFallback: React.FC = () => (
       </Button>
     </div>
     <div>
-      <div className="grid sm:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-3 xl:grid-cols-3 gap-4">
         {[...Array(12)].map((_, i) => (
           <MarketplaceCardSkeleton key={i} />
         ))}

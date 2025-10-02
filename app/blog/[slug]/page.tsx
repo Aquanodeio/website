@@ -4,7 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import OverlayNavbar from "@/components/OverlayNavbar";
 import Footer from "@/components/Footer";
-import blogData from "@/lib/blog.json";
+import { getBlogPost, getAllBlogSlugs } from "@/lib/blog-server";
+import MDXRenderer from "@/components/mdx/mdx-renderer";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
 
@@ -16,7 +17,7 @@ interface BlogPostPageProps {
 
 export default async function BlogPost({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = blogData.find((p) => p.id === slug);
+  const post = getBlogPost(slug);
 
   if (!post) {
     notFound();
@@ -101,33 +102,9 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
         </div>
 
         {/* Post Content */}
-        <article className="prose prose-invert prose-lg max-w-none">
-          <div className="text-[#E5E7EB] leading-relaxed">
-            {post.content.split("\n\n").map((paragraph, index) => {
-              // Handle bullet points
-              if (paragraph.startsWith("•")) {
-                const bulletPoints = paragraph
-                  .split("\n")
-                  .filter((line) => line.trim());
-                return (
-                  <ul key={index} className="list-none space-y-2 my-6">
-                    {bulletPoints.map((point, pointIndex) => (
-                      <li key={pointIndex} className="flex items-start gap-3">
-                        <span className="text-[#514EA3] mt-2">•</span>
-                        <span>{point.replace("•", "").trim()}</span>
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
-
-              // Handle regular paragraphs
-              return (
-                <p key={index} className="mb-6">
-                  {paragraph}
-                </p>
-              );
-            })}
+        <article className="max-w-none">
+          <div className="text-[#E5E7EB]">
+            <MDXRenderer content={post.content} />
           </div>
         </article>
 
@@ -174,7 +151,8 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
-  return blogData.map((post) => ({
-    slug: post.id,
+  const slugs = getAllBlogSlugs();
+  return slugs.map((slug) => ({
+    slug: slug,
   }));
 }

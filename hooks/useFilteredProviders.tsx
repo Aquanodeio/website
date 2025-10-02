@@ -35,8 +35,8 @@ interface FilterState {
 }
 
 interface SortState {
-  sortBy: "price" | "vram" | "none";
-  sortOrder: "asc" | "desc";
+  priceSort: "none" | "asc" | "desc";
+  vramSort: "none" | "asc" | "desc";
 }
 
 interface UseFilteredProvidersOptions {
@@ -50,10 +50,8 @@ interface UseFilteredProvidersReturn {
   clearAllFilters: () => void;
   activeFiltersCount: number;
   isLoading: boolean;
-  updateSorting: (
-    sortBy: "price" | "vram" | "none",
-    sortOrder?: "asc" | "desc"
-  ) => void;
+  togglePriceSort: () => void;
+  toggleVramSort: () => void;
   sorting: SortState;
 }
 
@@ -107,8 +105,10 @@ export function useFilteredProviders({
 
   // Initialize sorting from URL params
   const [sorting, setSorting] = useState<SortState>({
-    sortBy: (searchParams.get("sortBy") as "price" | "vram") || "none",
-    sortOrder: (searchParams.get("sortOrder") as "asc" | "desc") || "asc",
+    priceSort:
+      (searchParams.get("priceSort") as "none" | "asc" | "desc") || "none",
+    vramSort:
+      (searchParams.get("vramSort") as "none" | "asc" | "desc") || "none",
   });
 
   // Update URL when filters change
@@ -127,12 +127,16 @@ export function useFilteredProviders({
 
       // Set or remove sorting params
       if (newSorting) {
-        if (newSorting.sortBy === "none") {
-          params.delete("sortBy");
-          params.delete("sortOrder");
+        if (newSorting.priceSort === "none") {
+          params.delete("priceSort");
         } else {
-          params.set("sortBy", newSorting.sortBy);
-          params.set("sortOrder", newSorting.sortOrder);
+          params.set("priceSort", newSorting.priceSort);
+        }
+
+        if (newSorting.vramSort === "none") {
+          params.delete("vramSort");
+        } else {
+          params.set("vramSort", newSorting.vramSort);
         }
       }
 
@@ -155,15 +159,37 @@ export function useFilteredProviders({
     [filters, updateURL]
   );
 
-  // Update sorting
-  const updateSorting = useCallback(
-    (sortBy: "price" | "vram" | "none", sortOrder: "asc" | "desc" = "asc") => {
-      const newSorting: SortState = { sortBy, sortOrder };
-      setSorting(newSorting);
-      updateURL(filters, newSorting);
-    },
-    [filters, updateURL]
-  );
+  // Toggle price sorting: none -> asc -> desc -> none
+  const togglePriceSort = useCallback(() => {
+    const newSorting: SortState = { ...sorting };
+
+    if (newSorting.priceSort === "none") {
+      newSorting.priceSort = "asc";
+    } else if (newSorting.priceSort === "asc") {
+      newSorting.priceSort = "desc";
+    } else {
+      newSorting.priceSort = "none";
+    }
+
+    setSorting(newSorting);
+    updateURL(filters, newSorting);
+  }, [sorting, filters, updateURL]);
+
+  // Toggle vRAM sorting: none -> asc -> desc -> none
+  const toggleVramSort = useCallback(() => {
+    const newSorting: SortState = { ...sorting };
+
+    if (newSorting.vramSort === "none") {
+      newSorting.vramSort = "asc";
+    } else if (newSorting.vramSort === "asc") {
+      newSorting.vramSort = "desc";
+    } else {
+      newSorting.vramSort = "none";
+    }
+
+    setSorting(newSorting);
+    updateURL(filters, newSorting);
+  }, [sorting, filters, updateURL]);
 
   // Clear all filters
   const clearAllFilters = useCallback(() => {
@@ -176,8 +202,8 @@ export function useFilteredProviders({
       provider: "all",
     };
     const clearedSorting: SortState = {
-      sortBy: "none",
-      sortOrder: "asc",
+      priceSort: "none",
+      vramSort: "none",
     };
     setFilters(clearedFilters);
     setSorting(clearedSorting);
@@ -195,8 +221,10 @@ export function useFilteredProviders({
       provider: searchParams.get("provider") || "all",
     };
     const newSorting: SortState = {
-      sortBy: (searchParams.get("sortBy") as "price" | "vram") || "none",
-      sortOrder: (searchParams.get("sortOrder") as "asc" | "desc") || "asc",
+      priceSort:
+        (searchParams.get("priceSort") as "none" | "asc" | "desc") || "none",
+      vramSort:
+        (searchParams.get("vramSort") as "none" | "asc" | "desc") || "none",
     };
     setFilters(newFilters);
     setSorting(newSorting);
@@ -286,26 +314,23 @@ export function useFilteredProviders({
     });
 
     // Apply sorting
-    if (sorting.sortBy !== "none") {
+    if (sorting.priceSort !== "none" || sorting.vramSort !== "none") {
       filtered.sort((a, b) => {
-        let aValue, bValue;
-
-        if (sorting.sortBy === "price") {
-          aValue = a.price;
-          bValue = b.price;
-        } else if (sorting.sortBy === "vram") {
-          // Extract numeric value from vRAM string (e.g., "24GB" -> 24)
-          aValue = parseInt(a.gpuMemory.replace(/[^\d]/g, ""));
-          bValue = parseInt(b.gpuMemory.replace(/[^\d]/g, ""));
-        } else {
-          return 0;
+        // First sort by price if enabled
+        if (sorting.priceSort !== "none") {
+          const priceDiff =
+            sorting.priceSort === "asc" ? a.price - b.price : b.price - a.price;
+          if (priceDiff !== 0) return priceDiff;
         }
 
-        if (sorting.sortOrder === "asc") {
-          return aValue - bValue;
-        } else {
-          return bValue - aValue;
+        // Then sort by vRAM if enabled
+        if (sorting.vramSort !== "none") {
+          const aVram = parseInt(a.gpuMemory.replace(/[^\d]/g, ""));
+          const bVram = parseInt(b.gpuMemory.replace(/[^\d]/g, ""));
+          return sorting.vramSort === "asc" ? aVram - bVram : bVram - aVram;
         }
+
+        return 0;
       });
     }
 
@@ -320,6 +345,26 @@ export function useFilteredProviders({
 
   const filterTrigger = (
     <div className="flex gap-4 flex-wrap">
+      {/* Provider Filter */}
+      <Select
+        value={filters.provider}
+        onValueChange={(value: any) => updateFilter("provider", value)}
+      >
+        <SelectTrigger>
+          <div className="flex items-center gap-2">
+            <Building className="w-3 h-3" />
+            <SelectValue placeholder="All Providers" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Providers</SelectItem>
+          {filterOptions.providers.map((provider) => (
+            <SelectItem key={provider} value={provider}>
+              {provider.charAt(0).toUpperCase() + provider.slice(1)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
       <Select
         value={filters.gpuName}
         onValueChange={(value: any) => updateFilter("gpuName", value)}
@@ -402,98 +447,39 @@ export function useFilteredProviders({
         </SelectContent>
       </Select>
 
-      {/* Provider Filter */}
-      <Select
-        value={filters.provider}
-        onValueChange={(value: any) => updateFilter("provider", value)}
+      {/* Sort by Price - Toggle Button */}
+      <Button
+        variant="outline"
+        onClick={togglePriceSort}
+        className={`flex items-center gap-2 ${
+          sorting.priceSort !== "none" ? "bg-primary/10 border-primary" : ""
+        }`}
       >
-        <SelectTrigger>
-          <div className="flex items-center gap-2">
-            <Building className="w-3 h-3" />
-            <SelectValue placeholder="All Providers" />
-          </div>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Providers</SelectItem>
-          {filterOptions.providers.map((provider) => (
-            <SelectItem key={provider} value={provider}>
-              {provider.charAt(0).toUpperCase() + provider.slice(1)}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+        <DollarSign className="w-3 h-3 text-muted-foreground" />
+        <span>Price</span>
+        {sorting.priceSort === "asc" && <ArrowUp className="w-3 h-3" />}
+        {sorting.priceSort === "desc" && <ArrowDown className="w-3 h-3" />}
+        {sorting.priceSort === "none" && (
+          <ArrowUpDown className="w-3 h-3 opacity-50" />
+        )}
+      </Button>
 
-      {/* Sort by Price */}
-      <Select
-        value={
-          sorting.sortBy === "price" ? `price-${sorting.sortOrder}` : "none"
-        }
-        onValueChange={(value: any) => {
-          if (value === "none") {
-            updateSorting("none");
-          } else {
-            const [sortBy, sortOrder] = value.split("-");
-            updateSorting(sortBy as "price", sortOrder as "asc" | "desc");
-          }
-        }}
+      {/* Sort by vRAM - Toggle Button */}
+      <Button
+        variant="outline"
+        onClick={toggleVramSort}
+        className={`flex items-center gap-2 ${
+          sorting.vramSort !== "none" ? "bg-primary/10 border-primary" : ""
+        }`}
       >
-        <SelectTrigger>
-          <div className="flex items-center gap-2">
-            <DollarSign className="w-3 h-3" />
-            <SelectValue placeholder="Sort by Price" />
-          </div>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="none">No sorting</SelectItem>
-          <SelectItem value="price-asc">
-            <div className="flex items-center gap-2">
-              <ArrowUp className="w-3 h-3" />
-              Price: Low to High
-            </div>
-          </SelectItem>
-          <SelectItem value="price-desc">
-            <div className="flex items-center gap-2">
-              <ArrowDown className="w-3 h-3" />
-              Price: High to Low
-            </div>
-          </SelectItem>
-        </SelectContent>
-      </Select>
-
-      {/* Sort by vRAM */}
-      <Select
-        value={sorting.sortBy === "vram" ? `vram-${sorting.sortOrder}` : "none"}
-        onValueChange={(value: any) => {
-          if (value === "none") {
-            updateSorting("none");
-          } else {
-            const [sortBy, sortOrder] = value.split("-");
-            updateSorting(sortBy as "vram", sortOrder as "asc" | "desc");
-          }
-        }}
-      >
-        <SelectTrigger>
-          <div className="flex items-center gap-2">
-            <Cpu className="w-3 h-3" />
-            <SelectValue placeholder="Sort by vRAM" />
-          </div>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="none">No sorting</SelectItem>
-          <SelectItem value="vram-asc">
-            <div className="flex items-center gap-2">
-              <ArrowUp className="w-3 h-3" />
-              vRAM: Low to High
-            </div>
-          </SelectItem>
-          <SelectItem value="vram-desc">
-            <div className="flex items-center gap-2">
-              <ArrowDown className="w-3 h-3" />
-              vRAM: High to Low
-            </div>
-          </SelectItem>
-        </SelectContent>
-      </Select>
+        <Cpu className="w-3 h-3 text-muted-foreground" />
+        <span>vRAM</span>
+        {sorting.vramSort === "asc" && <ArrowUp className="w-3 h-3" />}
+        {sorting.vramSort === "desc" && <ArrowDown className="w-3 h-3" />}
+        {sorting.vramSort === "none" && (
+          <ArrowUpDown className="w-3 h-3 opacity-50" />
+        )}
+      </Button>
     </div>
   );
 
@@ -503,7 +489,8 @@ export function useFilteredProviders({
     clearAllFilters,
     activeFiltersCount,
     isLoading: !providers,
-    updateSorting,
+    togglePriceSort,
+    toggleVramSort,
     sorting,
   };
 }

@@ -16,8 +16,10 @@ export const getMarketplace = async (
   const response = await api.get<ApiResponse<Provider[]>>(
     `/marketplace/cached`
   );
+
   return {
     providers: response.data.data
+      .filter((p) => p.provider !== "hotaisle")
       .map((provider) => ({
         ...provider,
         id: provider.gpuShortName + provider.providerId, // Ensure unique ID for React keys

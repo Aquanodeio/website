@@ -19,7 +19,6 @@ export const getMarketplace = async (
 
   return {
     providers: response.data.data
-      .filter((p) => p.provider !== "hotaisle")
       .map((provider) => ({
         ...provider,
         id: provider.gpuShortName + provider.providerId, // Ensure unique ID for React keys

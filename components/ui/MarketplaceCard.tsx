@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 export interface Provider {
   id: string;
-  provider: "spheron" | "akash" | "voltagepark" | "datacrunch";
+  provider: "spheron" | "akash" | "voltagepark" | "datacrunch" | "hotaisle";
   providerId: string;
   providerName: string;
   address: string;

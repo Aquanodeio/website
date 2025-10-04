@@ -17,6 +17,7 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/bundle-analyzer": "^15.4.6",
+    "@radix-ui/react-dialog": "^1.1.15",
     "@next/mdx": "^15.5.3",
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.3",

@@ -8,7 +8,7 @@ import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
 import { useMarketplace } from "@/hooks/useMarketplace";
 import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersSuspense";
-import { CONTACT_SALES_LINK } from "@/config/links";
+import { MAIL_LINK } from "@/config/links";
 
 export default function MarketplacePage() {
   const { data: marketplaceData, isLoading, isFetching } = useMarketplace();
@@ -74,7 +74,7 @@ export default function MarketplacePage() {
             <p className="text-white text-xl sm:text-2xl font-semibold text-center sm:text-left">
               Need custom storage or commitment plans?
             </p>
-            <a href={CONTACT_SALES_LINK}>
+            <a href={MAIL_LINK}>
               <button className="bg-[#3F3D70] cursor-pointer hover:bg-[#514EA3] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all">
                 Let&apos;s Chat
               </button>

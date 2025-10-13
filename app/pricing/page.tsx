@@ -8,7 +8,7 @@ import pricingData from "@/lib/pricing.json";
 import { ArrowRight } from "lucide-react";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
-import { CONSOLE_LINK } from "@/config/links";
+import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
 
 export default function Pricing() {
   const [selectedChipset, setSelectedChipset] = useState("");
@@ -243,9 +243,12 @@ export default function Pricing() {
             <p className="text-white text-xl sm:text-2xl font-semibold text-center sm:text-left">
               Need custom storage or commitment plans?
             </p>
+            <a href={MAIL_LINK}>
+
             <button className="bg-[#3F3D70] hover:bg-[#514EA3] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all">
               Let&apos;s Chat
             </button>
+            </a>
           </div>
         </div>
 

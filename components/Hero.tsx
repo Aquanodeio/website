@@ -111,7 +111,7 @@ export const Hero = () => {
                   }}
                 >
                   <span className="text-white text-sm font-medium">
-                    Talk to CEO
+                    Book a demo
                   </span>
                   <ArrowRight className="text-white w-4 h-4" />
                 </button>

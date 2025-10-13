@@ -2,7 +2,7 @@ import Image from "next/image";
 import BackgroundImage from "@/assets/star-background.png";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
+import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
 
 export default function FeatureRequest() {
   return (
@@ -55,7 +55,7 @@ export default function FeatureRequest() {
               </button>
             </Link>
 
-            <Link href={CONTACT_SALES_LINK} target="_blank">
+            <Link href={MAIL_LINK} target="_blank">
               <button
                 className="flex items-center justify-center gap-2 w-[136px] h-[40px] rounded-full border-[0.5px] border-[#C6ACEC]"
                 style={{

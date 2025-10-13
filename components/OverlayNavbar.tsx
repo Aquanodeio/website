@@ -66,7 +66,7 @@ export default function OverlayNavbar() {
           <div className="hidden md:flex items-center gap-6">
             <Link href={CONSOLE_LINK}>
               <button
-                className="flex items-center justify-center w-[136px] h-[36px] rounded-full border-[0.5px]"
+                className="flex cursor-pointer items-center justify-center w-[136px] h-[36px] rounded-full border-[0.5px]"
                 style={{
                   background: `linear-gradient(135deg, #6C50BE 0%, #322558 100%)`,
                   borderColor: "#C6ACEC",

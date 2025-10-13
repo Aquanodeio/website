@@ -9,7 +9,7 @@ import Ellipse from "@/assets/pricing/ellipse.png";
 import { getMarketplace } from "@/hooks/useMarketplace";
 import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
 
-export const revalidate = 3600 * 24;
+export const revalidate = 86400;
 
 const getUniqueProviders = async () => {
   const { providers: data } = await getMarketplace();

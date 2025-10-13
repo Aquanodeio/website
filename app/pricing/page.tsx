@@ -1,35 +1,39 @@
-"use client";
-import React, { useState, useMemo } from "react";
+import React from "react";
 import Image from "next/image";
 import Head from "next/head";
 import OverlayNavbar from "@/components/OverlayNavbar";
 import Footer from "@/components/Footer";
-import pricingData from "@/lib/pricing.json";
 import { ArrowRight } from "lucide-react";
 import PricingBg from "@/assets/pricing/pricing-bg.png";
 import Ellipse from "@/assets/pricing/ellipse.png";
 import { CONSOLE_LINK } from "@/config/links";
+import { getMarketplace } from "@/hooks/useMarketplace";
 
-export default function Pricing() {
-  const [selectedChipset, setSelectedChipset] = useState("");
-  const [selectedVram, setSelectedVram] = useState("");
-  const [selectedInterface, setSelectedInterface] = useState("");
+export const revalidate = 3600 * 24;
 
-  const filteredData = useMemo(() => {
-    return pricingData.filter((item) => {
-      const chipsetMatch = !selectedChipset || item.model === selectedChipset;
-      const vramMatch = !selectedVram || item.vram === selectedVram;
-      const interfaceMatch =
-        !selectedInterface || item.form_factor === selectedInterface;
-      return chipsetMatch && vramMatch && interfaceMatch;
-    });
-  }, [selectedChipset, selectedVram, selectedInterface]);
+const getUniqueProviders = async () => {
+  const { providers: data } = await getMarketplace();
 
-  const uniqueChipsets = [...new Set(pricingData.map((item) => item.model))];
-  const uniqueVramOptions = [...new Set(pricingData.map((item) => item.vram))];
-  const uniqueInterfaces = [
-    ...new Set(pricingData.map((item) => item.form_factor)),
-  ];
+  // Deduplicate by GPU model name (case-insensitive), keeping only the lowest price for each model
+  const gpuMap = new Map<string, (typeof data)[0]>();
+
+  data.forEach((provider) => {
+    const gpuKey = provider.gpuShortName.toLowerCase();
+    const existingProvider = gpuMap.get(gpuKey);
+
+    if (!existingProvider || provider.price < existingProvider.price) {
+      gpuMap.set(gpuKey, provider);
+    }
+  });
+
+  // Convert map back to array
+  const uniqueData = Array.from(gpuMap.values());
+
+  return uniqueData;
+};
+
+export default async function Pricing() {
+  const data = await getUniqueProviders();
 
   return (
     <>
@@ -80,103 +84,6 @@ export default function Pricing() {
 
         <div className="relative z-10 w-full max-w-6xl px-4 sm:px-6 lg:px-20 pt-32 pb-20">
           {/* Filter Controls */}
-          <div className="flex flex-wrap gap-4 mb-8 justify-start">
-            <div className="relative">
-              <select
-                className="bg-[#1A0F2E] border border-[#2F2F2F] rounded-lg px-4 py-2 text-white appearance-none pr-8 cursor-pointer"
-                value={selectedChipset}
-                onChange={(e) => setSelectedChipset(e.target.value)}
-              >
-                <option value="">Chipset</option>
-                {uniqueChipsets.map((model) => (
-                  <option key={model} value={model}>
-                    {model}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 1.5L6 6.5L11 1.5"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div className="relative">
-              <select
-                className="bg-[#1A0F2E] border border-[#2F2F2F] rounded-lg px-4 py-2 text-white appearance-none pr-8 cursor-pointer"
-                value={selectedVram}
-                onChange={(e) => setSelectedVram(e.target.value)}
-              >
-                <option value="">vRAM</option>
-                {uniqueVramOptions.map((vram) => (
-                  <option key={vram} value={vram}>
-                    {vram}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 1.5L6 6.5L11 1.5"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div className="relative">
-              <select
-                className="bg-[#1A0F2E] border border-[#2F2F2F] rounded-lg px-4 py-2 text-white appearance-none pr-8 cursor-pointer"
-                value={selectedInterface}
-                onChange={(e) => setSelectedInterface(e.target.value)}
-              >
-                <option value="">Interface</option>
-                {uniqueInterfaces.map((interfaceType) => (
-                  <option key={interfaceType} value={interfaceType}>
-                    {interfaceType}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 1.5L6 6.5L11 1.5"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
 
           {/* Pricing Table */}
           <div className="bg-[#1A0F2E]/80 backdrop-blur-xl rounded-2xl border border-[#2F2F2F]/64 overflow-hidden">
@@ -196,32 +103,40 @@ export default function Pricing() {
             </div>
 
             {/* Table Rows */}
-            {filteredData.map((item, index) => (
+            {data.map((item, index) => (
               <div
                 key={index}
                 className="grid grid-cols-5 gap-4 px-6 py-4 border-b border-[#2F2F2F]/32 last:border-b-0 hover:bg-[#2F2F2F]/20 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div className="text-white font-semibold text-sm">
-                    {item.model}
+                    {item.gpuShortName.toUpperCase()}
                   </div>
                   <div className="bg-[#353535] text-white opacity-50 px-2 py-1 rounded text-xs font-semibold">
-                    {item.form_factor}
+                    {item.interface}
                   </div>
                 </div>
                 <div className="text-white text-sm text-center flex items-center justify-center font-medium">
-                  {item.vram}
+                  {item.gpuMemory}
                 </div>
                 <div className="text-white text-sm text-center flex items-center justify-center font-medium">
                   {item.region}
                 </div>
                 <div className="text-white text-sm text-center flex items-center justify-center font-medium">
-                  {item.price}
+                  {Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  }).format(item.price)}
                 </div>
                 <div className="flex items-center justify-center">
-                  {item.available === true ? (
+                  {item.available > 0 ? (
                     <a
-                      href={CONSOLE_LINK + "/deployments"}
+                      target="_blank"
+                      href={
+                        CONSOLE_LINK +
+                        "/marketplace?gpuName=" +
+                        item.gpuShortName
+                      }
                       className="bg-white hover:bg-gray-200 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                     >
                       Rent Now

@@ -3,12 +3,10 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
-  Filter,
   Cpu,
   MapPin,
   Zap,
   HardDrive,
-  X,
   Building,
   ArrowUpDown,
   ArrowUp,
@@ -254,7 +252,7 @@ export function useFilteredProviders({
   const filteredProviders = useMemo(() => {
     if (!providers) return [];
 
-    let filtered = providers.filter((provider) => {
+    const filtered = providers.filter((provider) => {
       // Search filter
       const matchesSearch = searchQuery
         ? provider.gpuShortName

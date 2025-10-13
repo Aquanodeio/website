@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Provider } from "@/components/ui/MarketplaceCard";
 import { Button } from "@/components/ui/button";
+import { ProviderType } from "@/types";
 
 interface FilterState {
   vendor: string;
@@ -244,7 +245,7 @@ export function useFilteredProviders({
       vRams: Array.from(new Set(providers.map((p) => p.gpuMemory))),
       regions: Array.from(new Set(providers.map((p) => p.region))),
       gpuNames: Array.from(new Set(providers.map((p) => p.gpuShortName))),
-      providers: Array.from(new Set(providers.map((p) => p.provider))),
+      providers: Object.values(ProviderType),
     };
   }, [providers]);
 

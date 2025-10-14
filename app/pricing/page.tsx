@@ -26,8 +26,11 @@ const getUniqueProviders = async () => {
     }
   });
 
-  // Convert map back to array
   const uniqueData = Array.from(gpuMap.values());
+
+  uniqueData.forEach((item) => {
+    item.region = item.region.replace(/[0-9]/g, "").trim();
+  });
 
   return uniqueData;
 };
@@ -117,7 +120,7 @@ export default async function Pricing() {
                   </div>
                 </div>
                 <div className="text-white text-sm text-center flex items-center justify-center font-medium">
-                  {item.gpuMemory}
+                  {item.gpuMemory.toUpperCase()}
                 </div>
                 <div className="text-white text-sm text-center flex items-center justify-center font-medium">
                   {item.region}

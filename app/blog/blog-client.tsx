@@ -68,8 +68,8 @@ export default function BlogClient({ blogData }: BlogClientProps) {
                     <div className="flex-shrink-0 relative">
                       <div className="w-[280px] h-[200px] rounded-xl relative overflow-hidden">
                         <Image
-                          src={"/images/blog-images.png"}
-                          alt="Blog post"
+                          src={post.coverImage || "/aquanode-banner.png"}
+                          alt={post.title}
                           fill
                           className="object-cover"
                         />

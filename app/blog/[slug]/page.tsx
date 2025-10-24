@@ -81,14 +81,25 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
 
           {/* Author Info */}
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#3F3D70] to-[#514EA3] rounded-full flex items-center justify-center">
-              <span className="text-white text-sm font-semibold">
-                {post.author.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </span>
-            </div>
+            {post.author.avatar ? (
+              <div className="w-12 h-12 rounded-full overflow-hidden relative">
+                <Image
+                  src={post.author.avatar}
+                  alt={post.author.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <div className="w-12 h-12 bg-gradient-to-br from-[#3F3D70] to-[#514EA3] rounded-full flex items-center justify-center">
+                <span className="text-white text-sm font-semibold">
+                  {post.author.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </span>
+              </div>
+            )}
             <div>
               <p className="text-white font-semibold">
                 {post.author.name}{" "}
@@ -123,25 +134,6 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
             </div>
           </div>
         )}
-
-        {/* CTA Section */}
-        <div className="text-center mt-16 pt-12 border-t border-[#2F2F2F]">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Take the Leap to Smarter Compute
-          </h2>
-          <p className="text-[#9CA3AF] mb-8 max-w-2xl mx-auto">
-            Start building on Aquanode. Accelerate your AI applications with our
-            high-performance compute infrastructure.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="bg-[#3F3D70] hover:bg-[#514EA3] text-white px-8 py-3 rounded-lg text-sm font-medium transition-all">
-              Get Started
-            </button>
-            <button className="border border-[#2F2F2F] hover:bg-[#2F2F2F]/20 text-white px-8 py-3 rounded-lg text-sm font-medium transition-all">
-              Contact Sales
-            </button>
-          </div>
-        </div>
       </div>
 
       <Footer />

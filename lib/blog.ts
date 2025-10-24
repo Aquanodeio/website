@@ -15,6 +15,7 @@ export interface BlogPost {
   tags: string[];
   readTime: string;
   slug?: string;
+  coverImage?: string;
 }
 
 // Legacy hardcoded blog posts (for backward compatibility)

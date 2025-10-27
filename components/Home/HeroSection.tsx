@@ -6,8 +6,21 @@ import EllipseLight from "@/assets/home/ellipse.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center">
-      <div className="relative pt-20 pb-40 px-6 md:px-12 lg:px-16 xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      {/* Ellipse Light Effect - Always anchored to right side */}
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 z-0 pointer-events-none">
+        <Image
+          src={EllipseLight}
+          alt=""
+          width={1089}
+          height={421}
+          className="w-[580px] md:w-[680px] lg:w-[780px] xl:w-[900px] h-auto"
+          style={{ transform: "translateX(20%)" }}
+          priority
+        />
+      </div>
+
+      <div className="relative pt-20 pb-40 px-6 md:px-12 lg:px-16 xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
         {/* Left Content */}
         <div className="space-y-8">
           {/* Nvidia Badge */}
@@ -66,19 +79,6 @@ export default function HeroSection() {
         {/* Right Illustration */}
         <div className="relative flex items-center justify-center lg:justify-end lg:pr-0">
           <div className="relative w-full max-w-2xl lg:max-w-none lg:w-auto">
-            {/* Ellipse Light Effect (anchored to bottom-right corner) */}
-            <div className="absolute -bottom-40 -right-36 z-0 pointer-events-none">
-              <Image
-                src={EllipseLight}
-                alt=""
-                width={1089}
-                height={421}
-                className="w-[580px] md:w-[680px] lg:w-[780px] h-auto"
-                style={{ transform: "rotate(0deg)" }}
-                priority
-              />
-            </div>
-            
             {/* Hero Image */}
             <div className="relative z-10">
               <Image

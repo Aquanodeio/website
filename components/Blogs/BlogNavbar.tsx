@@ -2,15 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "@/assets/home/logo.png";
+import Logo from "@/assets/blogs/aquanode-black-logo.png";
 
-export default function HeroNavbar() {
+export default function BlogNavbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="relative pt-10 px-6 md:px-12 lg:px-16 xl:px-20">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center bg-white/[0.02] backdrop-blur-[0.5px] border-[0.5px] border-white/20 rounded-[10px] h-[56px] gap-6 px-6" style={{ width: '650px' }}>
+    <nav className="relative pt-10 px-6 md:px-12 lg:px-16 xl:px-20 bg-white">
+      <div className="flex justify-between items-center px-6">
+        <div className="flex items-center bg-gray-50 border border-gray-200 rounded-[10px] h-[56px] gap-6 px-8" style={{ width: '650px' }}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4">
             <Image
@@ -20,18 +20,18 @@ export default function HeroNavbar() {
               height={32}
               className="w-8 h-8"
             />
-            <span className="text-white font-normal text-lg">Aquanode</span>
+            <span className="text-black font-normal text-lg">Aquanode</span>
           </Link>
 
           {/* Separator */}
-          <div className="hidden md:block w-8 h-px bg-white/70" />
+          <div className="hidden md:block w-px h-6 bg-gray-300" />
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-6">
             <Link
               href="/"
               className={`transition-colors font-medium text-sm ${
-                pathname === "/" ? "text-white" : "text-white/70 hover:text-white"
+                pathname === "/" ? "text-gray-900" : "text-gray-600 hover:text-black"
               }`}
             >
               Home
@@ -39,7 +39,7 @@ export default function HeroNavbar() {
             <Link
               href="/pricing"
               className={`transition-colors font-medium text-sm ${
-                pathname === "/pricing" ? "text-white" : "text-white/70 hover:text-white"
+                pathname === "/pricing" ? "text-gray-900" : "text-gray-600 hover:text-black"
               }`}
             >
               Pricing
@@ -47,7 +47,7 @@ export default function HeroNavbar() {
             <Link
               href="/marketplace"
               className={`transition-colors font-medium text-sm ${
-                pathname === "/marketplace" ? "text-white" : "text-white/70 hover:text-white"
+                pathname === "/marketplace" ? "text-gray-900" : "text-gray-600 hover:text-black"
               }`}
             >
               Marketplace
@@ -55,7 +55,7 @@ export default function HeroNavbar() {
             <Link
               href="/blog"
               className={`transition-colors font-medium text-sm ${
-                pathname?.startsWith("/blog") ? "text-white" : "text-white/70 hover:text-white"
+                pathname?.startsWith("/blog") ? "text-gray-900" : "text-gray-600 hover:text-black"
               }`}
             >
               Blogs
@@ -63,7 +63,7 @@ export default function HeroNavbar() {
             <Link
               href="https://docs.aquanode.io"
               target="_blank"
-              className="text-white/70 hover:text-white transition-colors font-medium text-sm"
+              className="text-gray-600 hover:text-black transition-colors font-medium text-sm"
             >
               Docs
             </Link>

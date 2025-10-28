@@ -1,5 +1,5 @@
 import Image from "next/image";
-import GPUVector from "@/assets/home/nf/GPU-Vector.svg";
+import GPUVector from "@/assets/home/GPU-Vector.svg";
 
 export default function GPUPickerSection() {
   const gpuCards = [

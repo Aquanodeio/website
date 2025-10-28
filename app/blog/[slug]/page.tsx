@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import BlogNavbar from "@/components/Blogs/BlogNavbar";
+import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { getBlogPost, getAllBlogSlugs } from "@/lib/blog-server";
 import MDXRenderer from "@/components/mdx/mdx-renderer";

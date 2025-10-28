@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getAllBlogPosts } from "@/lib/blog-server";
 import BlogClient from "./blog-client";
 import FooterCTA from "@/components/Home/FooterCTA";
-import BlogNavbar from "@/components/Blogs/BlogNavbar";
+import BlogNavbar from "@/components/NavbarWhite";
 import EllipseLeft from "@/assets/blogs/ellipse-left.svg";
 import EllipseRight from "@/assets/blogs/ellipse-right.svg";
 import ArrowDown from "@/assets/blogs/arrow-down-vector.svg";

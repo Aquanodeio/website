@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import BlogNavbar from "@/components/Blogs/BlogNavbar";
+import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { getMarketplace } from "@/hooks/useMarketplace";
 import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";

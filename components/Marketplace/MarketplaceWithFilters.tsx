@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { RefreshCw } from "lucide-react";
-import MarketplaceList from "@/components/MaketplaceList";
+import MarketplaceList from "@/components/Marketplace/MaketplaceList";
 import { useFilteredProviders } from "@/hooks/useFilteredProviders";
-import { Provider } from "./ui/MarketplaceCard";
+import { Provider } from "./MarketplaceCard";
 
 interface MarketplaceWithFiltersProps {
   providers: Provider[] | undefined;

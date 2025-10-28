@@ -2,7 +2,7 @@
 
 import React, { Suspense } from "react";
 import MarketplaceWithFilters from "./MarketplaceWithFilters";
-import { MarketplaceCardSkeleton, Provider } from "./ui/MarketplaceCard";
+import { MarketplaceCardSkeleton, Provider } from "./MarketplaceCard";
 
 interface MarketplaceWithFiltersSuspenseProps {
   providers: Provider[] | undefined;

@@ -1,4 +1,4 @@
-import { Provider } from "@/components/ui/MarketplaceCard";
+import { Provider } from "@/components/Marketplace/MarketplaceCard";
 import { api } from "@/lib/api-client";
 import { QueryConfig } from "@/lib/react-query";
 import { useQuery, queryOptions } from "@tanstack/react-query";

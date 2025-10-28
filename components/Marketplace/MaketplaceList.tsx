@@ -3,7 +3,7 @@ import {
   MarketplaceCard,
   MarketplaceCardSkeleton,
   Provider,
-} from "./ui/MarketplaceCard";
+} from "./MarketplaceCard";
 import {
   Pagination,
   PaginationContent,

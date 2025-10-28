@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import Head from "next/head";
-import BlogNavbar from "@/components/Blogs/BlogNavbar";
+import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { useMarketplace } from "@/hooks/useMarketplace";
-import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersSuspense";
+import MarketplaceWithFiltersSuspense from "@/components/Marketplace/MarketplaceWithFiltersSuspense";
 
 export default function MarketplacePage() {
   const { data: marketplaceData, isLoading, isFetching } = useMarketplace();

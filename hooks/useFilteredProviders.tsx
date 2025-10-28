@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Provider } from "@/components/ui/MarketplaceCard";
+import { Provider } from "@/components/Marketplace/MarketplaceCard";
 import { ProviderType } from "@/types";
 
 interface FilterState {

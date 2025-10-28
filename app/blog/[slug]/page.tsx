@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import OverlayNavbar from "@/components/OverlayNavbar";
-import Footer from "@/components/Footer";
+import BlogNavbar from "@/components/Blogs/BlogNavbar";
+import FooterCTA from "@/components/Home/FooterCTA";
 import { getBlogPost, getAllBlogSlugs } from "@/lib/blog-server";
 import MDXRenderer from "@/components/mdx/mdx-renderer";
-import PricingBg from "@/assets/pricing/pricing-bg.png";
-import Ellipse from "@/assets/pricing/ellipse.png";
+import EllipseLeft from "@/assets/blogs/ellipse-left.svg";
+import EllipseRight from "@/assets/blogs/ellipse-right.svg";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -25,31 +25,54 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
 
   return (
     <main
-      className="min-h-screen w-full bg-[#0A0118] overflow-x-hidden overflow-y-auto flex flex-col items-center relative"
+      className="min-h-screen w-full bg-white overflow-x-hidden overflow-y-auto flex flex-col"
       style={{ fontFamily: "var(--font-)" }}
     >
-      <OverlayNavbar />
+      <BlogNavbar />
 
-      {/* Background Images */}
-      <div className="absolute left-0 top-0 w-full h-[300px] sm:h-[500px]">
-        <Image
-          src={PricingBg}
-          alt=""
-          fill
-          className="object-cover object-left"
-        />
-      </div>
+      {/* Container with consistent padding */}
+      <div className="w-full px-6 md:px-12 lg:px-16 xl:px-20 py-8">
+        {/* Hero Banner - 30% smaller than blog page */}
+        <div className="relative w-full bg-[#0F0E11] p-28 overflow-hidden rounded-[10px] mb-8">
+          {/* Subtle blue gradient overlay - bottom right */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse 1000px 800px at 85% 80%, rgba(21, 47, 112, 0.3), transparent 60%)",
+            }}
+          />
 
-      {/* Centered Ellipse */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[400px]">
-        <Image src={Ellipse} alt="" fill className="object-contain" />
-      </div>
+          {/* Left Ellipse Light - very subtle */}
+          <div className="absolute left-0 -bottom-65 w-[600px] h-[650px] opacity-100 pointer-events-none rotate-[-6deg]">
+            <Image
+              src={EllipseLeft}
+              alt=""
+              fill
+              className="object-contain"
+            />
+          </div>
 
-      <div className="relative z-10 w-full max-w-4xl px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+          {/* Right Ellipse Light - more prominent on bottom right */}
+          <div className="absolute right-0 -bottom-80 w-[900px] h-[900px] opacity-20 pointer-events-none">
+            <Image
+              src={EllipseRight}
+              alt=""
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-20 text-center">
+            <h1 className="text-4xl md:text-5xl font-normal text-white" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+              {post.title}
+            </h1>
+          </div>
+        </div>
+
         {/* Back Button */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-[#9CA3AF] hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-12"
         >
           <svg
             className="w-4 h-4"
@@ -67,76 +90,77 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           <span className="text-sm font-medium">Back</span>
         </Link>
 
-        {/* Post Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-[#9CA3AF] text-sm font-medium">
-              {post.date}
-            </span>
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Left Column - Post Header (Sticky) */}
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32">
+              {/* Author Info */}
+              <div className="flex items-center gap-4 mb-4">
+                {post.author.avatar ? (
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative">
+                    <Image
+                      src={post.author.avatar}
+                      alt={post.author.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-lg font-semibold">
+                      {post.author.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </span>
+                  </div>
+                )}
+                <div>
+                  <p className="text-gray-900 font-semibold text-base">
+                    {post.author.name}
+                  </p>
+                  <p className="text-gray-600 text-sm">{post.author.title}</p>
+                </div>
+              </div>
+
+              {/* Date */}
+              <div className="mb-6">
+                <span className="text-gray-600 text-sm font-medium uppercase tracking-wide">
+                  {post.date}
+                </span>
+              </div>
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
-            {post.title}
-          </h1>
-
-          {/* Author Info */}
-          <div className="flex items-center gap-4">
-            {post.author.avatar ? (
-              <div className="w-12 h-12 rounded-full overflow-hidden relative">
-                <Image
-                  src={post.author.avatar}
-                  alt={post.author.name}
-                  fill
-                  className="object-cover"
-                />
+          {/* Right Column - Post Content */}
+          <div className="lg:col-span-8">
+            <article className="max-w-none">
+              <div className="text-gray-600">
+                <MDXRenderer content={post.content} />
               </div>
-            ) : (
-              <div className="w-12 h-12 bg-gradient-to-br from-[#3F3D70] to-[#514EA3] rounded-full flex items-center justify-center">
-                <span className="text-white text-sm font-semibold">
-                  {post.author.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </span>
+            </article>
+
+            {/* Tags */}
+            {post.tags && post.tags.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-gray-100 border border-gray-200 text-gray-600 px-3 py-1 rounded-lg text-sm"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
-            <div>
-              <p className="text-white font-semibold">
-                {post.author.name}{" "}
-                <span className="text-[#9CA3AF] font-normal">
-                  {post.author.handle}
-                </span>
-              </p>
-              <p className="text-[#9CA3AF] text-sm">{post.author.title}</p>
-            </div>
           </div>
         </div>
-
-        {/* Post Content */}
-        <article className="max-w-none">
-          <div className="text-[#E5E7EB]">
-            <MDXRenderer content={post.content} />
-          </div>
-        </article>
-
-        {/* Tags */}
-        {post.tags && post.tags.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-[#2F2F2F]">
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-[#1A0F2E] border border-[#2F2F2F] text-[#9CA3AF] px-3 py-1 rounded-lg text-sm"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
-
-      <Footer />
+      
+      <FooterCTA />
     </main>
   );
 }

@@ -39,7 +39,7 @@ export default function BlogClient({ blogData }: BlogClientProps) {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-normal text-white mb-3 leading-tight group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl font-normal text-white mb-3 leading-tight">
                       {post.title}
                     </h3>
 
@@ -50,26 +50,14 @@ export default function BlogClient({ blogData }: BlogClientProps) {
 
                     {/* Read Article Button */}
                     <button 
-                      className="group/btn bg-[#3B82F6] hover:bg-[#2563EB] transition-all text-white font-normal px-6 py-3 rounded-lg flex items-center gap-2 text-sm"
+                      className="bg-white transition-all text-black font-normal px-6 py-3 rounded-lg flex items-center gap-3 text-sm border border-blue-600/10 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                       style={{ fontFamily: 'var(--font-inter)' }}
                     >
                       Read Article
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-all"
-                      >
-                        <path
-                          d="M3.33337 8H12.6667M12.6667 8L8.00004 3.33333M12.6667 8L8.00004 12.6667"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <div className="flex items-center gap-0">
+                        <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+                        <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+                      </div>
                     </button>
                   </div>
                 </div>

@@ -10,7 +10,7 @@ export default function HeroNavbar() {
   return (
     <nav className="relative pt-10 px-6 md:px-12 lg:px-16 xl:px-20">
       <div className="flex justify-between items-center">
-        <div className="flex items-center bg-white/[0.02] backdrop-blur-[0.5px] border-[0.5px] border-white/20 rounded-[10px] h-[56px] gap-6 px-6" style={{ width: '650px' }}>
+        <div className="flex items-center bg-white/[0.02] backdrop-blur-[0.5px] border-[0.5px] border-white/20 rounded-[10px] h-[56px] gap-6 px-6" style={{ width: '580px' }}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4">
             <Image

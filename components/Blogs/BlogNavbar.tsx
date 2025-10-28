@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/assets/blogs/aquanode-black-logo.png";
+import { CONSOLE_LINK } from "@/config/links";
 
 export default function BlogNavbar() {
   const pathname = usePathname();
@@ -71,7 +72,7 @@ export default function BlogNavbar() {
         </div>
 
         {/* CTA Button */}
-        <Link href="/marketplace">
+        <a href={CONSOLE_LINK}>
           <button className="group bg-[#3B82F6] transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6" style={{ width: '200px', height: '50px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
             Start for Free
             <div className="flex items-center gap-0">
@@ -79,7 +80,7 @@ export default function BlogNavbar() {
               <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
             </div>
           </button>
-        </Link>
+        </a>
       </div>
     </nav>
   );

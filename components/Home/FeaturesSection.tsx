@@ -25,7 +25,7 @@ export default function FeaturesSection() {
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start">
           {/* Left: Big Globe Image */}
-          <div className="flex items-center justify-center mt-5">
+          <div className="hidden lg:flex items-center justify-center mt-5">
             <Image
               src={BigGlobeIcon}
               alt="Globe"
@@ -147,7 +147,7 @@ export default function FeaturesSection() {
       </div>
 
       {/* Loading Frame - Extra Wide */}
-      <div className="mt-16 px-6 md:px-8 lg:px-10">
+      <div className="hidden md:block mt-16 px-6 md:px-8 lg:px-10">
         <Image
           src={LoadingSVG}
           alt="Loading Frame"

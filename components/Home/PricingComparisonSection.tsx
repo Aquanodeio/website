@@ -15,10 +15,10 @@ export default function PricingComparisonSection() {
       <div className="w-full px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Header */}
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-black mb-4">
             Our GPUs cost less and perform faster,
           </h2>
-          <p className="text-4xl text-gray-500 mb-8">
+          <p className="text-2xl md:text-3xl lg:text-4xl text-gray-500 mb-8">
             without compromising scalability or reliability.
           </p>
           
@@ -34,59 +34,64 @@ export default function PricingComparisonSection() {
         </div>
 
         {/* Pricing Table */}
-        <div className="mt-20 max-w-6xl mx-auto rounded-xl overflow-hidden bg-white">
-          {/* Table Header */}
-          <div className="grid grid-cols-5 gap-4 py-6 px-6 bg-gray-50 text-center">
-            <div className="text-gray-500 font-medium">GPU Type</div>
-            <div className="text-[#4A90FF] font-normal">Aquanode</div>
-            <div className="text-gray-500 font-medium">AWS</div>
-            <div className="text-gray-500 font-medium">Google Cloud</div>
-            <div className="text-gray-500 font-medium">Azure</div>
-          </div>
-
-          {/* Table Rows */}
-          <div className="px-6 divide-y divide-gray-100">
-            {pricingRows.map((row, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-5 gap-4 items-center py-4 text-center"
-              >
-                {/* GPU Type */}
-                <div className="text-gray-500 font-medium">{row.gpu}</div>
-
-                {/* Aquanode Price - Highlighted */}
-                <div className="flex justify-center">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 border-1 border-[#4A90FF] bg-blue-50 rounded-lg">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="text-[#4A90FF]"
-                    >
-                      <path
-                        d="M13.3333 4L6 11.3333L2.66667 8"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="text-[#4A90FF] font-normal">{row.aquanode}</span>
-                  </div>
-                </div>
-
-                {/* AWS Price */}
-                <div className="text-gray-500">{row.aws}</div>
-
-                {/* Google Cloud Price */}
-                <div className="text-gray-500">{row.google}</div>
-
-                {/* Azure Price */}
-                <div className="text-gray-500">{row.azure}</div>
+        <div className="mt-20 max-w-6xl mx-auto">
+          {/* Mobile: Horizontally Scrollable */}
+          <div className="overflow-x-auto rounded-xl bg-white">
+            <div className="min-w-[600px]">
+              {/* Table Header */}
+              <div className="grid grid-cols-5 gap-2 md:gap-4 py-4 md:py-6 px-3 md:px-6 bg-gray-50 text-center">
+                <div className="text-gray-500 font-medium text-sm md:text-base">GPU Type</div>
+                <div className="text-[#4A90FF] font-normal text-sm md:text-base">Aquanode</div>
+                <div className="text-gray-500 font-medium text-sm md:text-base">AWS</div>
+                <div className="text-gray-500 font-medium text-sm md:text-base whitespace-nowrap">Google Cloud</div>
+                <div className="text-gray-500 font-medium text-sm md:text-base">Azure</div>
               </div>
-            ))}
+
+              {/* Table Rows */}
+              <div className="px-3 md:px-6 divide-y divide-gray-100">
+                {pricingRows.map((row, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-5 gap-2 md:gap-4 items-center py-3 md:py-4 text-center"
+                  >
+                    {/* GPU Type */}
+                    <div className="text-gray-500 font-medium text-sm md:text-base">{row.gpu}</div>
+
+                    {/* Aquanode Price - Highlighted */}
+                    <div className="flex justify-center">
+                      <div className="inline-flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 border-1 border-[#4A90FF] bg-blue-50 rounded-lg">
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="text-[#4A90FF] md:w-4 md:h-4"
+                        >
+                          <path
+                            d="M13.3333 4L6 11.3333L2.66667 8"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span className="text-[#4A90FF] font-normal text-sm md:text-base whitespace-nowrap">{row.aquanode}</span>
+                      </div>
+                    </div>
+
+                    {/* AWS Price */}
+                    <div className="text-gray-500 text-sm md:text-base whitespace-nowrap">{row.aws}</div>
+
+                    {/* Google Cloud Price */}
+                    <div className="text-gray-500 text-sm md:text-base whitespace-nowrap">{row.google}</div>
+
+                    {/* Azure Price */}
+                    <div className="text-gray-500 text-sm md:text-base whitespace-nowrap">{row.azure}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

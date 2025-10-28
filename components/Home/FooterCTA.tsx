@@ -31,15 +31,11 @@ export default function FooterCTA() {
         <div className="text-center mb-20">
           <p className="text-gray-400 text-lg mb-8 leading-relaxed">
             Aquanode lets you deploy GPUs across multiple clouds, with built-in
-            tooling and
-            <br />
-            connector support, without the complexity, limits, or hidden costs.
+            tooling and<br className="hidden md:inline" /> connector support, without the complexity, limits, or hidden costs.
           </p>
 
           <h2 className="text-4xl md:text-5xl font-normal text-white mb-8">
-            Want to see a provider or a
-            <br />
-            feature you love?
+            Want to see a provider or a<br className="hidden md:inline" /> feature you love?
           </h2>
 
           <Link href="mailto:hi@aquanode.io">

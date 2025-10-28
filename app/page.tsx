@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="relative w-full" style={{ fontFamily: 'var(--font-geist-sans)' }}>
       {/* Hero Section with dark background */}
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative min-h-screen w-full overflow-hidden">
         {/* Background elements - full viewport coverage */}
         {/* Base dark background */}
         <div className="absolute inset-0 z-0" style={{ background: "#0F0E11" }} />

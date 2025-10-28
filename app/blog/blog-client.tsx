@@ -49,7 +49,7 @@ export default function BlogClient({ blogData }: BlogClientProps) {
                     </p>
 
                     {/* Read Article Button */}
-                    <button 
+                    {/* <button 
                       className="bg-white transition-all text-black font-normal px-6 py-3 rounded-lg flex items-center gap-3 text-sm border border-blue-600/10 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                       style={{ fontFamily: 'var(--font-inter)' }}
                     >
@@ -58,7 +58,7 @@ export default function BlogClient({ blogData }: BlogClientProps) {
                         <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
                         <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
                       </div>
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </Link>

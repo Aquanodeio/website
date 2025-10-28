@@ -6,9 +6,9 @@ import EllipseLight from "@/assets/home/ellipse.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Ellipse Light Effect - Always anchored to right side */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-0 z-0 pointer-events-none">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Ellipse Light Effect - Always anchored to bottom right */}
+      <div className="hidden lg:block absolute bottom-0 right-0 z-0 pointer-events-none">
         <Image
           src={EllipseLight}
           alt=""
@@ -20,9 +20,9 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative pt-20 pb-40 px-6 md:px-12 lg:px-16 xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+      <div className="relative pt-8 pb-20 md:pt-24 md:pb-44 px-6 md:px-12 lg:px-16 xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
         {/* Left Content */}
-        <div className="space-y-8">
+        <div className="space-y-8 sm:space-y-10 md:space-y-12">
           {/* Nvidia Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/[0.04] border-t border-l border-white/[0.5] rounded-[8px]" style={{ height: '50px' }}>
             <Image
@@ -37,7 +37,7 @@ export default function HeroSection() {
 
           {/* Main Heading */}
           <h1 
-            className="text-5xl lg:text-[44px] font-normal text-white leading-[130%] tracking-[-0.4px]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-normal text-white leading-[130%] tracking-[-0.4px]"
             style={{ fontFamily: 'var(--font-jetbrains-mono)' }}
           >
             Get GPUs across clouds,
@@ -46,7 +46,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Description */}
-          <p className="text-white/70 text-lg leading-relaxed w-[720px]">
+          <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-full md:max-w-[720px]">
             Aquanode lets you deploy and manage GPUs across multiple cloud
             providers with features like pause and resume vm without needing to
             manage multiple cloud accounts.
@@ -77,7 +77,7 @@ export default function HeroSection() {
         </div>
 
         {/* Right Illustration */}
-        <div className="relative flex items-center justify-center lg:justify-end lg:pr-0">
+        <div className="relative hidden lg:flex items-center justify-center lg:justify-end lg:pr-0">
           <div className="relative w-full max-w-2xl lg:max-w-none lg:w-auto">
             {/* Hero Image */}
             <div className="relative z-10">

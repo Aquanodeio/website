@@ -3,22 +3,46 @@ import Link from "next/link";
 export default function WhyChooseSection() {
   const features = [
     {
-      title: "One Account for All Clouds",
+      title: (
+        <>
+          One Account for All
+          <br />
+          Clouds
+        </>
+      ),
       description:
         "No need to juggle multiple cloud accounts — deploy everything from one place.",
     },
     {
-      title: "Centralized Billing Across Cloud",
+      title: (
+        <>
+          Centralized Billing
+          <br />
+          Across Cloud
+        </>
+      ),
       description:
         "Track and manage all your cloud costs from a single, transparent dashboard.",
     },
     {
-      title: "Flexible Payment Options",
+      title: (
+        <>
+          Flexible Payment
+          <br />
+          Options
+        </>
+      ),
       description:
         "Whether it's crypto or traditional methods, we've got you covered.",
     },
     {
-      title: "Zero Setup Hassle.",
+      title: (
+        <>
+          Zero Setup
+          <br />
+          Hassle.
+        </>
+      ),
       description:
         "Seamlessly connect with providers like AWS, Backblaze, and more",
     },
@@ -62,15 +86,7 @@ export default function WhyChooseSection() {
               {/* Card Content */}
               <div className="py-8 px-8 h-full flex flex-col">
                 <h3 className=" text-xl font-normal text-black mb-4 text-center">
-                  {feature.title === "Zero Setup Hassle." ? (
-                    <>
-                      Zero Setup
-                      <br />
-                      Hassle.
-                    </>
-                  ) : (
-                    feature.title
-                  )}
+                  {feature.title}
                 </h3>
                 <div className="-mx-8 px-2 mb-6">
                   <div className="w-full h-px bg-gray-700" />

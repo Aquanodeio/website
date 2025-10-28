@@ -5,7 +5,6 @@ import { RefreshCw } from "lucide-react";
 import MarketplaceList from "@/components/MaketplaceList";
 import { useFilteredProviders } from "@/hooks/useFilteredProviders";
 import { Provider } from "./ui/MarketplaceCard";
-import { Button } from "./ui/button";
 
 interface MarketplaceWithFiltersProps {
   providers: Provider[] | undefined;
@@ -53,15 +52,15 @@ const MarketplaceWithFilters: React.FC<MarketplaceWithFiltersProps> = ({
         {filterTrigger}
 
         {onRefresh && (
-          <Button
-            variant="outline"
+          <button
             onClick={handleRefresh}
             disabled={isFetching || isLoading}
-            className="gap-2"
+            className="group bg-[#3B82F6] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-white font-normal flex items-center justify-center gap-3 border border-blue-600 shadow-[0_0_20px_rgba(59,130,246,0.3)] backdrop-blur-sm px-6 cursor-pointer whitespace-nowrap"
+            style={{ height: '44px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}
           >
             <RefreshCw size={16} className={isFetching ? "animate-spin" : ""} />
             Refresh
-          </Button>
+          </button>
         )}
       </div>
 
@@ -77,8 +76,8 @@ const MarketplaceWithFilters: React.FC<MarketplaceWithFiltersProps> = ({
 
         {/* No results message */}
         {!isLoading && !error && filteredProviders.length === 0 && (
-          <div className="text-center py-12 bg-muted/20 rounded-lg">
-            <p className="text-sm text-muted-foreground">{emptyStateMessage}</p>
+          <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
+            <p className="text-sm text-gray-600">{emptyStateMessage}</p>
           </div>
         )}
       </div>

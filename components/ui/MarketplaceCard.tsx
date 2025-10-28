@@ -1,7 +1,6 @@
 import { cn, toTitleCase } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import React from "react";
-import { Button } from "./button";
 import { useSearchParams } from "next/navigation";
 
 export interface Provider {
@@ -56,46 +55,49 @@ export const MarketplaceCard = React.forwardRef<
     <div
       ref={ref}
       {...props}
-      className="space-y-4 flex flex-col shadow-md backdrop-blur-md shadow-[#311579] rounded-md overflow-clip w-full border border-[#311579]"
+      className="flex flex-col bg-[#141414] rounded-md border border-white/10 hover:border-white/20 transition-all duration-300 ease-in-out overflow-clip w-full hover:scale-105 cursor-pointer"
+      style={{ fontFamily: 'var(--font-inter)' }}
     >
-      <div className="flex flex-col items-center justify-between w-full px-4 pt-4">
-        <div className="flex items-center justify-between w-full gap-4 pb-2">
+      <div className="flex flex-col items-center justify-between w-full p-6">
+        <div className="flex items-start justify-between w-full gap-4 mb-6">
           <div className="flex items-center gap-2">
-            <p className="text-xl">{provider.gpuShortName.toUpperCase()}</p>
-            <p className="text-sm text-muted-foreground">
+            <h4 className="text-3xl font-normal text-white" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+              {provider.gpuShortName.toUpperCase()}
+            </h4>
+            <p className="text-gray-400 text-xl">
               ({provider.gpuMemory})
             </p>
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="text-sm rounded-sm bg-[#311579]/40 py-0.5 px-2">
+            <span className="px-4 py-2 bg-[#2A2A2A] rounded-full text-white text-sm font-normal">
               {toTitleCase(provider.provider)}
-            </div>
+            </span>
           </div>
         </div>
 
-        <div className="text-xs text-muted-foreground gap-1 flex flex-col w-full">
-          <div className="flex justify-between w-full text-xs text-muted-foreground">
-            <p>vCPU</p>
-            <p>{provider.availableCpu.toFixed(2)}</p>
+        <div className="space-y-3 w-full mb-6">
+          <div className="flex justify-between items-center">
+            <span className="text-white">vCPU</span>
+            <span className="text-gray-400">{provider.availableCpu.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between">
-            <p>Memory</p>
-            <p>
+          <div className="flex justify-between items-center">
+            <span className="text-white">Memory</span>
+            <span className="text-gray-400">
               {provider.availableMemory.value.toFixed(2)}{" "}
               {provider.availableMemory.unit}
-            </p>
+            </span>
           </div>
-          <div className="flex justify-between">
-            <p>Storage</p>
-            <p>
+          <div className="flex justify-between items-center">
+            <span className="text-white">Storage</span>
+            <span className="text-gray-400">
               {provider.availableStorage.value.toFixed(2)}{" "}
               {provider.availableStorage.unit}
-            </p>
+            </span>
           </div>
-          <div className="flex justify-between">
-            <p>Interface</p>
-            <p>{provider.interface}</p>
+          <div className="flex justify-between items-center">
+            <span className="text-white">Interface</span>
+            <span className="text-gray-400">{provider.interface}</span>
           </div>
         </div>
 
@@ -111,24 +113,29 @@ export const MarketplaceCard = React.forwardRef<
             rel="noreferrer"
             className="w-full"
           >
-            <Button
-              className="mt-4 w-full bg-[#5d45a4] text-white cursor-pointer hover:bg-[#5d45a4]/80"
+            <button
+              className="w-full group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-blue-600/10 shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
+              style={{ height: '44px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}
               type="button"
             >
               <p>${provider.price.toFixed(2)}/hr</p>
-            </Button>
+              <div className="flex items-center gap-0">
+                <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+                <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+              </div>
+            </button>
           </a>
         )}
       </div>
 
-      <div className="w-full flex h-8 justify-between items-center px-3">
+      <div className="w-full flex justify-between items-center px-6 py-3 border-t border-white/10">
         <div className="flex items-center gap-1.5">
-          <Globe className="h-3 w-3" />
-          <p className="text-xs text-muted-foreground">{provider.region}</p>
+          <Globe className="h-3 w-3 text-gray-400" />
+          <p className="text-xs text-gray-400">{provider.region}</p>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-500 rounded-full" />
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-gray-400">
             {provider.available} GPUs
           </p>
         </div>
@@ -147,43 +154,47 @@ export const MarketplaceCardSkeleton = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "overflow-clip flex flex-col justify-between rounded-md backdrop-blur-2xl shadow-md shadow-[#311579] border-[#311579]",
+        "flex flex-col bg-[#141414] rounded-md border border-white/10",
         className
       )}
       {...props}
     >
-      <div className="p-4 space-y-4">
-        <div className="flex items-center justify-between">
+      <div className="p-6 space-y-4">
+        <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-2">
-            <div className="h-6 bg-[#311579]/10 rounded w-20 animate-pulse" />
-            <div className="h-3 bg-[#311579]/10 rounded w-12 animate-pulse" />
+            <div className="h-8 bg-white/10 rounded w-24 animate-pulse" />
+            <div className="h-5 bg-white/10 rounded w-16 animate-pulse" />
           </div>
-          <div className="h-5 bg-[#311579]/10 rounded w-12 animate-pulse" />
+          <div className="h-8 bg-white/10 rounded-full w-20 animate-pulse" />
         </div>
-        <div className="space-y-2">
+        <div className="space-y-3 mb-6">
           <div className="flex justify-between">
-            <div className="h-3 bg-[#311579]/10 rounded w-8 animate-pulse" />
-            <div className="h-3 bg-[#311579]/10 rounded w-12 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-12 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-16 animate-pulse" />
           </div>
           <div className="flex justify-between">
-            <div className="h-3 bg-[#311579]/10 rounded w-10 animate-pulse" />
-            <div className="h-3 bg-[#311579]/10 rounded w-16 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-14 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-20 animate-pulse" />
           </div>
           <div className="flex justify-between">
-            <div className="h-3 bg-[#311579]/10 rounded w-10 animate-pulse" />
-            <div className="h-3 bg-[#311579]/10 rounded w-16 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-14 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-20 animate-pulse" />
+          </div>
+          <div className="flex justify-between">
+            <div className="h-4 bg-white/10 rounded w-16 animate-pulse" />
+            <div className="h-4 bg-white/10 rounded w-12 animate-pulse" />
           </div>
         </div>
-        <div className="h-10 bg-[#311579]/10 rounded w-full animate-pulse" />
+        <div className="h-11 bg-white/10 rounded-lg w-full animate-pulse" />
       </div>
-      <div className="w-full flex h-8 justify-between items-center px-3">
+      <div className="w-full flex justify-between items-center px-6 py-3 border-t border-white/10">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-4 bg-[#311579]/10 rounded animate-pulse" />
-          <div className="h-3 bg-[#311579]/10 rounded w-12 animate-pulse" />
+          <div className="h-3 w-3 bg-white/10 rounded animate-pulse" />
+          <div className="h-3 bg-white/10 rounded w-16 animate-pulse" />
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-[#311579]/10 rounded-full animate-pulse" />
-          <div className="h-3 bg-[#311579]/10 rounded w-16 animate-pulse" />
+          <div className="w-2 h-2 bg-white/10 rounded-full animate-pulse" />
+          <div className="h-3 bg-white/10 rounded w-20 animate-pulse" />
         </div>
       </div>
     </div>

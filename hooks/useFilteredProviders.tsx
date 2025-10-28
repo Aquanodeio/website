@@ -21,7 +21,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Provider } from "@/components/ui/MarketplaceCard";
-import { Button } from "@/components/ui/button";
 import { ProviderType } from "@/types";
 
 interface FilterState {
@@ -349,7 +348,11 @@ export function useFilteredProviders({
         value={filters.provider}
         onValueChange={(value: any) => updateFilter("provider", value)}
       >
-        <SelectTrigger>
+        <SelectTrigger className={`h-[44px] rounded-[10px] backdrop-blur-sm ${
+          filters.provider !== "all" 
+            ? "!bg-[#2A2A2A] text-white border border-gray-700" 
+            : "!bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
+        }`} style={{ fontFamily: 'var(--font-inter)' }}>
           <div className="flex items-center gap-2">
             <Building className="w-3 h-3" />
             <SelectValue placeholder="All Providers" />
@@ -368,7 +371,11 @@ export function useFilteredProviders({
         value={filters.gpuName}
         onValueChange={(value: any) => updateFilter("gpuName", value)}
       >
-        <SelectTrigger className="w-40">
+        <SelectTrigger className={`w-40 h-[44px] rounded-[10px] backdrop-blur-sm ${
+          filters.gpuName !== "all" 
+            ? "!bg-[#2A2A2A] text-white border border-gray-700" 
+            : "!bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
+        }`} style={{ fontFamily: 'var(--font-inter)' }}>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4" />
             <SelectValue placeholder="All GPUs" />
@@ -388,7 +395,11 @@ export function useFilteredProviders({
         value={filters.vram}
         onValueChange={(value: any) => updateFilter("vram", value)}
       >
-        <SelectTrigger>
+        <SelectTrigger className={`h-[44px] rounded-[10px] backdrop-blur-sm ${
+          filters.vram !== "all" 
+            ? "!bg-[#2A2A2A] text-white border border-gray-700" 
+            : "!bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
+        }`} style={{ fontFamily: 'var(--font-inter)' }}>
           <div className="flex items-center gap-2">
             <Cpu className="w-3 h-3" />
             <SelectValue placeholder="All vRAM" />
@@ -409,7 +420,11 @@ export function useFilteredProviders({
         value={filters.region}
         onValueChange={(value: any) => updateFilter("region", value)}
       >
-        <SelectTrigger>
+        <SelectTrigger className={`h-[44px] rounded-[10px] backdrop-blur-sm ${
+          filters.region !== "all" 
+            ? "!bg-[#2A2A2A] text-white border border-gray-700" 
+            : "!bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
+        }`} style={{ fontFamily: 'var(--font-inter)' }}>
           <div className="flex items-center gap-2">
             <MapPin className="w-3 h-3" />
             <SelectValue placeholder="All Regions" />
@@ -430,7 +445,11 @@ export function useFilteredProviders({
         value={filters.storage}
         onValueChange={(value: any) => updateFilter("storage", value)}
       >
-        <SelectTrigger>
+        <SelectTrigger className={`h-[44px] rounded-[10px] backdrop-blur-sm ${
+          filters.storage !== "all" 
+            ? "!bg-[#2A2A2A] text-white border border-gray-700" 
+            : "!bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
+        }`} style={{ fontFamily: 'var(--font-inter)' }}>
           <div className="flex items-center gap-2">
             <HardDrive className="w-3 h-3" />
             <SelectValue placeholder="All Storage" />
@@ -447,38 +466,42 @@ export function useFilteredProviders({
       </Select>
 
       {/* Sort by Price - Toggle Button */}
-      <Button
-        variant="outline"
+      <button
         onClick={togglePriceSort}
-        className={`flex items-center gap-2 ${
-          sorting.priceSort !== "none" ? "bg-primary/10 border-primary" : ""
+        className={`flex items-center justify-center gap-2 px-4 h-[44px] rounded-[10px] transition-all font-normal text-sm backdrop-blur-sm ${
+          sorting.priceSort !== "none" 
+            ? "bg-[#2A2A2A] text-white border border-gray-700" 
+            : "bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
         }`}
+        style={{ fontFamily: 'var(--font-inter)' }}
       >
-        <DollarSign className="w-3 h-3 text-muted-foreground" />
+        <DollarSign className="w-3 h-3" />
         <span>Price</span>
         {sorting.priceSort === "asc" && <ArrowUp className="w-3 h-3" />}
         {sorting.priceSort === "desc" && <ArrowDown className="w-3 h-3" />}
         {sorting.priceSort === "none" && (
           <ArrowUpDown className="w-3 h-3 opacity-50" />
         )}
-      </Button>
+      </button>
 
       {/* Sort by vRAM - Toggle Button */}
-      <Button
-        variant="outline"
+      <button
         onClick={toggleVramSort}
-        className={`flex items-center gap-2 ${
-          sorting.vramSort !== "none" ? "bg-primary/10 border-primary" : ""
+        className={`flex items-center justify-center gap-2 px-4 h-[44px] rounded-[10px] transition-all font-normal text-sm backdrop-blur-sm ${
+          sorting.vramSort !== "none" 
+            ? "bg-[#2A2A2A] text-white border border-gray-700" 
+            : "bg-white text-gray-900 border border-gray-300 hover:border-gray-400"
         }`}
+        style={{ fontFamily: 'var(--font-inter)' }}
       >
-        <Cpu className="w-3 h-3 text-muted-foreground" />
+        <Cpu className="w-3 h-3" />
         <span>vRAM</span>
         {sorting.vramSort === "asc" && <ArrowUp className="w-3 h-3" />}
         {sorting.vramSort === "desc" && <ArrowDown className="w-3 h-3" />}
         {sorting.vramSort === "none" && (
           <ArrowUpDown className="w-3 h-3 opacity-50" />
         )}
-      </Button>
+      </button>
     </div>
   );
 

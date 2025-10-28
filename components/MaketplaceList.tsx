@@ -78,7 +78,7 @@ const MarketplaceList: React.FC<MarketplaceListProps> = ({
   if (isLoading || !providers) {
     return (
       <div>
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[...Array(12)].map((_, i) => (
             <MarketplaceCardSkeleton key={i} />
           ))}
@@ -90,8 +90,8 @@ const MarketplaceList: React.FC<MarketplaceListProps> = ({
   if (error) {
     console.log(error);
     return (
-      <div className="text-center py-12">
-        <p className="text-xs text-muted-foreground">
+      <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
+        <p className="text-sm text-gray-600">
           Failed to load GPU providers. Please try refreshing.
         </p>
       </div>
@@ -101,7 +101,7 @@ const MarketplaceList: React.FC<MarketplaceListProps> = ({
   return (
     <div className="space-y-6">
       {/* GPU Cards Grid */}
-      <div className="grid sm:grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         {paginatedProviders.map((provider, index) => (
           <MarketplaceCard
             key={`${provider.id}-${index}`}
@@ -115,7 +115,7 @@ const MarketplaceList: React.FC<MarketplaceListProps> = ({
       {totalPages > 1 && (
         <div className="flex justify-end items-center w-full">
           <div className="flex items-center gap-4">
-            <p>
+            <p className="text-gray-900 font-medium">
               Page {currentPage} of {totalPages}
             </p>
 
@@ -124,22 +124,24 @@ const MarketplaceList: React.FC<MarketplaceListProps> = ({
                 <PaginationItem>
                   <PaginationPrevious
                     onClick={() => handlePageChange(currentPage - 1)}
-                    className={
+                    className={`bg-white text-gray-900 border border-gray-300 backdrop-blur-sm rounded-[10px] transition-all ${
                       currentPage === 1
                         ? "pointer-events-none opacity-50"
                         : "cursor-pointer"
-                    }
+                    }`}
+                    style={{ fontFamily: 'var(--font-inter)' }}
                   />
                 </PaginationItem>
 
                 <PaginationItem>
                   <PaginationNext
                     onClick={() => handlePageChange(currentPage + 1)}
-                    className={
+                    className={`bg-white text-gray-900 border border-gray-300 backdrop-blur-sm rounded-[10px] transition-all ${
                       currentPage === totalPages
                         ? "pointer-events-none opacity-50"
                         : "cursor-pointer"
-                    }
+                    }`}
+                    style={{ fontFamily: 'var(--font-inter)' }}
                   />
                 </PaginationItem>
               </PaginationContent>

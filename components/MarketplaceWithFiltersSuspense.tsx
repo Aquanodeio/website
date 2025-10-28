@@ -1,10 +1,8 @@
 "use client";
 
 import React, { Suspense } from "react";
-import { RefreshCw } from "lucide-react";
 import MarketplaceWithFilters from "./MarketplaceWithFilters";
 import { MarketplaceCardSkeleton, Provider } from "./ui/MarketplaceCard";
-import { Button } from "./ui/button";
 
 interface MarketplaceWithFiltersSuspenseProps {
   providers: Provider[] | undefined;
@@ -23,16 +21,11 @@ interface MarketplaceWithFiltersSuspenseProps {
 const MarketplaceFallback: React.FC = () => (
   <div className="flex flex-col gap-8">
     <div className="flex gap-4 items-center">
-      <Button variant="outline" disabled>
-        Filters
-      </Button>
-      <Button variant="outline" disabled>
-        <RefreshCw size={16} />
-        Refresh
-      </Button>
+      <div className="h-[44px] w-32 bg-white border border-gray-300 rounded-[10px] animate-pulse backdrop-blur-sm" />
+      <div className="h-[44px] w-28 bg-white border border-gray-300 rounded-[10px] animate-pulse backdrop-blur-sm" />
     </div>
     <div>
-      <div className="grid sm:grid-cols-3 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[...Array(12)].map((_, i) => (
           <MarketplaceCardSkeleton key={i} />
         ))}

@@ -61,6 +61,12 @@ export default function HeroSection() {
                   <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
                   <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
                 </div>
+                {/* <div className="bg-white rounded-[4px] px-2 py-1.5 transition-all duration-200 group-hover:px-3">
+                  <div className="flex items-center gap-0 text-[#3B82F6]">
+                    <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+                    <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+                  </div>
+                </div> */}
               </button>
             </Link>
 

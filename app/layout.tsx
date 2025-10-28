@@ -2,6 +2,7 @@ import { Inter, Figtree, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import WebVitals from "@/components/WebVitals";
+import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css";
 

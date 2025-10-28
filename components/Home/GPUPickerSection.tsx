@@ -102,7 +102,7 @@ export default function GPUPickerSection() {
                     <span className="text-gray-400">{gpu.storageSpace}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-white">Interface</span>
+                    <span className="text-white">Interconnect</span>
                     <span className="text-gray-400">{gpu.interface}</span>
                   </div>
                   <div className="flex justify-between items-center">

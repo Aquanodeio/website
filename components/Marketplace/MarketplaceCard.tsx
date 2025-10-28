@@ -96,7 +96,7 @@ export const MarketplaceCard = React.forwardRef<
             </span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-white">Interface</span>
+            <span className="text-white">Interconnect</span>
             <span className="text-gray-400">{provider.interface}</span>
           </div>
         </div>

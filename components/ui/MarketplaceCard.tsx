@@ -129,7 +129,7 @@ export const MarketplaceCard = React.forwardRef<
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-500 rounded-full" />
           <p className="text-xs text-muted-foreground">
-            {provider.available} vGPUs
+            {provider.available} GPUs
           </p>
         </div>
       </div>

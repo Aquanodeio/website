@@ -5,13 +5,13 @@ export default function WhyChooseSection() {
     {
       title: (
         <>
-          One Account for All
+          One Account for
           <br />
-          Clouds
+          Multi-Cloud
         </>
       ),
       description:
-        "No need to juggle multiple cloud accounts — deploy everything from one place.",
+        "No need to juggle multiple cloud accounts. Deploy everything from one place.",
     },
     {
       title: (
@@ -22,29 +22,29 @@ export default function WhyChooseSection() {
         </>
       ),
       description:
-        "Track and manage all your cloud costs from a single, transparent dashboard.",
+        "Track and manage all your cloud costs from a single dashboard.",
     },
     {
       title: (
         <>
-          Flexible Payment
+          Multiple Ways to
           <br />
-          Options
+          Pay
         </>
       ),
       description:
-        "Whether it's crypto or traditional methods, we've got you covered.",
+        "Whether it’s crypto or traditional methods, we’ve got you covered.",
     },
     {
       title: (
         <>
-          Zero Setup
+          Built-in Tools For
           <br />
-          Hassle.
+          Every Cloud
         </>
       ),
       description:
-        "Seamlessly connect with providers like AWS, Backblaze, and more",
+        "Deploy Seamlessly with integrated connectors, and cross-cloud tools.",
     },
   ];
 

@@ -3,4 +3,5 @@ export enum ProviderType {
   VOLTAGE_PARK = "voltagepark",
   DATACRUNCH = "datacrunch",
   HOTAISLE = "hotaisle",
+  // VASTAI = "vastai",
 }

@@ -357,11 +357,13 @@ export function useFilteredProviders({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Providers</SelectItem>
-          {filterOptions.providers.map((provider) => (
-            <SelectItem key={provider} value={provider}>
-              {provider.charAt(0).toUpperCase() + provider.slice(1)}
-            </SelectItem>
-          ))}
+          {filterOptions.providers
+            .filter((provider) => provider && provider.trim() !== "")
+            .map((provider) => (
+              <SelectItem key={provider} value={provider}>
+                {provider.charAt(0).toUpperCase() + provider.slice(1)}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
       <Select
@@ -376,11 +378,13 @@ export function useFilteredProviders({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All GPUs</SelectItem>
-          {filterOptions.gpuNames.map((gpuName) => (
-            <SelectItem key={gpuName} value={gpuName}>
-              {gpuName.toUpperCase()}
-            </SelectItem>
-          ))}
+          {filterOptions.gpuNames
+            .filter((gpuName) => gpuName && gpuName.trim() !== "")
+            .map((gpuName) => (
+              <SelectItem key={gpuName} value={gpuName}>
+                {gpuName.toUpperCase()}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
       {/* VRAM Filter */}
@@ -396,11 +400,13 @@ export function useFilteredProviders({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All vRAM</SelectItem>
-          {filterOptions.vRams.map((vram) => (
-            <SelectItem key={vram} value={vram}>
-              {vram}
-            </SelectItem>
-          ))}
+          {filterOptions.vRams
+            .filter((vram) => vram && vram.trim() !== "")
+            .map((vram) => (
+              <SelectItem key={vram} value={vram}>
+                {vram}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
 
@@ -417,11 +423,13 @@ export function useFilteredProviders({
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Regions</SelectItem>
-          {filterOptions.regions.map((region) => (
-            <SelectItem key={region} value={region}>
-              {region}
-            </SelectItem>
-          ))}
+          {filterOptions.regions
+            .filter((region) => region && region.trim() !== "")
+            .map((region) => (
+              <SelectItem key={region} value={region}>
+                {region}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
 

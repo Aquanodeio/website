@@ -11,7 +11,6 @@ export interface BlogPost {
     avatar: string;
   };
   date: string;
-  category: string;
   tags: string[];
   readTime: string;
   slug?: string;

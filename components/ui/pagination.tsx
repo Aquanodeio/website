@@ -1,7 +1,5 @@
 import * as React from "react"
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
   MoreHorizontalIcon,
 } from "lucide-react"
 
@@ -58,6 +56,7 @@ function PaginationLink({
           variant: isActive ? "outline" : "ghost",
           size,
         }),
+        "hover:!bg-white hover:!text-gray-900 dark:hover:!bg-white dark:hover:!text-gray-900",
         className
       )}
       {...props}
@@ -73,11 +72,14 @@ function PaginationPrevious({
     <PaginationLink
       aria-label="Go to previous page"
       size="default"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
+      className={cn("gap-3 px-6 min-w-[140px] group", className)}
       {...props}
     >
-      <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
+      <div className="flex items-center gap-0">
+        <div className="w-2 h-2 border-l-2 border-t-2 border-current rotate-[-45deg] translate-x-[7px] transition-all" />
+        <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+      </div>
+      <span>Previous</span>
     </PaginationLink>
   )
 }
@@ -90,11 +92,14 @@ function PaginationNext({
     <PaginationLink
       aria-label="Go to next page"
       size="default"
-      className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
+      className={cn("gap-3 px-6 min-w-[140px] group", className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <span>Next</span>
+      <div className="flex items-center gap-0">
+        <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+        <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+      </div>
     </PaginationLink>
   )
 }

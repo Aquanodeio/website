@@ -1,14 +1,10 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Head from "next/head";
-import OverlayNavbar from "@/components/OverlayNavbar";
-import Footer from "@/components/Footer";
-import PricingBg from "@/assets/pricing/pricing-bg.png";
-import Ellipse from "@/assets/pricing/ellipse.png";
+import BlogNavbar from "@/components/NavbarWhite";
+import FooterCTA from "@/components/Home/FooterCTA";
 import { useMarketplace } from "@/hooks/useMarketplace";
-import MarketplaceWithFiltersSuspense from "@/components/MarketplaceWithFiltersSuspense";
-import { MAIL_LINK } from "@/config/links";
+import MarketplaceWithFiltersSuspense from "@/components/Marketplace/MarketplaceWithFiltersSuspense";
 
 export default function MarketplacePage() {
   const { data: marketplaceData, isLoading, isFetching } = useMarketplace();
@@ -32,8 +28,8 @@ export default function MarketplacePage() {
                 {
                   "@type": "ListItem",
                   position: 2,
-                  name: "Pricing",
-                  item: "https://aquanode.io/pricing",
+                  name: "Marketplace",
+                  item: "https://aquanode.io/marketplace",
                 },
               ],
             }),
@@ -41,49 +37,31 @@ export default function MarketplacePage() {
         />
       </Head>
       <main
-        className="min-h-screen w-full bg-[#0A0118] overflow-x-hidden overflow-y-auto flex flex-col items-center relative"
+        className="min-h-screen w-full bg-white overflow-x-hidden overflow-y-auto flex flex-col"
         style={{ fontFamily: "var(--font-)" }}
       >
-        <OverlayNavbar />
+        <BlogNavbar />
 
-        <div className="absolute left-0 top-0 w-full h-[300px] sm:h-[500px]">
-          <Image
-            src={PricingBg}
-            alt=""
-            fill
-            className="object-cover object-left"
-          />
-        </div>
-
-        {/* Centered Ellipse */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[400px]">
-          <Image src={Ellipse} alt="" fill className="object-contain" />
-        </div>
-
-        <div className="relative z-10 w-full max-w-6xl px-4 sm:px-6 lg:px-20 pt-32 pb-20">
-          <div className="flex flex-wrap gap-4 mb-8 justify-start"></div>
+        <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-20 pt-12 pb-20">
+          {/* Page Title */}
+          <div className="mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 mb-4">
+              GPU Marketplace
+            </h1>
+            <p className="text-base md:text-lg text-gray-600">
+              Browse and compare GPU instances from multiple cloud providers
+            </p>
+          </div>
 
           <MarketplaceWithFiltersSuspense
             isLoading={isLoading || isFetching}
             providers={marketplaceData?.providers || []}
             onSelect={() => {}}
           />
-
-          {/* Custom Plans CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 sm:mt-16">
-            <p className="text-white text-xl sm:text-2xl font-semibold text-center sm:text-left">
-              Need custom storage or commitment plans?
-            </p>
-            <a href={MAIL_LINK}>
-              <button className="bg-[#3F3D70] cursor-pointer hover:bg-[#514EA3] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all">
-                Let&apos;s Chat
-              </button>
-            </a>
-          </div>
         </div>
 
         {/* Footer */}
-        <Footer />
+        <FooterCTA />
       </main>
     </>
   );

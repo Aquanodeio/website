@@ -1,6 +1,8 @@
-import { Inter, Figtree } from "next/font/google";
+import { Inter, Figtree, JetBrains_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import WebVitals from "@/components/WebVitals";
+import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css";
 
@@ -15,6 +17,14 @@ const figtree = Figtree({
   subsets: ["latin"],
   variable: "--font-figtree",
   weight: ["400", "500", "600"], // Removed unused weights
+  display: "swap",
+  preload: true,
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   preload: true,
 });
@@ -136,8 +146,8 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${figtree.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
-        style={{ fontFamily: "var(--font-figtree)" }}
+        className={`${inter.variable} ${figtree.variable} ${jetbrainsMono.variable} ${GeistSans.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
+        style={{ fontFamily: "var(--font-geist-sans)" }}
       >
         <WebVitals />
 

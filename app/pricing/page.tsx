@@ -1,38 +1,40 @@
 import React from "react";
-import Image from "next/image";
 import Head from "next/head";
-import OverlayNavbar from "@/components/OverlayNavbar";
-import Footer from "@/components/Footer";
-import { ArrowRight } from "lucide-react";
-import PricingBg from "@/assets/pricing/pricing-bg.png";
-import Ellipse from "@/assets/pricing/ellipse.png";
+import BlogNavbar from "@/components/NavbarWhite";
+import FooterCTA from "@/components/Home/FooterCTA";
 import { getMarketplace } from "@/hooks/useMarketplace";
 import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
 
+export const dynamic = 'force-dynamic'; // Force dynamic rendering to avoid build-time API calls
 export const revalidate = 3600; // 1hr
 
 const getUniqueProviders = async () => {
-  const { providers: data } = await getMarketplace();
+  try {
+    const { providers: data } = await getMarketplace();
 
-  // Deduplicate by GPU model name (case-insensitive), keeping only the lowest price for each model
-  const gpuMap = new Map<string, (typeof data)[0]>();
+    // Deduplicate by GPU model name (case-insensitive), keeping only the lowest price for each model
+    const gpuMap = new Map<string, (typeof data)[0]>();
 
-  data.forEach((provider) => {
-    const gpuKey = provider.gpuShortName.toLowerCase();
-    const existingProvider = gpuMap.get(gpuKey);
+    data.forEach((provider) => {
+      const gpuKey = provider.gpuShortName.toLowerCase();
+      const existingProvider = gpuMap.get(gpuKey);
 
-    if (!existingProvider || provider.price < existingProvider.price) {
-      gpuMap.set(gpuKey, provider);
-    }
-  });
+      if (!existingProvider || provider.price < existingProvider.price) {
+        gpuMap.set(gpuKey, provider);
+      }
+    });
 
-  const uniqueData = Array.from(gpuMap.values());
+    const uniqueData = Array.from(gpuMap.values());
 
-  uniqueData.forEach((item) => {
-    item.region = item.region.replace(/[0-9]/g, "").trim();
-  });
+    uniqueData.forEach((item) => {
+      item.region = item.region.replace(/[0-9]/g, "").trim();
+    });
 
-  return uniqueData;
+    return uniqueData;
+  } catch (error) {
+    console.error("Failed to fetch marketplace data:", error);
+    return []; // Return empty array on error
+  }
 };
 
 export default async function Pricing() {
@@ -66,111 +68,112 @@ export default async function Pricing() {
         />
       </Head>
       <main
-        className="min-h-screen w-full bg-[#0A0118] overflow-x-hidden overflow-y-auto flex flex-col items-center relative"
+        className="min-h-screen w-full bg-white overflow-x-hidden overflow-y-auto flex flex-col"
         style={{ fontFamily: "var(--font-)" }}
       >
-        <OverlayNavbar />
+        <BlogNavbar />
 
-        <div className="absolute left-0 top-0 w-full h-[300px] sm:h-[500px]">
-          <Image
-            src={PricingBg}
-            alt=""
-            fill
-            className="object-cover object-left"
-          />
-        </div>
-
-        {/* Centered Ellipse */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[200px] sm:w-[600px] sm:h-[400px]">
-          <Image src={Ellipse} alt="" fill className="object-contain" />
-        </div>
-
-        <div className="relative z-10 w-full max-w-6xl px-4 sm:px-6 lg:px-20 pt-32 pb-20">
+        <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-20 pt-12 pb-20">
+          {/* Page Title */}
+          <div className="mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 mb-4">
+              GPU Pricing
+            </h1>
+            <p className="text-base md:text-lg text-gray-600">
+              Compare GPU prices across multiple providers and deploy instantly
+            </p>
+          </div>
           {/* Filter Controls */}
 
           {/* Pricing Table */}
-          <div className="bg-[#1A0F2E]/80 backdrop-blur-xl rounded-2xl border border-[#2F2F2F]/64 overflow-hidden">
-            {/* Table Header */}
-            <div className="grid grid-cols-5 gap-4 px-6 py-4 bg-[#0F0520] border-b border-[#2F2F2F]/64">
-              <div className="text-white font-semibold text-sm">GPU Model</div>
-              <div className="text-white font-semibold text-sm text-center">
-                vRAM
+          <div className="overflow-x-auto">
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm min-w-[700px]">
+              {/* Table Header */}
+              <div className="grid grid-cols-5 gap-2 md:gap-4 px-3 md:px-6 py-3 md:py-4 bg-gray-50 border-b border-gray-200">
+                <div className="text-gray-900 font-semibold text-xs md:text-sm">GPU Model</div>
+                <div className="text-gray-900 font-semibold text-xs md:text-sm text-center">
+                  vRAM
+                </div>
+                <div className="text-gray-900 font-semibold text-xs md:text-sm text-center">
+                  Region
+                </div>
+                <div className="text-gray-900 font-semibold text-xs md:text-sm text-center">
+                  Price/hr
+                </div>
+                <div className="text-gray-900 font-semibold text-xs md:text-sm text-center"></div>
               </div>
-              <div className="text-white font-semibold text-sm text-center">
-                Region
-              </div>
-              <div className="text-white font-semibold text-sm text-center">
-                Price/hr
-              </div>
-              <div className="text-white font-semibold text-sm text-center"></div>
+
+              {/* Table Rows */}
+              {data.length === 0 ? (
+                <div className="px-6 py-12 text-center">
+                  <p className="text-gray-500 text-sm">
+                    Unable to load pricing data at the moment. Please try again later or{" "}
+                    <a href={MAIL_LINK} className="text-blue-600 hover:underline">
+                      contact us
+                    </a>{" "}
+                    for current pricing.
+                  </p>
+                </div>
+              ) : (
+                data.map((item, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-5 gap-2 md:gap-4 px-3 md:px-6 py-3 md:py-4 border-b border-gray-200 last:border-b-0 hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="text-gray-900 font-semibold text-xs md:text-sm whitespace-nowrap">
+                        {item.gpuShortName.toUpperCase()}
+                      </div>
+                      <div className="bg-gray-100 text-gray-600 px-1.5 md:px-2 py-0.5 md:py-1 rounded text-[10px] md:text-xs font-semibold whitespace-nowrap">
+                        {item.interface}
+                      </div>
+                    </div>
+                    <div className="text-gray-700 text-xs md:text-sm text-center flex items-center justify-center font-medium whitespace-nowrap">
+                      {item.gpuMemory.toUpperCase()}
+                    </div>
+                    <div className="text-gray-700 text-xs md:text-sm text-center flex items-center justify-center font-medium whitespace-nowrap">
+                      {item.region}
+                    </div>
+                    <div className="text-gray-700 text-xs md:text-sm text-center flex items-center justify-center font-medium whitespace-nowrap">
+                      {Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      }).format(item.price)}
+                    </div>
+                    <div className="flex items-center justify-center">
+                      {item.available > 0 ? (
+                        <a
+                          target="_blank"
+                          href={
+                            CONSOLE_LINK +
+                            "/marketplace?gpuName=" +
+                            item.gpuShortName
+                          }
+                          className="group bg-[#2A2A2A] text-white px-3 md:px-4 py-1.5 md:py-2 rounded-[10px] text-xs md:text-sm font-normal transition-all flex items-center gap-2 md:gap-3 backdrop-blur-sm border border-gray-700 whitespace-nowrap"
+                          style={{ fontFamily: 'var(--font-inter)' }}
+                        >
+                          Rent Now
+                          <div className="flex items-center gap-0">
+                            <div className="h-[2px] w-2 md:w-3 bg-current transition-all duration-200 group-hover:w-4 md:group-hover:w-6" />
+                            <div className="w-1.5 md:w-2 h-1.5 md:h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[5px] md:-translate-x-[7px] transition-all" />
+                          </div>
+                        </a>
+                      ) : (
+                        <button className="bg-gray-300 text-gray-500 px-3 md:px-4 py-1.5 md:py-2 rounded-[10px] text-xs md:text-sm font-normal cursor-not-allowed opacity-50 flex items-center gap-2 whitespace-nowrap" style={{ fontFamily: 'var(--font-inter)' }}>
+                          Unavailable
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
-
-            {/* Table Rows */}
-            {data.map((item, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-5 gap-4 px-6 py-4 border-b border-[#2F2F2F]/32 last:border-b-0 hover:bg-[#2F2F2F]/20 transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="text-white font-semibold text-sm">
-                    {item.gpuShortName.toUpperCase()}
-                  </div>
-                  <div className="bg-[#353535] text-white opacity-50 px-2 py-1 rounded text-xs font-semibold">
-                    {item.interface}
-                  </div>
-                </div>
-                <div className="text-white text-sm text-center flex items-center justify-center font-medium">
-                  {item.gpuMemory.toUpperCase()}
-                </div>
-                <div className="text-white text-sm text-center flex items-center justify-center font-medium">
-                  {item.region}
-                </div>
-                <div className="text-white text-sm text-center flex items-center justify-center font-medium">
-                  {Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  }).format(item.price)}
-                </div>
-                <div className="flex items-center justify-center">
-                  {item.available > 0 ? (
-                    <a
-                      target="_blank"
-                      href={
-                        CONSOLE_LINK +
-                        "/marketplace?gpuName=" +
-                        item.gpuShortName
-                      }
-                      className="bg-white hover:bg-gray-200 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
-                    >
-                      Rent Now
-                      <ArrowRight className="text-black w-4 h-4" />
-                    </a>
-                  ) : (
-                    <button className="bg-gray-500 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed opacity-50 flex items-center gap-2">
-                      Rent Now
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
           </div>
 
-          {/* Custom Plans CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 sm:mt-16">
-            <p className="text-white text-xl sm:text-2xl font-semibold text-center sm:text-left">
-              Need custom storage or commitment plans?
-            </p>
-            <a href={MAIL_LINK}>
-              <button className="bg-[#3F3D70] hover:bg-[#514EA3] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all">
-                Let&apos;s Chat
-              </button>
-            </a>
-          </div>
         </div>
 
         {/* Footer */}
-        <Footer />
+        <FooterCTA />
       </main>
     </>
   );

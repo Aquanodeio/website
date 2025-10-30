@@ -3,12 +3,10 @@ import { Globe } from "lucide-react";
 import React from "react";
 import { Button } from "./button";
 import { useSearchParams } from "next/navigation";
-import { configSupportedByProvider } from "@/lib/provider-config";
-import { ProviderType } from "@/types";
 
 export interface Provider {
   id: string;
-  provider: ProviderType;
+  provider: "spheron" | "akash" | "voltagepark" | "datacrunch" | "hotaisle";
   providerId: string;
   providerName: string;
   address: string;
@@ -53,11 +51,6 @@ export const MarketplaceCard = React.forwardRef<
 
   // Convert params into string that can be used in url
   const appliableFilters = new URLSearchParams(searchParams.toString());
-  const configs = configSupportedByProvider[provider.provider];
-
-  const price = configs?.gpu
-    ? provider.price?.toFixed(2)
-    : (provider.price * provider.available).toFixed(2);
 
   return (
     <div
@@ -122,7 +115,7 @@ export const MarketplaceCard = React.forwardRef<
               className="mt-4 w-full bg-[#5d45a4] text-white cursor-pointer hover:bg-[#5d45a4]/80"
               type="button"
             >
-              <p>${price}/hr</p>
+              <p>${provider.price.toFixed(2)}/hr</p>
             </Button>
           </a>
         )}

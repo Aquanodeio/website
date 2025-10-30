@@ -5,43 +5,44 @@ export default function GPUPickerSection() {
   const gpuCards = [
     {
       model: "B200",
-      storage: "180GB",
-      provider: "Datacrunch",
+      vram: "180GB",
       vcpu: "30.00",
       memory: "184.00 GB",
-      storageSpace: "9000.00 GB",
+      storageSpace: "9 TB",
       interface: "SXM6",
-      price: "",
+      price: "$3.99/hr",
     },
     {
-      model: "B200",
-      storage: "180GB",
-      provider: "Datacrunch",
+      model: "H100",
+      vram: "80GB",
       vcpu: "30.00",
-      memory: "184.00 GB",
-      storageSpace: "9000.00 GB",
-      interface: "SXM6",
-      price: "",
+      memory: "185.00 GB",
+      storageSpace: "9 TB",
+      interface: "SXM5",
+      price: "$1.99/hr",
     },
     {
-      model: "B200",
-      storage: "180GB",
-      provider: "Datacrunch",
-      vcpu: "30.00",
-      memory: "184.00 GB",
-      storageSpace: "9000.00 GB",
-      interface: "SXM6",
-      price: "",
+      model: "H200",
+      vram: "141GB",
+      vcpu: "44.00",
+      memory: "182.00 GB",
+      storageSpace: "9 TB",
+      interface: "SXM",
+      price: "$2.59/hr",
     },
   ];
 
   return (
     <section className="relative w-full min-h-screen bg-black py-20 overflow-hidden">
       {/* Dotted background pattern */}
-      <div className="absolute inset-0 opacity-70" style={{
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 1px)',
-        backgroundSize: '40px 40px'
-      }} />
+      <div
+        className="absolute inset-0 opacity-70"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
       <div className="relative z-10 px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Header Section */}
@@ -68,23 +69,24 @@ export default function GPUPickerSection() {
           </div>
 
           {/* GPU Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" style={{ fontFamily: 'var(--font-inter)' }}>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+            style={{ fontFamily: "var(--font-inter)" }}
+          >
             {gpuCards.map((gpu, index) => (
               <div
                 key={index}
                 className="bg-[#141414] rounded-md p-6 border border-white/10 hover:border-white/20 transition-all"
               >
                 {/* Card Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <h4 className="text-3xl font-normal text-white mb-1" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
-                      {gpu.model}
-                    </h4>
-                    <p className="text-gray-400 text-xl">({gpu.storage})</p>
-                  </div>
-                  <span className="px-4 py-2 bg-[#2A2A2A] rounded-full text-white text-sm font-normal">
-                    {gpu.provider}
-                  </span>
+                <div className="flex items-center gap-2 mb-6">
+                  <h4
+                    className="text-3xl font-normal text-white mb-1"
+                    style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+                  >
+                    {gpu.model}
+                  </h4>
+                  <p className="text-gray-400 text-xl">({gpu.vram})</p>
                 </div>
 
                 {/* Specs List */}
@@ -98,7 +100,7 @@ export default function GPUPickerSection() {
                     <span className="text-gray-400">{gpu.memory}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-white">Storage</span>
+                    <span className="text-white">Disk Storage</span>
                     <span className="text-gray-400">{gpu.storageSpace}</span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -107,7 +109,9 @@ export default function GPUPickerSection() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-white">Price</span>
-                    <span className="text-gray-400">{gpu.price || "-"}</span>
+                    <span className="text-[#4A90FF] font-semibold text-lg">
+                      {gpu.price || "-"}
+                    </span>
                   </div>
                 </div>
 
@@ -129,4 +133,3 @@ export default function GPUPickerSection() {
     </section>
   );
 }
-

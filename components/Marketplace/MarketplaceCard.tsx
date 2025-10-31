@@ -56,17 +56,18 @@ export const MarketplaceCard = React.forwardRef<
       ref={ref}
       {...props}
       className="flex flex-col bg-[#141414] rounded-md border border-white/10 hover:border-white/20 transition-all duration-300 ease-in-out overflow-clip w-full hover:scale-105 cursor-pointer"
-      style={{ fontFamily: 'var(--font-inter)' }}
+      style={{ fontFamily: "var(--font-inter)" }}
     >
       <div className="flex flex-col items-center justify-between w-full p-6">
         <div className="flex items-start justify-between w-full gap-4 mb-6">
           <div className="flex items-center gap-2">
-            <h4 className="text-3xl font-normal text-white" style={{ fontFamily: 'var(--font-jetbrains-mono)' }}>
+            <h4
+              className="text-3xl font-normal text-white"
+              style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+            >
               {provider.gpuShortName.toUpperCase()}
             </h4>
-            <p className="text-gray-400 text-xl">
-              ({provider.gpuMemory})
-            </p>
+            <p className="text-gray-400 text-xl">({provider.gpuMemory})</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -79,7 +80,9 @@ export const MarketplaceCard = React.forwardRef<
         <div className="space-y-3 w-full mb-6">
           <div className="flex justify-between items-center">
             <span className="text-white">vCPU</span>
-            <span className="text-gray-400">{provider.availableCpu.toFixed(2)}</span>
+            <span className="text-gray-400">
+              {provider.availableCpu.toFixed(2)}
+            </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-white">Memory</span>
@@ -115,7 +118,11 @@ export const MarketplaceCard = React.forwardRef<
           >
             <button
               className="w-full group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-blue-600/10 shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
-              style={{ height: '44px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}
+              style={{
+                height: "44px",
+                borderRadius: "10px",
+                fontFamily: "var(--font-inter)",
+              }}
               type="button"
             >
               <p>${provider.price.toFixed(2)}/hr</p>
@@ -135,9 +142,7 @@ export const MarketplaceCard = React.forwardRef<
         </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-500 rounded-full" />
-          <p className="text-xs text-gray-400">
-            {provider.available} GPUs
-          </p>
+          <p className="text-xs text-gray-400">{provider.available} GPUs</p>
         </div>
       </div>
     </div>

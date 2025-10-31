@@ -165,7 +165,10 @@ export default function RootLayout({
           </span>
         </div>
 
-        <div className="mx-auto">{children}</div>
+        <div className="mx-auto">
+          {children}
+          <Analytics />
+        </div>
       </body>
     </html>
   );

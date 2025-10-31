@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BigGlobeIcon from "@/assets/home/features/big-globe-svg.svg";
+import BigClickIcon from "@/assets/home/features/big-click.svg";
 import CloudsIcon from "@/assets/home/features/clouds-svg.svg";
 import ToolsIcon from "@/assets/home/features/garage-wrenches-svg.svg";
 import GlobeIcon from "@/assets/home/features/globe-alt.svg";
@@ -27,7 +28,7 @@ export default function FeaturesSection() {
           {/* Left: Big Globe Image */}
           <div className="hidden lg:flex items-center justify-center mt-5">
             <Image
-              src={BigGlobeIcon}
+              src={BigClickIcon}
               alt="Globe"
               width={500}
               height={500}

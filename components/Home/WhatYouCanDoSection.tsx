@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import AssetSVG from "@/assets/home/whatyoucan/asset-svg.svg";
+import AssetSVG from "@/assets/home/whatyoucan/asset099.svg";
 
 export default function WhatYouCanDoSection() {
   const [activeIndex, setActiveIndex] = useState(0);

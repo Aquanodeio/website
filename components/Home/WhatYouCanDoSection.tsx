@@ -75,30 +75,28 @@ export default function WhatYouCanDoSection() {
       ref={sectionRef}
       className="relative w-full bg-white py-20 md:py-32"
     >
-        <div className="w-full">
-          {/* Section Header - Same padding as hero */}
-          <h2 className="text-4xl md:text-4xl lg:text-5xl font-normal text-black mb-16 md:mb-20 px-6 md:px-12 lg:px-16 xl:px-20">
-            What you can do with
-            <br />
-            Aquanode
-          </h2>
-
+      <div className="w-full">
         {/* Content Grid */}
         <div className="px-6 md:px-12 lg:px-16 xl:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-20 items-start max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-20 items-start max-w-7xl relative ">
             {/* Left: SVG Illustration */}
-            <div className="hidden lg:flex items-center justify-center mt-5">
-            <Image
-              src={AssetSVG}
-              alt="Asset"
-              width={800}
-              height={800}
-              className="w-full"
-            />
-          </div>
+            <div className="hidden lg:flex items-start justify-start flex-col sticky top-20">
+              <h2 className="text-4xl md:text-4xl lg:text-5xl font-normal text-black mb-16 md:mb-20">
+                What you can do with
+                <br />
+                Aquanode
+              </h2>
+              <Image
+                src={AssetSVG}
+                alt="Asset"
+                width={800}
+                height={800}
+                className="w-full"
+              />
+            </div>
 
             {/* Right: Use Cases */}
-            <div className="space-y-12">
+            <div className="space-y-12 mt-40">
               {useCases.map((useCase, index) => (
                 <div
                   key={index}
@@ -106,9 +104,7 @@ export default function WhatYouCanDoSection() {
                     itemRefs.current[index] = el;
                   }}
                   className={`transition-all duration-500 ease-out ${
-                    index === activeIndex
-                      ? "opacity-100"
-                      : "opacity-40"
+                    index === activeIndex ? "opacity-100" : "opacity-40"
                   }`}
                 >
                   {/* Label Badge */}
@@ -124,9 +120,10 @@ export default function WhatYouCanDoSection() {
                       <div
                         className="h-full bg-black transition-all duration-500"
                         style={{
-                          width: index === activeIndex 
-                            ? ['0%', '30%', '70%', '100%'][index]
-                            : '0%'
+                          width:
+                            index === activeIndex
+                              ? ["0%", "30%", "70%", "100%"][index]
+                              : "0%",
                         }}
                       />
                     </div>
@@ -135,16 +132,14 @@ export default function WhatYouCanDoSection() {
                         index === activeIndex ? "bg-black" : "bg-gray-300"
                       }`}
                       style={{
-                        left: ['0%', '30%', '70%', '100%'][index],
-                        transform: 'translate(-50%, -50%)'
+                        left: ["0%", "30%", "70%", "100%"][index],
+                        transform: "translate(-50%, -50%)",
                       }}
                     />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-3xl text-black mb-8">
-                    {useCase.title}
-                  </h3>
+                  <h3 className="text-3xl text-black mb-8">{useCase.title}</h3>
 
                   {/* Description */}
                   <p className="text-xl text-gray-600 leading-relaxed">
@@ -156,7 +151,15 @@ export default function WhatYouCanDoSection() {
               {/* CTA Button */}
               <div className="pt-8">
                 <Link href="/marketplace">
-                  <button className="group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-white/10 px-6 cursor-pointer whitespace-nowrap" style={{ width: '250px', height: '50px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
+                  <button
+                    className="group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-white/10 px-6 cursor-pointer whitespace-nowrap"
+                    style={{
+                      width: "250px",
+                      height: "50px",
+                      borderRadius: "10px",
+                      fontFamily: "var(--font-inter)",
+                    }}
+                  >
                     Try Aquanode Now
                     <div className="flex items-center gap-0">
                       <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
@@ -172,4 +175,3 @@ export default function WhatYouCanDoSection() {
     </section>
   );
 }
-

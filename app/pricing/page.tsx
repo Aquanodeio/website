@@ -80,7 +80,7 @@ export default async function Pricing() {
               GPU Pricing
             </h1>
             <p className="text-base md:text-lg text-gray-600">
-              Compare GPU prices across multiple providers and deploy instantly
+              Find Cheapest GPU prices across multiple providers and deploy instantly
             </p>
           </div>
           {/* Filter Controls */}

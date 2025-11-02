@@ -1,30 +1,69 @@
 import Link from "next/link";
+import { getMarketplace } from "@/hooks/useMarketplace";
 
-export default function PricingComparisonSection() {
+// Helper function to find cheapest price for a GPU type
+const getCheapestPrice = (
+  providers: Array<{ gpuShortName: string; price: number; gpuMemory: string }>,
+  gpuName: string
+): number | null => {
+  const matchingProviders = providers.filter((p) =>
+    p.gpuShortName.toLowerCase().includes(gpuName.toLowerCase())
+  );
+
+  if (matchingProviders.length === 0) return null;
+
+  return Math.min(...matchingProviders.map((p) => p.price));
+};
+
+export default async function PricingComparisonSection() {
+  // Fetch marketplace data
+  let aquanodePrices: Record<string, number> = {};
+
+  try {
+    const { providers } = await getMarketplace();
+
+    // Get cheapest prices for each GPU type
+    aquanodePrices = {
+      b200: getCheapestPrice(providers, "b200") || 3.99,
+      h100: getCheapestPrice(providers, "h100") || 1.21,
+      h200: getCheapestPrice(providers, "h200") || 2.09,
+      a100: getCheapestPrice(providers, "a100") || 0.63,
+    };
+  } catch (error) {
+    console.error("Failed to fetch marketplace data:", error);
+    // Fallback to default prices if API fails
+    aquanodePrices = {
+      b200: 3.99,
+      h100: 1.21,
+      h200: 2.09,
+      a100: 0.63,
+    };
+  }
+
   const pricingRows = [
     {
-      gpu: "B200 SXM",
+      gpu: "B200 SXM 180GB",
       runpod: "$5.98/hr",
-      aquanode: "$3.99/hr",
+      aquanode: `$${aquanodePrices.b200.toFixed(2)}/hr`,
       traditional: "$18/hr",
     },
     {
-      gpu: "H100 SXM",
+      gpu: "H100 SXM 80GB",
       runpod: "$2.69/hr",
-      aquanode: "$1.99/hr",
+      aquanode: `$${aquanodePrices.h100.toFixed(2)}/hr`,
       traditional: "$14/hr",
     },
     {
-      gpu: "H200 SXM",
+      gpu: "H200 SXM 141GB",
       runpod: "$3.59/hr",
-      aquanode: "$2.59/hr",
+      aquanode: `$${aquanodePrices.h200.toFixed(2)}/hr`,
       traditional: "$10/hr",
     },
     {
-      gpu: "A100 SXM",
+      gpu: "A100 SXM 80GB",
       runpod: "$1.39/hr",
-      aquanode: "$1.16/hr",
-      traditional: "$10/hr",
+      aquanode: `$${aquanodePrices.a100.toFixed(2)}/hr`,
+      traditional: "$4/hr",
     },
   ];
 
@@ -50,7 +89,7 @@ export default function PricingComparisonSection() {
   ];
 
   return (
-    <section className="relative w-full min-h-screen bg-white py-20">
+    <section className="relative w-full min-h-screen bg-white py-20" id="compare-pricing">
       <div className="w-full px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Header */}
         <div className="mb-12">

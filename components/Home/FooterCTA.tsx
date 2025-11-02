@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/assets/home/logo.png";
+import { CONTACT_SALES_LINK } from "@/config/links";
 
 export default function FooterCTA() {
   return (
@@ -91,7 +92,9 @@ export default function FooterCTA() {
                 Pricing
               </Link>
               <Link
-                href="/contact"
+                href={CONTACT_SALES_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Contact Sales
@@ -146,7 +149,7 @@ export default function FooterCTA() {
 
         {/* Bottom Links */}
         <div className="flex items-center gap-6 mt-8">
-          <Link
+          {/* <Link
             href="/terms"
             className="text-gray-400 hover:text-white transition-colors text-sm"
           >
@@ -157,7 +160,7 @@ export default function FooterCTA() {
             className="text-gray-400 hover:text-white transition-colors text-sm"
           >
             Privacy Policy
-          </Link>
+          </Link> */}
           <Link
             href="https://docs.aquanode.io"
             target="_blank"

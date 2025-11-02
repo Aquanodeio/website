@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import BigGlobeIcon from "@/assets/home/features/big-globe-svg.svg";
+import BigRackIcon from "@/assets/home/features/big-rack.svg";
 import CloudsIcon from "@/assets/home/features/clouds-svg.svg";
 import ToolsIcon from "@/assets/home/features/garage-wrenches-svg.svg";
 import GlobeIcon from "@/assets/home/features/globe-alt.svg";
@@ -27,8 +27,8 @@ export default function FeaturesSection() {
           {/* Left: Big Globe Image */}
           <div className="hidden lg:flex items-center justify-center mt-5">
             <Image
-              src={BigGlobeIcon}
-              alt="Globe"
+              src={BigRackIcon}
+              alt="Rack"
               width={500}
               height={500}
               className="w-full max-w-md"

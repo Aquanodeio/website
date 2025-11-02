@@ -2,9 +2,12 @@ import HeroNavbar from "@/components/NavbarTransparent";
 import HeroSection from "@/components/Home/HeroSection";
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import GPUPickerSection from "@/components/Home/GPUPickerSection";
+import TestimonialsSection from "@/components/Home/TestimonialsSection";
 import PricingComparisonSection from "@/components/Home/PricingComparisonSection";
 import WhyChooseSection from "@/components/Home/WhyChooseSection";
 import FooterCTA from "@/components/Home/FooterCTA";
+
+export const revalidate = 3600; // Revalidate pricing data every hour
 
 export default function Home() {
   return (
@@ -39,6 +42,9 @@ export default function Home() {
 
       {/* GPU Picker Section */}
       <GPUPickerSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Pricing Comparison Section */}
       <PricingComparisonSection />

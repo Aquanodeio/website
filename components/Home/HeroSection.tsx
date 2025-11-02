@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import NvidiaLogo from "@/assets/home/nvidia.png";
-import HeroIllustration from "@/assets/home/hero.svg";
-import EllipseLight from "@/assets/home/ellipse.png";
+import NvidiaLogo from "@/assets/home/hero/nvidia.png";
+import HeroIllustration from "@/assets/home/hero/hero.svg";
+import EllipseLight from "@/assets/home/hero/ellipse.png";
 
 export default function HeroSection() {
   return (
@@ -70,7 +70,7 @@ export default function HeroSection() {
               </button>
             </Link>
 
-            <Link href="/pricing">
+            <Link href="#compare-pricing">
               <button className="group bg-[#0C0D10]/30 transition-all border border-white/20 text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm cursor-pointer whitespace-nowrap px-6" style={{ width: '200px', height: '50px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
                 Compare Pricing
                 <div className="flex items-center gap-0">

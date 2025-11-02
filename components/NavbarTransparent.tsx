@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "@/assets/home/logo.png";
-import { CONSOLE_LINK } from "@/config/links";
+import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 
 export default function HeroNavbar() {
   const pathname = usePathname();
@@ -85,16 +85,27 @@ export default function HeroNavbar() {
             </div>
           </div>
 
-          {/* CTA Button (Desktop) */}
-          <a href={CONSOLE_LINK} className="hidden lg:block">
-            <button className="group bg-[#3B82F6] transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6" style={{ width: '200px', height: '50px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
-              Start for Free
-              <div className="flex items-center gap-0">
-                <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
-                <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
-              </div>
-            </button>
-          </a>
+          {/* CTA Buttons (Desktop) */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a href={CONTACT_SALES_LINK} target="_blank" rel="noopener noreferrer">
+              <button className="group bg-transparent transition-all rounded-lg text-[#3B82F6] text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6 border border-[#3B82F6]" style={{ width: '160px', height: '50px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
+                Book a Demo
+                <div className="flex items-center gap-0">
+                  <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+                  <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+                </div>
+              </button>
+            </a>
+            <a href={CONSOLE_LINK}>
+              <button className="group bg-[#3B82F6] transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6" style={{ width: '200px', height: '50px', borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
+                Start for Free
+                <div className="flex items-center gap-0">
+                  <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+                  <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+                </div>
+              </button>
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -153,8 +164,13 @@ export default function HeroNavbar() {
             </Link>
           </div>
 
-          {/* Mobile CTA Button */}
-          <div className="mt-8">
+          {/* Mobile CTA Buttons */}
+          <div className="mt-8 flex flex-col gap-3">
+            <a href={CONTACT_SALES_LINK} target="_blank" rel="noopener noreferrer">
+              <button className="w-full bg-white/10 hover:bg-white/20 transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center cursor-pointer whitespace-nowrap px-6 h-[50px] border border-white/20" style={{ borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
+                Book a Demo
+              </button>
+            </a>
             <a href={CONSOLE_LINK}>
               <button className="w-full group bg-[#3B82F6] transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6 h-[50px]" style={{ borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
                 Start for Free

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONSOLE_LINK } from "@/config/links";
 
 export default function WhyChooseSection() {
   const features = [
@@ -62,7 +63,7 @@ export default function WhyChooseSection() {
             with Aquanode.
           </p>
 
-          <Link href="/marketplace">
+          <Link href={CONSOLE_LINK}>
             <button className="group bg-[#3B82F6] transition-all text-white font-normal rounded-lg flex items-center justify-center gap-3 mx-auto cursor-pointer whitespace-nowrap px-6" style={{ width: '250px', height: '50px', fontFamily: 'var(--font-inter)', borderRadius: '10px' }}>
               Start Deploying
               <div className="flex items-center gap-0">

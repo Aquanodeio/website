@@ -55,7 +55,7 @@ export const MarketplaceCard = React.forwardRef<
     <div
       ref={ref}
       {...props}
-      className="flex flex-col bg-[#141414] rounded-md border border-white/10 hover:border-white/20 transition-all duration-300 ease-in-out overflow-clip w-full hover:scale-105 cursor-pointer"
+      className="flex flex-col bg-[#141414f5] rounded-md border border-white/10 hover:border-white/20 transition-all duration-300 ease-in-out overflow-clip w-full hover:scale-105 cursor-pointer"
       style={{ fontFamily: "var(--font-inter)" }}
     >
       <div className="flex flex-col items-center justify-between w-full p-6">

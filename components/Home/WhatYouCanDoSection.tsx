@@ -3,7 +3,15 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import AssetSVG from "@/assets/home/whatyoucan/asset099.svg";
+import {
+  fadeInUp,
+  fadeInLeft,
+  viewport,
+  buttonHover,
+  tapScale,
+} from "@/lib/motionConfig";
 
 export default function WhatYouCanDoSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -80,7 +88,13 @@ export default function WhatYouCanDoSection() {
         <div className="px-6 md:px-12 lg:px-16 xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-20 items-start max-w-7xl relative ">
             {/* Left: SVG Illustration */}
-            <div className="hidden lg:flex items-start justify-start flex-col sticky top-20">
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={viewport}
+              variants={fadeInLeft}
+              className="hidden lg:flex items-start justify-start flex-col sticky top-20"
+            >
               <h2 className="text-4xl md:text-4xl lg:text-5xl font-normal text-black mb-16 md:mb-20">
                 What you can do with
                 <br />
@@ -93,7 +107,7 @@ export default function WhatYouCanDoSection() {
                 height={800}
                 className="w-full"
               />
-            </div>
+            </motion.div>
 
             {/* Right: Use Cases */}
             <div className="space-y-12 mt-40">
@@ -149,9 +163,17 @@ export default function WhatYouCanDoSection() {
               ))}
 
               {/* CTA Button */}
-              <div className="pt-8">
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={viewport}
+                variants={fadeInUp}
+                className="pt-8"
+              >
                 <Link href="/marketplace">
-                  <button
+                  <motion.button
+                    whileHover={buttonHover}
+                    whileTap={tapScale}
                     className="group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-white/10 px-6 cursor-pointer whitespace-nowrap"
                     style={{
                       width: "250px",
@@ -165,9 +187,9 @@ export default function WhatYouCanDoSection() {
                       <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
                       <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
                     </div>
-                  </button>
+                  </motion.button>
                 </Link>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

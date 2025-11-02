@@ -1,11 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import quoteIcon from "@/assets/home/testimonial/quote.svg";
+import {
+  fadeInUp,
+  staggerContainer,
+  cardVariants,
+  viewport,
+  hoverLift,
+} from "@/lib/motionConfig";
 
 export default function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "I switched from Runpod to Aquanode, and it feels so much better to use. The GPUs are priced more reasonably! I’d highly recommend it.",
+        "I switched from Runpod to Aquanode, and it feels so much better to use. The GPUs are priced more reasonably! I'd highly recommend it.",
       role: "ML Engineer",
       company: "University of California, Los Angeles",
     },
@@ -21,23 +31,38 @@ export default function TestimonialsSection() {
     <section className="relative w-full bg-white py-20 md:py-28">
       <div className="w-full px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={fadeInUp}
+          className="text-center mb-16 md:mb-20"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-black mb-4">
             Trusted by Builders Everywhere
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Don&apos;t take our word for it, here&apos;s what builders like you are
+            Don&apos;t take our word for it, here&apos;s what builders like you
+            are
             <br />
             you are saying.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
+        >
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white p-8 md:p-10 rounded-2xl flex flex-col"
+              variants={cardVariants}
+              whileHover={hoverLift}
+              className="bg-white p-8 md:p-10 rounded-2xl flex flex-col shadow-sm border border-gray-100"
             >
               <div className="flex gap-6 flex-grow">
                 {/* Quote Icon */}
@@ -69,11 +94,10 @@ export default function TestimonialsSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-

@@ -48,15 +48,15 @@ export default async function PricingComparisonSection() {
       traditional: "$18/hr",
     },
     {
-      gpu: "H100 SXM 80GB",
-      runpod: "$2.69/hr",
-      aquanode: `$${aquanodePrices.h100.toFixed(2)}/hr`,
-      traditional: "$14/hr",
-    },
-    {
       gpu: "H200 SXM 141GB",
       runpod: "$3.59/hr",
       aquanode: `$${aquanodePrices.h200.toFixed(2)}/hr`,
+      traditional: "$14/hr",
+    },
+    {
+      gpu: "H100 SXM 80GB",
+      runpod: "$2.69/hr",
+      aquanode: `$${aquanodePrices.h100.toFixed(2)}/hr`,
       traditional: "$10/hr",
     },
     {

@@ -25,7 +25,7 @@ export const getMarketplace = async (): Promise<{ providers: Provider[] }> => {
       .map((provider) => ({
         ...provider,
         id: provider.gpuShortName + provider.providerId, // Ensure unique ID for React keys
-        gpuMemory: provider.gpuMemory.replace("Gi", "gb"), // Normalize GPU memory format
+        gpuMemory: provider.gpuMemory.replace("Gi", "GB"), // Normalize GPU memory format
         provider:
           provider.provider === "voltagepark"
             ? ("Voltage Park" as Provider["provider"])

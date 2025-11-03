@@ -4,8 +4,10 @@ import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { getMarketplace } from "@/hooks/useMarketplace";
 import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
+import { configSupportedByProvider } from "@/lib/provider-configs";
+import { ProviderType } from "@/types";
 
-export const dynamic = 'force-dynamic'; // Force dynamic rendering to avoid build-time API calls
+export const dynamic = "force-dynamic"; // Force dynamic rendering to avoid build-time API calls
 export const revalidate = 3600; // 1hr
 
 const getUniqueProviders = async () => {
@@ -14,6 +16,22 @@ const getUniqueProviders = async () => {
 
     // Deduplicate by GPU model name (case-insensitive), keeping only the lowest price for each model
     const gpuMap = new Map<string, (typeof data)[0]>();
+
+    // convert price per gpu to node price for non configurable providers
+    data.forEach((provider) => {
+      const providerName = provider.provider
+        .split(" ")
+        .join("")
+        .toLowerCase() as ProviderType;
+
+      const config = configSupportedByProvider[providerName];
+
+      if (!config) console.warn("No config found for provider:", providerName);
+
+      if (!config.gpu) {
+        provider.price = provider.price * provider.available;
+      }
+    });
 
     data.forEach((provider) => {
       const gpuKey = provider.gpuShortName.toLowerCase();
@@ -90,7 +108,9 @@ export default async function Pricing() {
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm min-w-[700px]">
               {/* Table Header */}
               <div className="grid grid-cols-5 gap-2 md:gap-4 px-3 md:px-6 py-3 md:py-4 bg-gray-50 border-b border-gray-200">
-                <div className="text-gray-900 font-semibold text-xs md:text-sm">GPU Model</div>
+                <div className="text-gray-900 font-semibold text-xs md:text-sm">
+                  GPU Model
+                </div>
                 <div className="text-gray-900 font-semibold text-xs md:text-sm text-center">
                   vRAM
                 </div>
@@ -107,8 +127,12 @@ export default async function Pricing() {
               {data.length === 0 ? (
                 <div className="px-6 py-12 text-center">
                   <p className="text-gray-500 text-sm">
-                    Unable to load pricing data at the moment. Please try again later or{" "}
-                    <a href={MAIL_LINK} className="text-blue-600 hover:underline">
+                    Unable to load pricing data at the moment. Please try again
+                    later or{" "}
+                    <a
+                      href={MAIL_LINK}
+                      className="text-blue-600 hover:underline"
+                    >
                       contact us
                     </a>{" "}
                     for current pricing.
@@ -150,7 +174,7 @@ export default async function Pricing() {
                             item.gpuShortName
                           }
                           className="group bg-[#2A2A2A] text-white px-3 md:px-4 py-1.5 md:py-2 rounded-[10px] text-xs md:text-sm font-normal transition-all flex items-center gap-2 md:gap-3 backdrop-blur-sm border border-gray-700 whitespace-nowrap"
-                          style={{ fontFamily: 'var(--font-inter)' }}
+                          style={{ fontFamily: "var(--font-inter)" }}
                         >
                           Rent Now
                           <div className="flex items-center gap-0">
@@ -159,7 +183,10 @@ export default async function Pricing() {
                           </div>
                         </a>
                       ) : (
-                        <button className="bg-gray-300 text-gray-500 px-3 md:px-4 py-1.5 md:py-2 rounded-[10px] text-xs md:text-sm font-normal cursor-not-allowed opacity-50 flex items-center gap-2 whitespace-nowrap" style={{ fontFamily: 'var(--font-inter)' }}>
+                        <button
+                          className="bg-gray-300 text-gray-500 px-3 md:px-4 py-1.5 md:py-2 rounded-[10px] text-xs md:text-sm font-normal cursor-not-allowed opacity-50 flex items-center gap-2 whitespace-nowrap"
+                          style={{ fontFamily: "var(--font-inter)" }}
+                        >
                           Unavailable
                         </button>
                       )}
@@ -169,7 +196,6 @@ export default async function Pricing() {
               )}
             </div>
           </div>
-
         </div>
 
         {/* Footer */}

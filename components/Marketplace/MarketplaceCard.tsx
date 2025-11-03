@@ -2,10 +2,12 @@ import { cn, toTitleCase } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import React from "react";
 import { useSearchParams } from "next/navigation";
+import { configSupportedByProvider } from "@/lib/provider-configs";
+import { ProviderType } from "@/types";
 
 export interface Provider {
   id: string;
-  provider: "spheron" | "akash" | "voltagepark" | "datacrunch" | "hotaisle";
+  provider: ProviderType;
   providerId: string;
   providerName: string;
   address: string;
@@ -50,6 +52,14 @@ export const MarketplaceCard = React.forwardRef<
 
   // Convert params into string that can be used in url
   const appliableFilters = new URLSearchParams(searchParams.toString());
+  const configs = configSupportedByProvider[provider.provider];
+
+  const price = configs?.gpu
+    ? provider.price?.toFixed(2)
+    : (provider.price * provider.available).toFixed(2);
+
+  // replace all gi/gb/Gb/ with GB
+  const gpuMemory = provider.gpuMemory.replace(/gi|gb|Gb|Gi|GI/g, "GB");
 
   return (
     <div
@@ -67,7 +77,7 @@ export const MarketplaceCard = React.forwardRef<
             >
               {provider.gpuShortName.toUpperCase()}
             </h4>
-            <p className="text-gray-400 text-xl">({provider.gpuMemory})</p>
+            <p className="text-gray-400 text-xl">({gpuMemory})</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -125,7 +135,7 @@ export const MarketplaceCard = React.forwardRef<
               }}
               type="button"
             >
-              <p>${provider.price.toFixed(2)}/hr</p>
+              <p>${price}/hr</p>
               <div className="flex items-center gap-0">
                 <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
                 <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />

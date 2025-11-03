@@ -86,7 +86,7 @@ export default function WhatYouCanDoSection() {
       <div className="w-full">
         {/* Content Grid */}
         <div className="px-6 md:px-12 lg:px-16 xl:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-20 items-start max-w-7xl relative ">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-20 items-start max-w-7xl mx-auto relative ">
             {/* Left: SVG Illustration */}
             <motion.div
               initial="hidden"

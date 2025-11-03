@@ -21,27 +21,27 @@ export default function WhatYouCanDoSection() {
   const useCases = [
     {
       label: "Train",
-      title: "Train Large Language Models (LLMs)",
+      title: "Train Large Language Models - Faster.",
       description:
-        "Quickly Train Large AI Models Using Powerful GPUs, So You Spend Less Time Waiting And More Time Building.",
+        "Accelerate your AI experiments with high-performance GPUs. Aquanode lets you train large models in less time, so you can iterate, test, and ship breakthroughs quicker.",
     },
     {
       label: "Tune",
       title: "Customize Existing Models",
       description:
-        "Easily Adjust Existing Models With Your Own Data To Get Results That Match Your Project's Needs.",
+        "Easily adjust existing models with your own data to get results that match your project’s needs.",
     },
     {
       label: "Deploy",
       title: "Run High-Performance Inference",
       description:
-        "Run Your Models Efficiently To Get Accurate Predictions In Real Time, Making Your Applications More Responsive.",
+        "Run your models efficiently to get accurate predictions in real time, making your applications more responsive.",
     },
     {
       label: "Experiment",
       title: "AI Research & Experimentation",
       description:
-        "Experiment With New AI Ideas And Test Different Approaches Without Worrying About Setting Up Or Managing Infrastructure.",
+        "Experiment with new AI ideas and test different approaches without worrying about setting up or managing infrastructure.",
     },
   ];
 
@@ -156,7 +156,7 @@ export default function WhatYouCanDoSection() {
                   <h3 className="text-3xl text-black mb-8">{useCase.title}</h3>
 
                   {/* Description */}
-                  <p className="text-xl text-gray-600 leading-relaxed">
+                  <p className="text-lg text-gray-600 leading-relaxed mb-24">
                     {useCase.description}
                   </p>
                 </div>
@@ -174,7 +174,7 @@ export default function WhatYouCanDoSection() {
                   <motion.button
                     whileHover={buttonHover}
                     whileTap={tapScale}
-                    className="group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-white/10 px-6 cursor-pointer whitespace-nowrap"
+                    className="group bg-[#3B82F6] transition-all text-white font-normal flex items-center justify-center gap-3 backdrop-blur-sm border border-white/10 px-6 cursor-pointer whitespace-nowrap mt-[-70]"
                     style={{
                       width: "250px",
                       height: "50px",

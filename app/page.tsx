@@ -44,11 +44,11 @@ export default function Home() {
       {/* GPU Picker Section */}
       <GPUPickerSection />
 
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-
       {/* What You Can Do Section */}
       <WhatYouCanDoSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Pricing Comparison Section */}
       <PricingComparisonSection />

@@ -11,14 +11,11 @@ export interface ApiResponse<T> {
 }
 
 export const getMarketplace = async (): Promise<{ providers: Provider[] }> => {
-  const response = await api.get<ApiResponse<Provider[]>>(
-    `/marketplace/cached`,
-    {
-      headers: {
-        "Cache-Control": "no-cache",
-      },
-    }
-  );
+  const response = await api.get<ApiResponse<Provider[]>>(`/marketplace`, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  });
 
   return {
     providers: response.data.data

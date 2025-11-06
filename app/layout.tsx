@@ -1,22 +1,16 @@
 import { Inter, Figtree, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
+import Script from "next/script";
 import WebVitals from "@/components/WebVitals";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
+import { organizationSchema } from "@/lib/seo-config";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
-
-const figtree = Figtree({
-  subsets: ["latin"],
-  variable: "--font-figtree",
-  weight: ["400", "500", "600"], // Removed unused weights
   display: "swap",
   preload: true,
 });
@@ -107,55 +101,28 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Aquanode",
-              url: "https://aquanode.io",
-              logo: "https://aquanode.io/images/aquanode-banner.png",
-              description:
-                "AI Cloud platform offering 80% cost savings on H100, A100, H200 GPU computing with effortless deployment",
-              foundingDate: "2024",
-              industry: "Cloud Computing",
-              services: [
-                "H100 GPU Hosting",
-                "A100 GPU Hosting",
-                "H200 GPU Hosting",
-                "AI Model Deployment",
-                "GPU Cloud Computing",
-                "GPU Cloud Hosting",
-                "Serverless GPU Computing",
-                "Comfy UI",
-                "n8n",
-                "vllm",
-                "Containerized GPU Computing",
-                "Deploy Docker Containers",
-                "rtx4090 GPU Hosting",
-              ],
-              keywords:
-                "AI Cloud, GPU Hosting, H100 pricing, A100 cloud, H200 deployment, machine learning inference, cost-effective AI",
-              sameAs: [
-                "https://twitter.com/aquanode",
-                "https://github.com/aquanode",
-              ],
-            }),
-          }}
-        />
       </head>
       <body
-        className={`${inter.variable} ${figtree.variable} ${jetbrainsMono.variable} ${GeistSans.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${GeistSans.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
         style={{ fontFamily: "var(--font-geist-sans)" }}
       >
+        {/* Structured Data - Organization Schema */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
         <WebVitals />
 
         {/* Hidden SEO content for search engines */}
         <div className="sr-only" aria-hidden="true">
           <h2>H100 A100 H200 GPU Cloud Hosting</h2>
           <p>
-            Deploy AI models on H100, A100, and H200 GPUs with up to 80% cost
+            Deploy AI models on H100, A100, and H200 GPUs with up to 40% cost
             savings. Lightning-fast machine learning inference on enterprise GPU
             infrastructure.
           </p>

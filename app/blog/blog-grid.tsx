@@ -1,18 +1,18 @@
-"use client";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog";
 
-interface BlogClientProps {
+interface BlogGridProps {
   blogData: BlogPost[];
 }
 
-export default function BlogClient({ blogData }: BlogClientProps) {
+export default function BlogGrid({ blogData }: BlogGridProps) {
   return (
     <div className="max-w-7xl">
       {/* Section Header */}
-      <h2 className="text-2xl font-normal text-gray-600 mb-8">Get Started With Our Recent Posts</h2>
+      <h2 className="text-2xl font-normal text-gray-600 mb-8">
+        Get Started With Our Recent Posts
+      </h2>
 
       {/* Blog Grid - 3 columns */}
       {blogData.length > 0 ? (
@@ -28,6 +28,8 @@ export default function BlogClient({ blogData }: BlogClientProps) {
                       alt={post.title}
                       fill
                       className="object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
 

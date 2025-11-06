@@ -60,6 +60,7 @@ export default function FeaturesSection() {
               width={500}
               height={500}
               className="w-full max-w-md"
+              loading="lazy"
             />
           </motion.div>
 

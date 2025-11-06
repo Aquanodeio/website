@@ -106,6 +106,7 @@ export default function WhatYouCanDoSection() {
                 width={800}
                 height={800}
                 className="w-full"
+                loading="lazy"
               />
             </motion.div>
 

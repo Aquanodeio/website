@@ -38,6 +38,8 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
+  reactCompiler: true,
+
   // Headers for caching and security
   async headers() {
     return [

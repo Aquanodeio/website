@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
                     alt="Quote"
                     width={40}
                     height={32}
-                    // className="opacity-30"
+                    loading="lazy"
                   />
                 </div>
 

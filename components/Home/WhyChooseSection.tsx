@@ -1,5 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { CONSOLE_LINK } from "@/config/links";
+import {
+  fadeInUp,
+  staggerContainer,
+  cardVariants,
+  viewport,
+  buttonHover,
+  tapScale,
+  hoverScale,
+} from "@/lib/motionConfig";
 
 export default function WhyChooseSection() {
   const features = [
@@ -53,7 +65,13 @@ export default function WhyChooseSection() {
     <section className="relative w-full min-h-screen bg-white py-20">
       <div className="w-full px-6 md:px-12 lg:px-16 xl:px-20">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
             Why Choose Aquanode?
           </h2>
@@ -64,20 +82,41 @@ export default function WhyChooseSection() {
           </p>
 
           <Link href={CONSOLE_LINK}>
-            <button className="group bg-[#3B82F6] transition-all text-white font-normal rounded-lg flex items-center justify-center gap-3 mx-auto cursor-pointer whitespace-nowrap px-6" style={{ width: '250px', height: '50px', fontFamily: 'var(--font-inter)', borderRadius: '10px' }}>
+            <motion.button
+              whileHover={buttonHover}
+              whileTap={tapScale}
+              className="group bg-[#3B82F6] transition-all text-white font-normal rounded-lg flex items-center justify-center gap-3 mx-auto cursor-pointer whitespace-nowrap px-6"
+              style={{
+                width: "250px",
+                height: "50px",
+                fontFamily: "var(--font-inter)",
+                borderRadius: "10px",
+              }}
+            >
               Start Deploying
               <div className="flex items-center gap-0">
                 <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
                 <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
               </div>
-            </button>
+            </motion.button>
           </Link>
-        </div>
+        </motion.div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-10 mt-30">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-10 mt-30"
+        >
           {features.map((feature, index) => (
-            <div key={index} className="relative group border border-gray-300 rounded-md">
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              whileHover={hoverScale}
+              className="relative group border border-gray-300 rounded-md"
+            >
               {/* Decorative Corner Borders */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#4A90FF]" />
               <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#4A90FF]" />
@@ -96,9 +135,9 @@ export default function WhyChooseSection() {
                   {feature.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

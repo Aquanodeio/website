@@ -3,6 +3,7 @@ import HeroSection from "@/components/Home/HeroSection";
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import GPUPickerSection from "@/components/Home/GPUPickerSection";
 import TestimonialsSection from "@/components/Home/TestimonialsSection";
+import WhatYouCanDoSection from "@/components/Home/WhatYouCanDoSection";
 import PricingComparisonSection from "@/components/Home/PricingComparisonSection";
 import WhyChooseSection from "@/components/Home/WhyChooseSection";
 import FooterCTA from "@/components/Home/FooterCTA";
@@ -42,6 +43,9 @@ export default function Home() {
 
       {/* GPU Picker Section */}
       <GPUPickerSection />
+
+      {/* What You Can Do Section */}
+      <WhatYouCanDoSection />
 
       {/* Testimonials Section */}
       <TestimonialsSection />

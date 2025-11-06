@@ -42,8 +42,7 @@ export default function TestimonialsSection() {
             Trusted by Builders Everywhere
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Don&apos;t take our word for it, here&apos;s what builders like you
-            are
+            Don&apos;t take our word for it, here&apos;s what builders like
             <br />
             you are saying.
           </p>

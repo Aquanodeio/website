@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Provider } from "@/components/Marketplace/MarketplaceCard";
 import { ProviderType } from "@/types";
+import { configSupportedByProvider } from "@/lib/provider-configs";
 
 interface FilterState {
   vendor: string;
@@ -333,15 +334,27 @@ export function useFilteredProviders({
       filtered.sort((a, b) => {
         // First sort by price if enabled
         if (sorting.priceSort !== "none") {
+          // Handle edge cases where price might be null, undefined, or 0
+          const aSupportsGpuConfig = configSupportedByProvider[a.provider]?.gpu;
+          const bSupportsGpuConfig = configSupportedByProvider[b.provider]?.gpu;
+
+          // If a GPU count is explicitly selected, use total price (price * desiredGpuCount)
+          // for providers that support GPU configs. Otherwise (no explicit gpuCount),
+          // sort by price-per-GPU so listings are comparable.
+          const priceA = aSupportsGpuConfig ? a.price : a.price * a.available;
+          const priceB = bSupportsGpuConfig ? b.price : b.price * b.available;
+
           const priceDiff =
-            sorting.priceSort === "asc" ? a.price - b.price : b.price - a.price;
-          if (priceDiff !== 0) return priceDiff;
+            sorting.priceSort === "asc" ? priceA - priceB : priceB - priceA;
+
+          // If prices are different, return the difference
+          return priceDiff;
         }
 
-        // Then sort by vRAM if enabled
+        // Then sort by vRAM if enabled (as secondary sort)
         if (sorting.vramSort !== "none") {
-          const aVram = parseInt(a.gpuMemory.replace(/[^\d]/g, ""));
-          const bVram = parseInt(b.gpuMemory.replace(/[^\d]/g, ""));
+          const aVram = parseInt(a.gpuMemory.replace(/[^\d]/g, "")) || 0;
+          const bVram = parseInt(b.gpuMemory.replace(/[^\d]/g, "")) || 0;
           return sorting.vramSort === "asc" ? aVram - bVram : bVram - aVram;
         }
 

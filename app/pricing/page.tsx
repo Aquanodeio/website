@@ -84,7 +84,7 @@ export default async function Pricing() {
         name: "What GPU models are available for rent?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We offer H100, A100, H200, RTX 4090, and other high-performance GPUs for rent across multiple regions.",
+          text: "We offer H100, A100, H200, AMD MI300X, RTX 4090, and other high-performance GPUs for rent across multiple regions.",
         },
       },
       {
@@ -92,7 +92,7 @@ export default async function Pricing() {
         name: "How much can I save compared to other providers?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You can save up to 80% on GPU costs compared to traditional cloud providers by using Aquanode's marketplace.",
+          text: "You can save up to 40% on GPU costs compared to traditional cloud providers by using Aquanode's marketplace.",
         },
       },
       {
@@ -129,7 +129,8 @@ export default async function Pricing() {
               GPU Pricing
             </h1>
             <p className="text-base md:text-lg text-gray-600">
-              Find Cheapest GPU prices across multiple providers and deploy instantly
+              Find Cheapest GPU prices across multiple providers and deploy
+              instantly
             </p>
           </div>
           {/* Filter Controls */}

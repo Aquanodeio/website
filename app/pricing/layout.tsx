@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "GPU Pricing | Aquanode",
   description:
-    "Compare H100, A100, B200 GPU prices across regions. Filter by vRAM and form factor. Deploy instantly and save up to 80%.",
+    "Compare H100, A100, B200, AMD MI300X GPU prices across regions. Filter by vRAM and form factor. Deploy instantly and save up to 40%.",
   alternates: {
     canonical: "https://aquanode.io/pricing",
   },
   openGraph: {
     title: "GPU Pricing | Aquanode",
     description:
-      "Compare H100, A100, B200 GPU prices across regions. Filter by vRAM and form factor. Deploy instantly and save up to 80%.",
+      "Compare H100, A100, B200, AMD MI300X GPU prices across regions. Filter by vRAM and form factor. Deploy instantly and save up to 40%.",
     url: "https://aquanode.io/pricing",
     type: "website",
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GPU Pricing | Aquanode",
     description:
-      "Compare H100, A100, B200 GPU prices across regions. Filter by vRAM and form factor. Deploy instantly and save up to 80%.",
+      "Compare H100, A100, B200, AMD MI300X GPU prices across regions. Filter by vRAM and form factor. Deploy instantly and save up to 40%.",
     images: ["https://aquanode.io/images/aquanode-banner.png"],
   },
 };

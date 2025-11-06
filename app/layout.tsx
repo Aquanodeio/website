@@ -25,19 +25,19 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title:
-    "Aquanode - AI Cloud Platform | Deploy on H100, A100, H200 GPUs | Save 80% Costs",
+    "Aquanode - AI Cloud Platform | Deploy on H100, A100, H200, MI300X GPUs | Save 40% Costs",
   description:
-    "Deploy AI models on H100, A100, H200 GPUs with up to 80% cost savings. One platform for cloud features on every GPU. Pick, deploy, and scale effortlessly.",
+    "Deploy AI models on H100, A100, H200, AMD MI300X GPUs with up to 40% cost savings. One platform for cloud features on every GPU. Pick, deploy, and scale effortlessly.",
   keywords:
-    "AI cloud, GPU hosting, H100, A100, H200, machine learning, AI inference, cost-effective AI, GPU computing, cloud deployment, Cheap GPU, Rent GPU, On-Demand GPU",
+    "AI cloud, GPU hosting, H100, A100, H200, MI300X, AMD GPU, machine learning, AI inference, cost-effective AI, GPU computing, cloud deployment, Cheap GPU, Rent GPU, On-Demand GPU",
   authors: [{ name: "Aquanode" }],
   creator: "Aquanode",
   publisher: "Aquanode",
 
   openGraph: {
-    title: "Aquanode - AI Cloud Platform | Save 80% on GPU Costs",
+    title: "Aquanode - AI Cloud Platform | Save 40% on GPU Costs",
     description:
-      "Deploy AI models with up to 80% cost savings on H100, A100, H200 GPUs. Lightning-fast deployment on global infrastructure.",
+      "Deploy AI models with up to 40% cost savings on H100, A100, H200, AMD MI300X GPUs. Lightning-fast deployment on global infrastructure.",
     url: "https://aquanode.io",
     siteName: "Aquanode",
     locale: "en_US",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Aquanode - AI Cloud Platform | Save 80% on GPU Costs",
+    title: "Aquanode - AI Cloud Platform | Save 40% on GPU Costs",
     description:
-      "Deploy AI models with up to 80% cost savings on H100, A100, H200 GPUs",
+      "Deploy AI models with up to 40% cost savings on H100, A100, H200, AMD MI300X GPUs",
     creator: "@aquanode",
     images: ["https://aquanode.io/images/aquanode-banner.png"],
   },
@@ -120,15 +120,16 @@ export default function RootLayout({
 
         {/* Hidden SEO content for search engines */}
         <div className="sr-only" aria-hidden="true">
-          <h2>H100 A100 H200 GPU Cloud Hosting</h2>
+          <h2>H100 A100 H200 MI300X GPU Cloud Hosting</h2>
           <p>
-            Deploy AI models on H100, A100, and H200 GPUs with up to 40% cost
-            savings. Lightning-fast machine learning inference on enterprise GPU
-            infrastructure.
+            Deploy AI models on H100, A100, H200, and AMD MI300X GPUs with up to
+            40% cost savings. Lightning-fast machine learning inference on
+            enterprise GPU infrastructure.
           </p>
           <span>
             AI Cloud Platform, GPU Hosting Service, H100 GPU Pricing, A100 Cloud
-            Computing, H200 Deployment, Machine Learning Infrastructure
+            Computing, H200 Deployment, AMD MI300X Hosting, Machine Learning
+            Infrastructure
           </span>
         </div>
 

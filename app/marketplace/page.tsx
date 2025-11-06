@@ -32,7 +32,7 @@ export default function MarketplacePage() {
     "@type": "Product",
     name: "GPU Rental Service",
     description:
-      "Rent high-performance GPUs including H100, A100, and H200 for AI and ML workloads",
+      "Rent high-performance GPUs including H100, A100, H200, and AMD MI300X for AI and ML workloads",
     brand: {
       "@type": "Brand",
       name: "Aquanode",

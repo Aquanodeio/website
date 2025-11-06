@@ -8,13 +8,15 @@ export const siteConfig = {
   url: "https://aquanode.io",
   ogImage: "https://aquanode.io/images/aquanode-banner.png",
   description:
-    "Deploy AI models on H100, A100, H200 GPUs with up to 80% cost savings. One platform for cloud features on every GPU. Pick, deploy, and scale effortlessly.",
+    "Deploy AI models on H100, A100, H200, AMD MI300X GPUs with up to 40% cost savings. One platform for cloud features on every GPU. Pick, deploy, and scale effortlessly.",
   keywords: [
     "AI cloud",
     "GPU hosting",
     "H100",
     "A100",
     "H200",
+    "MI300X",
+    "AMD GPU",
     "machine learning",
     "AI inference",
     "cost-effective AI",
@@ -33,7 +35,7 @@ export const siteConfig = {
 export const defaultMetadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} - AI Cloud Platform | Deploy on H100, A100, H200 GPUs | Save 80% Costs`,
+    default: `${siteConfig.name} - AI Cloud Platform | Deploy on H100, A100, H200, MI300X GPUs | Save 40% Costs`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -56,7 +58,7 @@ export const defaultMetadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: `${siteConfig.name} - AI Cloud Platform | Save 80% on GPU Costs`,
+    title: `${siteConfig.name} - AI Cloud Platform | Save 40% on GPU Costs`,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
@@ -70,7 +72,7 @@ export const defaultMetadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} - AI Cloud Platform | Save 80% on GPU Costs`,
+    title: `${siteConfig.name} - AI Cloud Platform | Save 40% on GPU Costs`,
     description: siteConfig.description,
     creator: "@aquanode",
     images: [siteConfig.ogImage],
@@ -96,6 +98,8 @@ export const organizationSchema = {
     "H100 GPU Hosting",
     "A100 GPU Hosting",
     "H200 GPU Hosting",
+    "MI300X GPU Hosting",
+    "AMD GPU Hosting",
     "AI Model Deployment",
     "GPU Cloud Computing",
     "GPU Cloud Hosting",

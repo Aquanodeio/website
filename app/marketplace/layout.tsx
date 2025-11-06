@@ -5,14 +5,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "GPU Marketplace | Aquanode",
   description:
-    "Browse and compare GPU instances from multiple cloud providers. Find the best H100, A100, H200 GPUs for your AI workloads.",
+    "Browse and compare GPU instances from multiple cloud providers. Find the best H100, A100, H200, AMD MI300X GPUs for your AI workloads.",
   alternates: {
     canonical: "https://aquanode.io/marketplace",
   },
   openGraph: {
     title: "GPU Marketplace | Aquanode",
     description:
-      "Browse and compare GPU instances from multiple cloud providers. Find the best H100, A100, H200 GPUs for your AI workloads.",
+      "Browse and compare GPU instances from multiple cloud providers. Find the best H100, A100, H200, AMD MI300X GPUs for your AI workloads.",
     url: "https://aquanode.io/marketplace",
     type: "website",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GPU Marketplace | Aquanode",
     description:
-      "Browse and compare GPU instances from multiple cloud providers. Find the best H100, A100, H200 GPUs for your AI workloads.",
+      "Browse and compare GPU instances from multiple cloud providers. Find the best H100, A100, H200, AMD MI300X GPUs for your AI workloads.",
     images: ["https://aquanode.io/images/aquanode-banner.png"],
   },
 };

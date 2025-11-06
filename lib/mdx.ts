@@ -1,13 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 // This function should only be called on the server side
 const getContentDirectory = () => {
-  if (typeof window !== 'undefined') {
-    throw new Error('This function can only be called on the server side');
+  if (typeof window !== "undefined") {
+    throw new Error("This function can only be called on the server side");
   }
-  return path.join(process.cwd(), 'content/blog');
+  return path.join(process.cwd(), "content/blog");
 };
 
 export interface BlogPost {
@@ -37,11 +37,11 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 
   const fileNames = fs.readdirSync(contentDirectory);
   const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.mdx'))
+    .filter((fileName) => fileName.endsWith(".mdx"))
     .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, '');
+      const slug = fileName.replace(/\.mdx$/, "");
       const fullPath = path.join(contentDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const fileContents = fs.readFileSync(fullPath, "utf8");
 
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents);
@@ -66,7 +66,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const contentDirectory = getContentDirectory();
     const fullPath = path.join(contentDirectory, `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const matterResult = matter(fileContents);
 
@@ -76,7 +76,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
       ...matterResult.data,
     } as BlogPost;
   } catch (error) {
-    return null;
+    throw new Error(`Error getting blog post ${slug}: ${error}`);
   }
 }
 
@@ -89,6 +89,6 @@ export function getAllBlogSlugs(): string[] {
 
   const fileNames = fs.readdirSync(contentDirectory);
   return fileNames
-    .filter((fileName) => fileName.endsWith('.mdx'))
-    .map((fileName) => fileName.replace(/\.mdx$/, ''));
+    .filter((fileName) => fileName.endsWith(".mdx"))
+    .map((fileName) => fileName.replace(/\.mdx$/, ""));
 }

@@ -6,12 +6,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/assets/home/logo.png";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
-import {
-  navbarVariants,
-  slideInBottom,
-  buttonHover,
-  tapScale,
-} from "@/lib/motionConfig";
+import { navbarVariants, buttonHover, tapScale } from "@/lib/motionConfig";
 
 export default function HeroNavbar() {
   const pathname = usePathname();
@@ -45,9 +40,21 @@ export default function HeroNavbar() {
               className="lg:hidden ml-auto flex flex-col gap-1.5 p-2"
               aria-label="Toggle menu"
             >
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span
+                className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
+                  mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
             </button>
 
             {/* Separator */}
@@ -58,7 +65,9 @@ export default function HeroNavbar() {
               <Link
                 href="/"
                 className={`transition-colors font-medium text-sm ${
-                  pathname === "/" ? "text-white" : "text-white/70 hover:text-white"
+                  pathname === "/"
+                    ? "text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 Home
@@ -66,7 +75,9 @@ export default function HeroNavbar() {
               <Link
                 href="/pricing"
                 className={`transition-colors font-medium text-sm ${
-                  pathname === "/pricing" ? "text-white" : "text-white/70 hover:text-white"
+                  pathname === "/pricing"
+                    ? "text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 Pricing
@@ -74,7 +85,9 @@ export default function HeroNavbar() {
               <Link
                 href="/marketplace"
                 className={`transition-colors font-medium text-sm ${
-                  pathname === "/marketplace" ? "text-white" : "text-white/70 hover:text-white"
+                  pathname === "/marketplace"
+                    ? "text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 Marketplace
@@ -82,7 +95,9 @@ export default function HeroNavbar() {
               <Link
                 href="/blog"
                 className={`transition-colors font-medium text-sm ${
-                  pathname?.startsWith("/blog") ? "text-white" : "text-white/70 hover:text-white"
+                  pathname?.startsWith("/blog")
+                    ? "text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 Blogs
@@ -159,73 +174,97 @@ export default function HeroNavbar() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="lg:hidden fixed inset-y-0 right-0 w-[280px] bg-black/95 backdrop-blur-lg border-l border-white/20 z-50"
           >
-        <div className="flex flex-col h-full pt-20 px-6">
-          {/* Mobile Navigation Links */}
-          <div className="flex flex-col gap-6">
-            <Link
-              href="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`transition-colors font-medium text-base ${
-                pathname === "/" ? "text-white" : "text-white/70 hover:text-white"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/pricing"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`transition-colors font-medium text-base ${
-                pathname === "/pricing" ? "text-white" : "text-white/70 hover:text-white"
-              }`}
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/marketplace"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`transition-colors font-medium text-base ${
-                pathname === "/marketplace" ? "text-white" : "text-white/70 hover:text-white"
-              }`}
-            >
-              Marketplace
-            </Link>
-            <Link
-              href="/blog"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`transition-colors font-medium text-base ${
-                pathname?.startsWith("/blog") ? "text-white" : "text-white/70 hover:text-white"
-              }`}
-            >
-              Blogs
-            </Link>
-            <Link
-              href="https://docs.aquanode.io"
-              target="_blank"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-white/70 hover:text-white transition-colors font-medium text-base"
-            >
-              Docs
-            </Link>
-          </div>
+            <div className="flex flex-col h-full pt-20 px-6">
+              {/* Mobile Navigation Links */}
+              <div className="flex flex-col gap-6">
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`transition-colors font-medium text-base ${
+                    pathname === "/"
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/pricing"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`transition-colors font-medium text-base ${
+                    pathname === "/pricing"
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  Pricing
+                </Link>
+                <Link
+                  href="/marketplace"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`transition-colors font-medium text-base ${
+                    pathname === "/marketplace"
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  Marketplace
+                </Link>
+                <Link
+                  href="/blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`transition-colors font-medium text-base ${
+                    pathname?.startsWith("/blog")
+                      ? "text-white"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  Blogs
+                </Link>
+                <Link
+                  href="https://docs.aquanode.io"
+                  target="_blank"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white/70 hover:text-white transition-colors font-medium text-base"
+                >
+                  Docs
+                </Link>
+              </div>
 
-          {/* Mobile CTA Buttons */}
-          <div className="mt-8 flex flex-col gap-3">
-            <a href={CONTACT_SALES_LINK} target="_blank" rel="noopener noreferrer">
-              <button className="w-full bg-white/10 hover:bg-white/20 transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center cursor-pointer whitespace-nowrap px-6 h-[50px] border border-white/20" style={{ borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
-                Book a Demo
-              </button>
-            </a>
-            <a href={CONSOLE_LINK}>
-              <button className="w-full group bg-[#3B82F6] transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6 h-[50px]" style={{ borderRadius: '10px', fontFamily: 'var(--font-inter)' }}>
-                Start for Free
-                <div className="flex items-center gap-0">
-                  <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
-                  <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
-                </div>
-              </button>
-            </a>
-          </div>
-        </div>
+              {/* Mobile CTA Buttons */}
+              <div className="mt-8 flex flex-col gap-3">
+                <a
+                  href={CONTACT_SALES_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button
+                    className="w-full bg-white/10 hover:bg-white/20 transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center cursor-pointer whitespace-nowrap px-6 h-[50px] border border-white/20"
+                    style={{
+                      borderRadius: "10px",
+                      fontFamily: "var(--font-inter)",
+                    }}
+                  >
+                    Book a Demo
+                  </button>
+                </a>
+                <a href={CONSOLE_LINK}>
+                  <button
+                    className="w-full group bg-[#3B82F6] transition-all rounded-lg text-white text-sm font-normal flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap px-6 h-[50px]"
+                    style={{
+                      borderRadius: "10px",
+                      fontFamily: "var(--font-inter)",
+                    }}
+                  >
+                    Start for Free
+                    <div className="flex items-center gap-0">
+                      <div className="h-[2px] w-3 bg-current transition-all duration-200 group-hover:w-6" />
+                      <div className="w-2 h-2 border-r-2 border-b-2 border-current rotate-[-45deg] -translate-x-[7px] transition-all" />
+                    </div>
+                  </button>
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -246,4 +285,3 @@ export default function HeroNavbar() {
     </>
   );
 }
-

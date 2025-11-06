@@ -14,7 +14,6 @@ import LoadingSVG from "@/assets/home/features/loading-svg.svg";
 import {
   fadeInUp,
   fadeInLeft,
-  staggerContainer,
   staggerContainerSlow,
   viewport,
   buttonHover,

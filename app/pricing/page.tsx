@@ -7,8 +7,7 @@ import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
 import { configSupportedByProvider } from "@/lib/provider-configs";
 import { ProviderType } from "@/types";
 
-export const dynamic = "force-dynamic"; // Force dynamic rendering to avoid build-time API calls
-export const revalidate = 3600; // 1hr
+export const revalidate = 3600; // 1hr - ISR with static generation
 
 const getUniqueProviders = async () => {
   try {

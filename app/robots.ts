@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/console/", "/api/"],
     },
     sitemap: "https://aquanode.io/sitemap.xml",
   };

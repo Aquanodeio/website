@@ -1,5 +1,3 @@
-import Image from "next/image";
-import GPUVector from "@/assets/home/gpu-picker/GPU-Vector.svg";
 import { getMarketplace } from "@/hooks/useMarketplace";
 import { GPUPickerClient } from "./GPUPickerClient";
 

@@ -1,22 +1,16 @@
 import { Inter, Figtree, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
+import Script from "next/script";
 import WebVitals from "@/components/WebVitals";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
+import { organizationSchema } from "@/lib/seo-config";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
-
-const figtree = Figtree({
-  subsets: ["latin"],
-  variable: "--font-figtree",
-  weight: ["400", "500", "600"], // Removed unused weights
   display: "swap",
   preload: true,
 });
@@ -31,19 +25,19 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title:
-    "Aquanode - AI Cloud Platform | Deploy on H100, A100, H200 GPUs | Save 80% Costs",
+    "Aquanode - AI Cloud Platform | Deploy on H100, A100, H200, MI300X GPUs | Save 40% Costs",
   description:
-    "Deploy AI models on H100, A100, H200 GPUs with up to 80% cost savings. One platform for cloud features on every GPU. Pick, deploy, and scale effortlessly.",
+    "Deploy AI models on H100, A100, H200, AMD MI300X GPUs with up to 40% cost savings. One platform for cloud features on every GPU. Pick, deploy, and scale effortlessly.",
   keywords:
-    "AI cloud, GPU hosting, H100, A100, H200, machine learning, AI inference, cost-effective AI, GPU computing, cloud deployment, Cheap GPU, Rent GPU, On-Demand GPU",
+    "AI cloud, GPU hosting, H100, A100, H200, MI300X, AMD GPU, machine learning, AI inference, cost-effective AI, GPU computing, cloud deployment, Cheap GPU, Rent GPU, On-Demand GPU",
   authors: [{ name: "Aquanode" }],
   creator: "Aquanode",
   publisher: "Aquanode",
 
   openGraph: {
-    title: "Aquanode - AI Cloud Platform | Save 80% on GPU Costs",
+    title: "Aquanode - AI Cloud Platform | Save 40% on GPU Costs",
     description:
-      "Deploy AI models with up to 80% cost savings on H100, A100, H200 GPUs. Lightning-fast deployment on global infrastructure.",
+      "Deploy AI models with up to 40% cost savings on H100, A100, H200, AMD MI300X GPUs. Lightning-fast deployment on global infrastructure.",
     url: "https://aquanode.io",
     siteName: "Aquanode",
     locale: "en_US",
@@ -60,9 +54,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Aquanode - AI Cloud Platform | Save 80% on GPU Costs",
+    title: "Aquanode - AI Cloud Platform | Save 40% on GPU Costs",
     description:
-      "Deploy AI models with up to 80% cost savings on H100, A100, H200 GPUs",
+      "Deploy AI models with up to 40% cost savings on H100, A100, H200, AMD MI300X GPUs",
     creator: "@aquanode",
     images: ["https://aquanode.io/images/aquanode-banner.png"],
   },
@@ -107,61 +101,35 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Aquanode",
-              url: "https://aquanode.io",
-              logo: "https://aquanode.io/images/aquanode-banner.png",
-              description:
-                "AI Cloud platform offering 80% cost savings on H100, A100, H200 GPU computing with effortless deployment",
-              foundingDate: "2024",
-              industry: "Cloud Computing",
-              services: [
-                "H100 GPU Hosting",
-                "A100 GPU Hosting",
-                "H200 GPU Hosting",
-                "AI Model Deployment",
-                "GPU Cloud Computing",
-                "GPU Cloud Hosting",
-                "Serverless GPU Computing",
-                "Comfy UI",
-                "n8n",
-                "vllm",
-                "Containerized GPU Computing",
-                "Deploy Docker Containers",
-                "rtx4090 GPU Hosting",
-              ],
-              keywords:
-                "AI Cloud, GPU Hosting, H100 pricing, A100 cloud, H200 deployment, machine learning inference, cost-effective AI",
-              sameAs: [
-                "https://twitter.com/aquanode",
-                "https://github.com/aquanode",
-              ],
-            }),
-          }}
-        />
       </head>
       <body
-        className={`${inter.variable} ${figtree.variable} ${jetbrainsMono.variable} ${GeistSans.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${GeistSans.variable} ${inter.className} min-h-screen bg-background coal-texture text-[97%]`}
         style={{ fontFamily: "var(--font-geist-sans)" }}
       >
+        {/* Structured Data - Organization Schema */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
         <WebVitals />
 
         {/* Hidden SEO content for search engines */}
         <div className="sr-only" aria-hidden="true">
-          <h2>H100 A100 H200 GPU Cloud Hosting</h2>
+          <h2>H100 A100 H200 MI300X GPU Cloud Hosting</h2>
           <p>
-            Deploy AI models on H100, A100, and H200 GPUs with up to 80% cost
-            savings. Lightning-fast machine learning inference on enterprise GPU
-            infrastructure.
+            Deploy AI models on H100, A100, H200, and AMD MI300X GPUs with up to
+            40% cost savings. Lightning-fast machine learning inference on
+            enterprise GPU infrastructure.
           </p>
           <span>
             AI Cloud Platform, GPU Hosting Service, H100 GPU Pricing, A100 Cloud
-            Computing, H200 Deployment, Machine Learning Infrastructure
+            Computing, H200 Deployment, AMD MI300X Hosting, Machine Learning
+            Infrastructure
           </span>
         </div>
 

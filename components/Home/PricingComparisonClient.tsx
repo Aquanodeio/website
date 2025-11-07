@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  fadeInUp,
-  staggerContainerFast,
-  viewport,
-  buttonHover,
-  tapScale,
-} from "@/lib/motionConfig";
+import { fadeInUp, viewport, buttonHover, tapScale } from "@/lib/motionConfig";
 
 interface PricingRow {
   gpu: string;

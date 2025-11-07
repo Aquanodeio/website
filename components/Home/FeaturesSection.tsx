@@ -14,7 +14,6 @@ import LoadingSVG from "@/assets/home/features/loading-svg.svg";
 import {
   fadeInUp,
   fadeInLeft,
-  staggerContainer,
   staggerContainerSlow,
   viewport,
   buttonHover,
@@ -61,6 +60,7 @@ export default function FeaturesSection() {
               width={500}
               height={500}
               className="w-full max-w-md"
+              loading="lazy"
             />
           </motion.div>
 

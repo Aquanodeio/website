@@ -11,7 +11,6 @@ import {
   viewport,
   buttonHover,
   tapScale,
-  hoverScale,
 } from "@/lib/motionConfig";
 
 export default function FooterCTA() {
@@ -52,8 +51,9 @@ export default function FooterCTA() {
             className="text-gray-400 text-lg mb-8 leading-relaxed"
           >
             Aquanode lets you deploy GPUs across multiple clouds, with built-in
-            tooling and<br className="hidden md:inline" /> connector support,
-            without the complexity, limits, or hidden costs.
+            tooling and
+            <br className="hidden md:inline" /> connector support, without the
+            complexity, limits, or hidden costs.
           </motion.p>
 
           <motion.h2
@@ -219,4 +219,3 @@ export default function FooterCTA() {
     </section>
   );
 }
-

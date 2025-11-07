@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Head from "next/head";
 import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { useMarketplace } from "@/hooks/useMarketplace";
@@ -9,33 +8,54 @@ import MarketplaceWithFiltersSuspense from "@/components/Marketplace/Marketplace
 export default function MarketplacePage() {
   const { data: marketplaceData, isLoading, isFetching } = useMarketplace();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://aquanode.io/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Marketplace",
+        item: "https://aquanode.io/marketplace",
+      },
+    ],
+  };
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "GPU Rental Service",
+    description:
+      "Rent high-performance GPUs including H100, A100, H200, and AMD MI300X for AI and ML workloads",
+    brand: {
+      "@type": "Brand",
+      name: "Aquanode",
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      lowPrice: "0.29",
+      highPrice: "5.00",
+      offerCount: marketplaceData?.providers?.length || 100,
+    },
+  };
+
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://aquanode.io/",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Marketplace",
-                  item: "https://aquanode.io/marketplace",
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <main
         className="min-h-screen w-full bg-white overflow-x-hidden overflow-y-auto flex flex-col"
         style={{ fontFamily: "var(--font-)" }}

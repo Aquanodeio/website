@@ -1,4 +1,4 @@
-import { cn, toTitleCase } from "@/lib/utils";
+import { cn, formatStorageValue, toTitleCase } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import React from "react";
 import { useSearchParams } from "next/navigation";
@@ -61,6 +61,16 @@ export const MarketplaceCard = React.forwardRef<
   // replace all gi/gb/Gb/ with GB
   const gpuMemory = provider.gpuMemory.replace(/gi|gb|Gb|Gi|GI/g, "GB");
 
+  const availableMemory = formatStorageValue(
+    provider.availableMemory.value,
+    provider.availableMemory.unit
+  );
+
+  const availableStorage = formatStorageValue(
+    provider.availableStorage.value,
+    provider.availableStorage.unit
+  );
+
   return (
     <div
       ref={ref}
@@ -97,15 +107,13 @@ export const MarketplaceCard = React.forwardRef<
           <div className="flex justify-between items-center">
             <span className="text-white">Memory</span>
             <span className="text-gray-400">
-              {provider.availableMemory.value.toFixed(2)}{" "}
-              {provider.availableMemory.unit}
+              {availableMemory.displayValue} {availableMemory.displayUnit}
             </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-white">Storage</span>
             <span className="text-gray-400">
-              {provider.availableStorage.value.toFixed(2)}{" "}
-              {provider.availableStorage.unit}
+              {availableStorage.displayValue} {availableStorage.displayUnit}
             </span>
           </div>
           <div className="flex justify-between items-center">

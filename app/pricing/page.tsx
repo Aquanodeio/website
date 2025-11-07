@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { getMarketplace } from "@/hooks/useMarketplace";
@@ -7,8 +6,7 @@ import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
 import { configSupportedByProvider } from "@/lib/provider-configs";
 import { ProviderType } from "@/types";
 
-export const dynamic = "force-dynamic"; // Force dynamic rendering to avoid build-time API calls
-export const revalidate = 3600; // 1hr
+export const revalidate = 3600; // 1hr - ISR with static generation
 
 const getUniqueProviders = async () => {
   try {
@@ -58,33 +56,66 @@ const getUniqueProviders = async () => {
 export default async function Pricing() {
   const data = await getUniqueProviders();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://aquanode.io/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Pricing",
+        item: "https://aquanode.io/pricing",
+      },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What GPU models are available for rent?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We offer H100, A100, H200, AMD MI300X, RTX 4090, and other high-performance GPUs for rent across multiple regions.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How much can I save compared to other providers?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can save up to 40% on GPU costs compared to traditional cloud providers by using Aquanode's marketplace.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I deploy GPUs instantly?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, you can deploy GPUs instantly with just a few clicks through our platform.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://aquanode.io/",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Pricing",
-                  item: "https://aquanode.io/pricing",
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <main
         className="min-h-screen w-full bg-white overflow-x-hidden overflow-y-auto flex flex-col"
         style={{ fontFamily: "var(--font-)" }}
@@ -98,7 +129,8 @@ export default async function Pricing() {
               GPU Pricing
             </h1>
             <p className="text-base md:text-lg text-gray-600">
-              Find Cheapest GPU prices across multiple providers and deploy instantly
+              Find Cheapest GPU prices across multiple providers and deploy
+              instantly
             </p>
           </div>
           {/* Filter Controls */}

@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
-import createMDX from '@next/mdx';
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   // Configure the file extensions the app can handle
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   // Enable compression
   compress: true,
 
@@ -25,11 +25,7 @@ const nextConfig: NextConfig = {
 
   // Experimental features for performance
   experimental: {
-    optimizePackageImports: [
-      "lucide-react",
-      "@splinetool/react-spline",
-      "react-fast-marquee",
-    ],
+    optimizePackageImports: ["lucide-react"],
   },
 
   // Turbopack configuration (now stable)
@@ -41,6 +37,8 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+
+  reactCompiler: true,
 
   // Headers for caching and security
   async headers() {
@@ -95,9 +93,7 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [
-      [require('remark-gfm'), { singleTilde: false }]
-    ],
+    remarkPlugins: [],
     rehypePlugins: [],
   },
 });

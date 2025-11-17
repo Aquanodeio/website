@@ -25,6 +25,9 @@ Spot markets and community GPU marketplaces often offer significantly lower pric
 
 Aquanode includes a simple price filter that aggregates listings across major marketplaces. You can sort by effective hourly price, memory size, or host rating. This matters because H100 prices frequently fall below $2 during low demand windows.
 
+![H100 pricing comparison](/blogs/blog-content/use-h100-under-2-dollars-1.png)
+
+
 ## Practice 2  
 ### Avoid idle GPU time with checkpoint first training
 The biggest hidden cost in H100 workloads is idle compute. If you treat GPU sessions as disposable, you can terminate them whenever the GPU is not actively training and then resume later.

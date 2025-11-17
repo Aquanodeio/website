@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import Logo from "@/assets/blogs/aquanode-black-logo.png";
+import Logo from "@/assets/logo/aquanode-black-logo.png";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 
 export default function BlogNavbar() {

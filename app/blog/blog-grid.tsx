@@ -20,9 +20,9 @@ export default function BlogGrid({ blogData }: BlogGridProps) {
           {blogData.map((post) => {
             return (
               <Link key={post.id} href={`/blog/${post.slug || post.id}`}>
-                <div className="group cursor-pointer transition-all duration-300 bg-black rounded-2xl overflow-hidden hover:scale-[1.02]">
+                <div className="group cursor-pointer transition-all duration-300 bg-black rounded-2xl overflow-hidden hover:scale-[1.02] h-full flex flex-col">
                   {/* Card Image */}
-                  <div className="relative w-full h-[280px] overflow-hidden">
+                  <div className="relative w-full h-[280px] overflow-hidden flex-shrink-0">
                     <Image
                       src={post.coverImage || "/aquanode-banner.png"}
                       alt={post.title}
@@ -34,7 +34,7 @@ export default function BlogGrid({ blogData }: BlogGridProps) {
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     {/* Date */}
                     <div className="text-gray-400 text-sm font-medium uppercase tracking-wide mb-3">
                       {post.date}

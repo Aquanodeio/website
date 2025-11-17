@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Logo from "@/assets/home/logo.png";
+import Logo from "@/assets/logo/logo.png";
 import { CONTACT_SALES_LINK } from "@/config/links";
 import {
   fadeInUp,

@@ -2,7 +2,6 @@ import { cn, formatStorageValue, toTitleCase } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import React from "react";
 import { useSearchParams } from "next/navigation";
-import { configSupportedByProvider } from "@/lib/provider-configs";
 import { ProviderType } from "@/types";
 
 export interface Provider {
@@ -52,9 +51,8 @@ export const MarketplaceCard = React.forwardRef<
 
   // Convert params into string that can be used in url
   const appliableFilters = new URLSearchParams(searchParams.toString());
-  const configs = configSupportedByProvider[provider.provider];
 
-  const price = configs?.gpu
+  const price = provider.provider.includes("akash")
     ? provider.price?.toFixed(2)
     : (provider.price * provider.available).toFixed(2);
 

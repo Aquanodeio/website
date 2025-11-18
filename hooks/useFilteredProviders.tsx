@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/select";
 import { Provider } from "@/components/Marketplace/MarketplaceCard";
 import { ProviderType } from "@/types";
-import { configSupportedByProvider } from "@/lib/provider-configs";
 
 interface FilterState {
   vendor: string;
@@ -334,15 +333,14 @@ export function useFilteredProviders({
       filtered.sort((a, b) => {
         // First sort by price if enabled
         if (sorting.priceSort !== "none") {
+          const isAkashProvider = a.provider.includes("akash");
           // Handle edge cases where price might be null, undefined, or 0
-          const aSupportsGpuConfig = configSupportedByProvider[a.provider]?.gpu;
-          const bSupportsGpuConfig = configSupportedByProvider[b.provider]?.gpu;
 
           // If a GPU count is explicitly selected, use total price (price * desiredGpuCount)
           // for providers that support GPU configs. Otherwise (no explicit gpuCount),
           // sort by price-per-GPU so listings are comparable.
-          const priceA = aSupportsGpuConfig ? a.price : a.price * a.available;
-          const priceB = bSupportsGpuConfig ? b.price : b.price * b.available;
+          const priceA = isAkashProvider ? a.price : a.price * a.available;
+          const priceB = isAkashProvider ? b.price : b.price * b.available;
 
           const priceDiff =
             sorting.priceSort === "asc" ? priceA - priceB : priceB - priceA;

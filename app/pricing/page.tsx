@@ -3,7 +3,6 @@ import BlogNavbar from "@/components/NavbarWhite";
 import FooterCTA from "@/components/Home/FooterCTA";
 import { getMarketplace } from "@/hooks/useMarketplace";
 import { CONSOLE_LINK, MAIL_LINK } from "@/config/links";
-import { configSupportedByProvider } from "@/lib/provider-configs";
 import { ProviderType } from "@/types";
 
 export const revalidate = 3600; // 1hr - ISR with static generation
@@ -22,11 +21,7 @@ const getUniqueProviders = async () => {
         .join("")
         .toLowerCase() as ProviderType;
 
-      const config = configSupportedByProvider[providerName];
-
-      if (!config) console.warn("No config found for provider:", providerName);
-
-      if (!config.gpu) {
+      if (!providerName.includes("akash")) {
         provider.price = provider.price * provider.available;
       }
     });

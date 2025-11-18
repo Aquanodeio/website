@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "@/assets/home/logo.png";
+import Logo from "@/assets/logo/logo.png";
 import { CONSOLE_LINK, CONTACT_SALES_LINK } from "@/config/links";
 import { navbarVariants, buttonHover, tapScale } from "@/lib/motionConfig";
 

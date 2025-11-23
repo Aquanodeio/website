@@ -4,4 +4,6 @@ export enum ProviderType {
   DATACRUNCH = "datacrunch",
   HOTAISLE = "hotaisle",
   VASTAI = "vastai",
+  MASSECOMPUTE = "massecompute",
+  CUDO_COMPUTE = "cudocompute",
 }

@@ -41,4 +41,16 @@ export const configSupportedByProvider: Record<
     vcpu: false,
     storage: false,
   },
+  [ProviderType.MASSECOMPUTE]: {
+    gpu: false,
+    ram: false,
+    vcpu: false,
+    storage: false,
+  },
+  [ProviderType.CUDO_COMPUTE]: {
+    gpu: false,
+    ram: false,
+    vcpu: false,
+    storage: false,
+  },
 };

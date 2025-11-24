@@ -1,4 +1,4 @@
-import { cn, formatStorageValue, toTitleCase } from "@/lib/utils";
+import { cn, formatProviderName, formatStorageValue } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import React from "react";
 import { useSearchParams } from "next/navigation";
@@ -90,7 +90,7 @@ export const MarketplaceCard = React.forwardRef<
 
           <div className="flex items-center gap-2">
             <span className="px-4 py-2 bg-[#2A2A2A] rounded-full text-white text-sm font-normal">
-              {toTitleCase(provider.provider)}
+              {formatProviderName(provider.provider)}
             </span>
           </div>
         </div>

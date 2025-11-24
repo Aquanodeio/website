@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Provider } from "@/components/Marketplace/MarketplaceCard";
 import { ProviderType } from "@/types";
+import { formatProviderName } from "@/lib/utils";
 
 interface FilterState {
   vendor: string;
@@ -393,7 +394,7 @@ export function useFilteredProviders({
           <SelectItem value="all">All Providers</SelectItem>
           {filterOptions.providers.map((provider) => (
             <SelectItem key={provider} value={provider}>
-              {provider.charAt(0).toUpperCase() + provider.slice(1)}
+              {formatProviderName(provider)}
             </SelectItem>
           ))}
         </SelectContent>

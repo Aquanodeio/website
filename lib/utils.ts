@@ -28,3 +28,16 @@ export const formatStorageValue = (
     displayUnit: unit,
   };
 };
+
+export function formatProviderName(name: string): string {
+  switch (name.toLowerCase()) {
+    case "voltagepark":
+      return "Voltage Park";
+    case "datacrunch":
+      return "DataCrunch";
+    case "massecompute":
+      return "Massed Compute";
+    default:
+      return toTitleCase(name);
+  }
+}

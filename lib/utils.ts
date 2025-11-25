@@ -35,8 +35,14 @@ export function formatProviderName(name: string): string {
       return "Voltage Park";
     case "datacrunch":
       return "DataCrunch";
+    case "cudocompute":
+      return "Cudo Compute";
     case "massecompute":
       return "Massed Compute";
+    case "hyperstack":
+      return "HyperStack";
+    case "vastai":
+      return "Vast.ai";
     default:
       return toTitleCase(name);
   }

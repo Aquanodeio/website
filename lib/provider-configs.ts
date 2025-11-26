@@ -53,4 +53,10 @@ export const configSupportedByProvider: Record<
     vcpu: false,
     storage: false,
   },
+  [ProviderType.HYPERSTACK]: {
+    gpu: false,
+    ram: false,
+    vcpu: false,
+    storage: false,
+  },
 };

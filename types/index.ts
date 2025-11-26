@@ -6,4 +6,5 @@ export enum ProviderType {
   VASTAI = "vastai",
   MASSECOMPUTE = "massecompute",
   CUDO_COMPUTE = "cudocompute",
+  HYPERSTACK = "hyperstack",
 }

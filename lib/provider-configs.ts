@@ -59,4 +59,10 @@ export const configSupportedByProvider: Record<
     vcpu: false,
     storage: false,
   },
+  [ProviderType.VULTR]: {
+    gpu: false,
+    ram: false,
+    vcpu: false,
+    storage: false,
+  },
 };

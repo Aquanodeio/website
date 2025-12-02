@@ -1,7 +1,7 @@
 import HeroNavbar from "@/components/NavbarTransparent";
 import HeroSection from "@/components/Home/HeroSection";
 import FeaturesSection from "@/components/Home/FeaturesSection";
-import GPUPickerSection from "@/components/Home/GPUPickerSection";
+import LaunchingSection from "@/components/Home/LaunchingSection";
 import TestimonialsSection from "@/components/Home/TestimonialsSection";
 import WhatYouCanDoSection from "@/components/Home/WhatYouCanDoSection";
 import PricingComparisonSection from "@/components/Home/PricingComparisonSection";
@@ -12,13 +12,19 @@ export const revalidate = 3600; // Revalidate pricing data every hour
 
 export default function Home() {
   return (
-    <main className="relative w-full" style={{ fontFamily: 'var(--font-geist-sans)' }}>
+    <main
+      className="relative w-full"
+      style={{ fontFamily: "var(--font-geist-sans)" }}
+    >
       {/* Hero Section with dark background */}
       <div className="relative min-h-screen w-full overflow-hidden">
         {/* Background elements - full viewport coverage */}
         {/* Base dark background */}
-        <div className="absolute inset-0 z-0" style={{ background: "#0F0E11" }} />
-        
+        <div
+          className="absolute inset-0 z-0"
+          style={{ background: "#0F0E11" }}
+        />
+
         {/* Subtle radial blue glow in bottom-right */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"
@@ -27,10 +33,10 @@ export default function Home() {
               "radial-gradient(ellipse 1400px 900px at 88% 70%, #152F70 0%, #0F0E11 40%, transparent 70%)",
           }}
         />
-        
+
         {/* Grid pattern */}
         <div className="absolute inset-0 z-[1] bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        
+
         {/* Content */}
         <div className="relative z-10">
           <HeroNavbar />
@@ -41,8 +47,8 @@ export default function Home() {
       {/* Features Section */}
       <FeaturesSection />
 
-      {/* GPU Picker Section */}
-      <GPUPickerSection />
+      {/* Launching Section */}
+      <LaunchingSection />
 
       {/* What You Can Do Section */}
       <WhatYouCanDoSection />

@@ -13,7 +13,7 @@ const getContentDirectory = () => {
 export interface BlogPost {
   id: string;
   title: string;
-  excerpt: string;
+  excerpt?: string;
   content: string;
   author: {
     name: string;
@@ -25,6 +25,7 @@ export interface BlogPost {
   tags: string[];
   readTime: string;
   slug?: string;
+  coverImage?: string;
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {

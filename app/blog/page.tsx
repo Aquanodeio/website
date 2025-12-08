@@ -1,12 +1,59 @@
-import React from "react";
 import Image from "next/image";
+import { Metadata } from "next";
 import { getAllBlogPosts } from "@/lib/blog-server";
 import BlogGrid from "./blog-grid";
 import FooterCTA from "@/components/Home/FooterCTA";
 import BlogNavbar from "@/components/NavbarWhite";
+import { siteConfig } from "@/lib/seo-config";
 import EllipseLeft from "@/assets/blogs/ellipse-left.svg";
 import EllipseRight from "@/assets/blogs/ellipse-right.svg";
 import ArrowDown from "@/assets/blogs/arrow-down-vector.svg";
+
+export const metadata: Metadata = {
+  title: "Blog - Latest Insights on AI Cloud & GPU Computing",
+  description:
+    "Explore Aquanode's blog for the latest insights on GPU cloud computing, AI infrastructure, cost optimization, and best practices for deploying H100, A100, H200, and MI300X GPUs.",
+  keywords: [
+    "AI cloud blog",
+    "GPU computing",
+    "cloud infrastructure",
+    "H100",
+    "A100",
+    "H200",
+    "MI300X",
+    "GPU pricing",
+    "AI deployment",
+    "cloud cost optimization",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: `${siteConfig.url}/blog`,
+    title: "Blogs By Aquanode - AI Cloud & GPU Computing Insights",
+    description:
+      "Explore Aquanode's blog for the latest insights on GPU cloud computing, AI infrastructure, and cost optimization.",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Blogs By Aquanode",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs By Aquanode - AI Cloud & GPU Computing Insights",
+    description:
+      "Explore the latest insights on GPU cloud computing, AI infrastructure, and cost optimization.",
+    creator: "@aquanode",
+    images: [siteConfig.ogImage],
+  },
+  alternates: {
+    canonical: `${siteConfig.url}/blog`,
+  },
+};
 
 export default async function Blog() {
   const blogData = getAllBlogPosts();

@@ -6,7 +6,7 @@ import matter from "gray-matter";
 export interface BlogPost {
   id: string;
   title: string;
-  excerpt: string;
+  excerpt?: string;
   content: string;
   author: {
     name: string;
@@ -18,6 +18,7 @@ export interface BlogPost {
   tags: string[];
   readTime: string;
   slug?: string;
+  coverImage?: string;
 }
 
 const contentDirectory = path.join(process.cwd(), "content/blog");

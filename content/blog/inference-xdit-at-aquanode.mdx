@@ -64,7 +64,7 @@ you can go with updated version of torch,if wheels available for that, otherwise
 uv venv
 source .venv/bin/activate
 
-# number of cpus to allocate for flash attn build, more will use more RAM, refrain from using more than 32, even in high config VM
+**Number of cpus to allocate for flash attn build, more will use more RAM, refrain from using more than 32, even in high config VM**
 export MAX_JOBS=8
 
 export CUDA_ARCH=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader | head -n1)

@@ -119,3 +119,11 @@ Not providing save_disk_path, will default the api to return base64 encoded imag
 Results like:
 
 ![infer-result](/blogs/blog-content/beautiful_landscape.png)
+---
+Have more traffic? Just rent a multi-gpu VM follow same process and instead run
+
+*python flux_xfuser.py   --model black-forest-labs/FLUX.1-dev   --ray_world_size 1 --use_teacache --use_fbcache --data_parallel_degree $NUM_GPU*
+
+And now server will distribute the requests across GPUs
+
+---

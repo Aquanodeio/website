@@ -1,0 +1,98 @@
+---
+id: "Migrations at aquanode"
+title: "Migrations at aquanode across VMs"
+coverImage: "/blogs/blog-covers/migrations.png"
+author:
+    name: "Team Aquanode"
+    title: "Arpit Bansal"
+    avatar: "/blogs/blog-avatars/aquanode-team-logo.png"
+date: "MARCH 07, 2026"
+tags: ["migration", "VMs", "GPU", "checkpointing", "backup", "aquanode", "nvidia"]
+readTIme: "5 minute read"
+---
+
+So i am training a translation model for a low-resource akkadain language.
+But using a single gpu whole time, doesn't make sense.
+
+TLDR
+1. Used A100 for data processing
+2. Used 5090 for training
+3. Resumed training on another VM
+4. Uploading Final Weights to HuggingFace on my repo
+
+## Data Processing on A100
+
+I needed to do some quality translations on my data, hence using Qwen/Qwen3-30B-A3B-Instruct-2507
+
+I will just have migrations on my data directory: /root/data
+
+I processed my stuff.
+
+Took manual snapshot, and closing the instance.
+
+![migration-data-process](/blogs/blog-content/migration/migration_data_process.png)
+
+My training can happen on 5090, so i will continue it there.
+
+To get the processed data here, just get the migrations.
+All data available on same path **/root/data**
+
+Now let's start training.
+
+## Training
+
+Sometimes your shell may exit or ssh connection drops, that can kill the process associated with shell.
+
+Using tmux to create a persistent process, so we can detah from shell
+
+```sh
+tmux new -s train
+
+source .venv/bin/activate 
+
+python train.py --lr 1e-4 --batch_size 4
+```
+
+![train-phase-1](/blogs/blog-content/migration/train_phase1.png)
+
+
+Ctrl + B, then D (to detach, doesn't kill the process, now you can safely exit)
+
+```sh
+tmux attach -t train
+```
+
+Mean time, let's invoke migrations for **/root** choose time based on how long this training will go for.
+
+After the desired training is done, or even if closed
+
+Here now after getting things done, i closed my VM.
+
+And now let's resume our training 
+
+## Resume Training
+
+Get the migrations for the last snapshot.
+
+![restore](/blogs/blog-content/migration/restore.png)
+
+It took 5 minutes for the 33GB of Data.
+
+Acivate venv
+
+```sh
+tmux new -s train
+source .venv/bin/activate
+python train.py --lr 1e-5 --batch_size 4 --resume_from_checkpoint latest
+```
+
+![train-phase-2](/blogs/blog-content/migration/train_phase2.png)
+
+Uploading model to HuggingFace
+
+```sh
+hf auth login
+
+hf upload <user-name/repo> <path to upload from>
+hf upload Arpit-Bansal/Akkadian-experiments models/
+```

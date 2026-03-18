@@ -7,8 +7,15 @@ import DeployImage from "@/assets/home/launching/use.png";
 
 export function DeploySection() {
   return (
-    <section className="relative w-full bg-black py-10 overflow-hidden">
-      <div className="relative z-10 px-6 md:px-12 lg:px-16 xl:px-20">
+    <section className="relative w-full bg-black py-4 overflow-hidden">
+      <div
+        className="relative z-10 px-6 md:px-12 lg:px-16 xl:px-20"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      >
         {/* Header Section */}
         <motion.div
           initial="hidden"
@@ -36,7 +43,7 @@ export function DeploySection() {
           <Image
             src={DeployImage}
             alt="Deploy and Start Using"
-            className="w-full h-auto rounded-lg border border-white/10"
+            className="h-[85dvh] mx-auto w-auto rounded-lg border border-white/10"
             placeholder="blur"
           />
         </motion.div>

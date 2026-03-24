@@ -242,21 +242,29 @@ export function useFilteredProviders({
 
     // Normalize vRAM values to GB format
     const normalizeVram = (vram: string) => {
-      return vram.replace(/gi|gb|Gb|Gi|GI/gi, "GB");
+      return vram.replace(/gi|gb|Gb|Gi|GI|GB/gi, "") + "GB";
     };
 
     return {
-      vendors: Array.from(new Set(providers.map((p) => p.gpuVendor))),
+      vendors: Array.from(new Set(providers.map((p) => p.gpuVendor))).filter(
+        Boolean
+      ),
       vRams: Array.from(
         new Set(providers.map((p) => normalizeVram(p.gpuMemory)))
-      ).sort((a, b) => {
-        // Sort by numeric value
-        const aNum = parseInt(a);
-        const bNum = parseInt(b);
-        return bNum - aNum; // Descending order
-      }),
-      regions: Array.from(new Set(providers.map((p) => p.region))),
-      gpuNames: Array.from(new Set(providers.map((p) => p.gpuShortName))),
+      )
+        .sort((a, b) => {
+          // Sort by numeric value
+          const aNum = parseInt(a);
+          const bNum = parseInt(b);
+          return bNum - aNum; // Descending order
+        })
+        .filter(Boolean),
+      regions: Array.from(new Set(providers.map((p) => p.region))).filter(
+        Boolean
+      ),
+      gpuNames: Array.from(
+        new Set(providers.map((p) => p.gpuShortName))
+      ).filter(Boolean),
       providers: Object.values(ProviderType),
     };
   }, [providers]);

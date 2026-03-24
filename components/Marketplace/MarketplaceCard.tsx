@@ -33,8 +33,7 @@ export interface Provider {
   price: number;
 }
 
-export interface MarketplaceCardProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface MarketplaceCardProps extends React.HTMLAttributes<HTMLDivElement> {
   isSelected?: boolean;
   provider: Provider;
   onSelect?: (provider: any) => void;
@@ -57,7 +56,7 @@ export const MarketplaceCard = React.forwardRef<
     : (provider.price * provider.available).toFixed(2);
 
   // replace all gi/gb/Gb/ with GB
-  const gpuMemory = provider.gpuMemory.replace(/gi|gb|Gb|Gi|GI/g, "GB");
+  const gpuMemory = provider.gpuMemory.replace(/gi|gb|Gb|Gi|GI|GB/g, "");
 
   const availableMemory = formatStorageValue(
     provider.availableMemory.value,
@@ -85,7 +84,7 @@ export const MarketplaceCard = React.forwardRef<
             >
               {provider.gpuShortName.toUpperCase()}
             </h4>
-            <p className="text-gray-400 text-xl">({gpuMemory})</p>
+            <p className="text-gray-400 text-xl">({gpuMemory}GB)</p>
           </div>
 
           <div className="flex items-center gap-2">

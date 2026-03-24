@@ -242,7 +242,7 @@ export function useFilteredProviders({
 
     // Normalize vRAM values to GB format
     const normalizeVram = (vram: string) => {
-      return vram.replace(/gi|gb|Gb|Gi|GI/gi, "GB");
+      return vram.replace(/gi|gb|Gb|Gi|GI|GB/gi, "") + "GB";
     };
 
     return {

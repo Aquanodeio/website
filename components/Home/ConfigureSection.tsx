@@ -7,8 +7,15 @@ import ConfigureImage from "@/assets/home/launching/configure.png";
 
 export function ConfigureSection() {
   return (
-    <section className="relative w-full bg-black py-10 overflow-hidden">
-      <div className="relative z-10 px-6 md:px-12 lg:px-16 xl:px-20">
+    <section className="relative w-full bg-black py-4 overflow-hidden">
+      <div
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+        className="relative z-10 px-6 md:px-12 lg:px-16 xl:px-20"
+      >
         {/* Header Section */}
         <motion.div
           initial="hidden"
@@ -36,7 +43,7 @@ export function ConfigureSection() {
           <Image
             src={ConfigureImage}
             alt="Configure Server"
-            className="w-full h-auto rounded-lg border border-white/10"
+            className="h-[85dvh] mx-auto w-auto rounded-lg border border-white/10"
             placeholder="blur"
           />
         </motion.div>
